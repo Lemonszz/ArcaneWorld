@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import party.lemons.arcaneworld.ArcaneWorld;
 import party.lemons.arcaneworld.block.ArcaneWorldBlocks;
+import party.lemons.arcaneworld.crafting.ritual.impl.RitualCreateItem;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
 /**
  * Created by Sam on 12/09/2018.
  */
-public class RitualRecipeCategory implements IRecipeCategory<IRecipeWrapper>
+public class RitualRecipeCategory implements IRecipeCategory<RitualRecipeWrapper>
 {
     public static final ResourceLocation RITUAL_BG = new ResourceLocation(ArcaneWorld.MODID, "textures/gui/ritual_jei.png");
     public static final String ID = "arcaneworld.ritual";
@@ -62,15 +63,24 @@ public class RitualRecipeCategory implements IRecipeCategory<IRecipeWrapper>
     }
 
     @Override
-    public void setRecipe(IRecipeLayout layout, IRecipeWrapper wrapper, IIngredients ingredients) {
+    public void setRecipe(IRecipeLayout layout, RitualRecipeWrapper wrapper, IIngredients ingredients) {
         if(!(wrapper instanceof RitualRecipeWrapper))
             return;
 
         List<List<ItemStack>> inputs = ingredients.getInputs(ItemStack.class);
+        List<List<ItemStack>> output = ingredients.getOutputs(ItemStack.class);
 
-        for(int i = 0; i < inputs.get(0).size(); i++) {
+        int in = 0;
+        for(int i = 0; i < inputs.get(0).size(); i++)
+        {
             layout.getItemStacks().init(i, true, 43 + (18 * i), 9);
-            layout.getItemStacks().set(i, inputs.get(0).get(i));
+            layout.getItemStacks().set(in++, inputs.get(0).get(i));
+        }
+
+        if(output.size() > 0)
+        for(int i = 0; i < output.get(0).size(); i++) {
+            layout.getItemStacks().init(in, true, 43 + (20 * in), 9);
+            layout.getItemStacks().set(in++, output.get(0).get(i));
         }
     }
 }

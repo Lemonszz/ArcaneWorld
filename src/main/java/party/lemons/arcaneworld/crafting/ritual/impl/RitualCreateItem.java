@@ -1,6 +1,5 @@
 package party.lemons.arcaneworld.crafting.ritual.impl;
 
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -32,5 +31,10 @@ public class RitualCreateItem extends Ritual
         item.motionY = -0.25F;
 
         world.spawnEntity(item);
+    }
+
+    public ItemStack getItemstack()
+    {
+        return result;
     }
 }
