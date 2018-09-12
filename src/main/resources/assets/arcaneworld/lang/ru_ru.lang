@@ -1,0 +1,19 @@
+arcaneworld.gui.ritual.cast=Применение
+itemGroup.arcaneworld=Arcane World
+
+tile.arcaneworld.ore_sapphire.name=Руда сапфира
+tile.arcaneworld.ore_amethyst.name=Руда аметиста
+tile.arcaneworld.block_sapphire.name=Блок сапфира
+tile.arcaneworld.block_amethyst.name=Блок аметиста
+tile.arcaneworld.ritual_table.name=Ритуальный стол
+
+item.arcaneworld.arcane_hoe.name=Мотыга тайн
+item.arcaneworld.fang_wand.name=Посох Вызывателя
+item.arcaneworld.sapphire.name=Сапфир
+item.arcaneworld.amethyst.name=Аметист
+
+arcaneworld.subtitle.ritual_out=Ритуальный взрыв
+arcaneworld.subtitle.ritual_item=Ритуальный всплеск
+arcaneworld.subtitle.ritual_charge=Ритуальный заряд 
+arcaneworld.subtitle.ritual_start=Ритуальный удар
+arcaneworld.subtitle.ritual_item_pop=Ритуальный бласт
