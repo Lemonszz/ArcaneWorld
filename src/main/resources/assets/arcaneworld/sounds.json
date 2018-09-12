@@ -1,0 +1,27 @@
+{
+  "ritual_out":{
+    "category": "block",
+    "subtitle": "arcaneworld.subtitle.ritual_out",
+    "sounds": ["arcaneworld:ritual_out"]
+  },
+  "ritual_item":{
+    "category": "block",
+    "subtitle": "arcaneworld.subtitle.ritual_item",
+    "sounds": ["arcaneworld:ritual_item"]
+  },
+  "ritual_charge":{
+    "category": "block",
+    "subtitle": "arcaneworld.subtitle.ritual_charge",
+    "sounds": ["arcaneworld:ritual_charge"]
+  },
+  "ritual_start":{
+    "category": "block",
+    "subtitle": "arcaneworld.subtitle.ritual_start",
+    "sounds": ["arcaneworld:ritual_start"]
+  },
+  "ritual_item_pop":{
+    "category": "block",
+    "subtitle": "arcaneworld.subtitle.ritual_item_pop",
+    "sounds": ["arcaneworld:ritual_item_pop"]
+  }
+}

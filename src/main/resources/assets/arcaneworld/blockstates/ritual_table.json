@@ -1,0 +1,21 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "particle": "arcaneworld:blocks/sapphire_block",
+      "bottom": "arcaneworld:blocks/sapphire_block",
+      "top": "arcaneworld:blocks/ritual_table_top",
+      "side": "arcaneworld:blocks/ritual_table_side"
+    },
+    "model": "enchanting_table_base",
+    "uvlock": true
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory":
+    {
+      "model": "enchanting_table_base",
+      "transform": "forge:default-block"
+    }
+  }
+}

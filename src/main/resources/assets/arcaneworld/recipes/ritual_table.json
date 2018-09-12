@@ -1,0 +1,25 @@
+{
+  "result": {
+    "item": "arcaneworld:ritual_table",
+    "count": 1
+  },
+  "pattern": [
+    " B ",
+    "GSG",
+    "SGS"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "G": {
+      "type": "forge:ore_dict",
+      "ore" : "ingotGold"
+    },
+    "S":{
+      "type": "forge:ore_dict",
+      "ore" : "blockSapphire"
+    },
+    "B":{
+      "item": "minecraft:book"
+    }
+  }
+}

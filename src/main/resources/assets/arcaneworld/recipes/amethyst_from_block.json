@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "arcaneworld:amethyst",
+    "count": 9
+  },
+  "pattern": [
+    "X"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "X": {
+      "type": "forge:ore_dict",
+      "ore" : "blockAmethyst"
+    }
+  }
+}

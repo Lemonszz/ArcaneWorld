@@ -1,0 +1,16 @@
+[
+{
+  "modid": "arcaneworld",
+  "name": "Arcane World",
+  "description": "Arcane World!.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Lemons"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

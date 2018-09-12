@@ -1,0 +1,20 @@
+arcaneworld.gui.ritual.cast=Cast
+itemGroup.arcaneworld=Arcane World
+
+tile.arcaneworld.ore_sapphire.name=Sapphire Ore
+tile.arcaneworld.ore_amethyst.name=Amethyst Ore
+tile.arcaneworld.block_sapphire.name=Sapphire Block
+tile.arcaneworld.block_amethyst.name=Amethyst Block
+tile.arcaneworld.block_amethyst.name=Amethyst Block
+tile.arcaneworld.ritual_table.name=Ritual Table
+
+item.arcaneworld.arcane_hoe.name=Arcane Hoe
+item.arcaneworld.fang_wand.name=Wand of Evocation
+item.arcaneworld.sapphire.name=Sapphire
+item.arcaneworld.amethyst.name=Amethyst
+
+arcaneworld.subtitle.ritual_out=Ritual Bangs
+arcaneworld.subtitle.ritual_item=Ritual Pops
+arcaneworld.subtitle.ritual_charge=Ritual Whirrs
+arcaneworld.subtitle.ritual_start=Ritual Cracks
+arcaneworld.subtitle.ritual_item_pop=Ritual Blasts
