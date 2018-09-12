@@ -4,6 +4,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import party.lemons.arcaneworld.ArcaneWorld;
+import party.lemons.arcaneworld.item.ArcaneWorldItems;
 
 /**
  * Created by Sam on 9/09/2018.
@@ -20,6 +21,6 @@ public class ArcaneWorldTab extends CreativeTabs
 	@Override
 	public ItemStack createIcon()
 	{
-		return new ItemStack(Items.SPRUCE_BOAT);
+		return new ItemStack(ArcaneWorldItems.GLOWING_CHORUS);
 	}
 }
