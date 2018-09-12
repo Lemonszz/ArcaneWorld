@@ -41,6 +41,7 @@ public class RitualRegistry
 
 		createRitual(event.getRegistry(), new RitualCreateItem(new ItemStack(ArcaneWorldItems.ARCANE_HOE), new ItemStack(Items.GOLDEN_HOE), new ItemStack(Items.DIAMOND), new ItemStack(Items.NETHER_WART), new ItemStack(Items.RABBIT_FOOT), new ItemStack(Items.DYE, 1, 4)), "create_arcane_hoe");
 		createRitual(event.getRegistry(), new RitualCreateItem(new ItemStack(ArcaneWorldItems.FANG_WAND), new ItemStack(Items.STICK), new ItemStack(Items.DIAMOND), new ItemStack(Items.GOLD_INGOT), new ItemStack(Items.GLOWSTONE_DUST), new ItemStack(Items.ENDER_PEARL)), "create_evoking_wand");
+		createRitual(event.getRegistry(), new RitualCreateItem(new ItemStack(ArcaneWorldItems.GLOWING_CHORUS), new ItemStack(Items.CHORUS_FRUIT), new ItemStack(Blocks.OBSIDIAN), new ItemStack(Items.GLOWSTONE_DUST), new ItemStack(Items.ENDER_EYE), new ItemStack(Items.DRAGON_BREATH)), "create_glowing_chorus");
 
 		createSummonRitual(event.getRegistry(), EntityZombie.class, new ItemStack(Items.ROTTEN_FLESH), true, "summon_zombie");
 		createSummonRitual(event.getRegistry(), EntitySkeleton.class, new ItemStack(Items.BOW), true, "summon_skeleton");
