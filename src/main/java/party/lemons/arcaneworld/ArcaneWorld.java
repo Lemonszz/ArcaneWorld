@@ -1,16 +1,12 @@
 package party.lemons.arcaneworld;
 
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import party.lemons.arcaneworld.entity.ArcaneWorldEntities;
-import party.lemons.arcaneworld.gen.ArcaneWorldGen;
 import party.lemons.arcaneworld.handler.ArcaneWorldGuiHandler;
 import party.lemons.arcaneworld.handler.OreDictHandler;
 import party.lemons.arcaneworld.network.NetworkInit;
@@ -40,7 +36,6 @@ public class ArcaneWorld
 	{
 		NetworkInit.init();
 		ArcaneWorldEntities.init();
-		GameRegistry.registerWorldGenerator(new ArcaneWorldGen(), 0);
 		proxy.registerSided();
 	}
 
