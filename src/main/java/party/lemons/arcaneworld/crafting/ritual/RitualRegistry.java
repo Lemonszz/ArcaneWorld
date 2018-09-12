@@ -1,17 +1,21 @@
 package party.lemons.arcaneworld.crafting.ritual;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.*;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreIngredient;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.RegistryBuilder;
 import party.lemons.arcaneworld.ArcaneWorld;
@@ -33,15 +37,15 @@ public class RitualRegistry
 	public static void onRegisterRitual(RegistryEvent.Register<Ritual> event)
 	{
 		createRitual(event.getRegistry(), new Ritual().setEmpty(), "empty");
-		createRitual(event.getRegistry(), new RitualTime(6000, new ItemStack(Blocks.DOUBLE_PLANT, 1, 0), new ItemStack(Items.GLOWSTONE_DUST), new ItemStack(Items.GOLD_NUGGET), new ItemStack(Items.GOLD_NUGGET)), "time_skip");
-		createRitual(event.getRegistry(), new RitualTime(-6000, new ItemStack(Items.QUARTZ, 1, 0), new ItemStack(Items.REDSTONE), new ItemStack(Items.GOLD_NUGGET), new ItemStack(Items.GOLD_NUGGET)), "time_rewind");
-		createRitual(event.getRegistry(), new RitualWeather(RitualWeather.WeatherType.CLEAR, new ItemStack(Blocks.SAND), new ItemStack(Items.BLAZE_POWDER)), "clear_skies");
-		createRitual(event.getRegistry(), new RitualWeather(RitualWeather.WeatherType.RAIN, new ItemStack(Items.PRISMARINE_CRYSTALS), new ItemStack(Items.PRISMARINE_SHARD)), "raining");
-		createRitual(event.getRegistry(), new RitualWeather(RitualWeather.WeatherType.THUNDER, new ItemStack(Items.PRISMARINE_CRYSTALS), new ItemStack(Items.PRISMARINE_SHARD), new ItemStack(Items.GUNPOWDER)), "thundering");
+		createRitual(event.getRegistry(), new RitualTime(6000, of(new ItemStack(Blocks.DOUBLE_PLANT, 1, 0)), of(new ItemStack(Items.GLOWSTONE_DUST)), of(new ItemStack(Items.GOLD_NUGGET)), of(new ItemStack(Items.GOLD_NUGGET))), "time_skip");
+		createRitual(event.getRegistry(), new RitualTime(-6000, of(new ItemStack(Items.QUARTZ)), of(new ItemStack(Items.REDSTONE)), of(new ItemStack(Items.GOLD_NUGGET)), of(new ItemStack(Items.GOLD_NUGGET))), "time_rewind");
+		createRitual(event.getRegistry(), new RitualWeather(RitualWeather.WeatherType.CLEAR, of(new ItemStack(Blocks.SAND)), of(new ItemStack(Items.BLAZE_POWDER))), "clear_skies");
+		createRitual(event.getRegistry(), new RitualWeather(RitualWeather.WeatherType.RAIN, of(new ItemStack(Items.PRISMARINE_CRYSTALS)), of(new ItemStack(Items.PRISMARINE_SHARD))), "raining");
+		createRitual(event.getRegistry(), new RitualWeather(RitualWeather.WeatherType.THUNDER, of(new ItemStack(Items.PRISMARINE_CRYSTALS)), of(new ItemStack(Items.PRISMARINE_SHARD)), of(new ItemStack(Items.GUNPOWDER))), "thundering");
 
-		createRitual(event.getRegistry(), new RitualCreateItem(new ItemStack(ArcaneWorldItems.ARCANE_HOE), new ItemStack(Items.GOLDEN_HOE), new ItemStack(Items.DIAMOND), new ItemStack(Items.NETHER_WART), new ItemStack(Items.RABBIT_FOOT), new ItemStack(Items.DYE, 1, 4)), "create_arcane_hoe");
-		createRitual(event.getRegistry(), new RitualCreateItem(new ItemStack(ArcaneWorldItems.FANG_WAND), new ItemStack(Items.STICK), new ItemStack(Items.DIAMOND), new ItemStack(Items.GOLD_INGOT), new ItemStack(Items.GLOWSTONE_DUST), new ItemStack(Items.ENDER_PEARL)), "create_evoking_wand");
-		createRitual(event.getRegistry(), new RitualCreateItem(new ItemStack(ArcaneWorldItems.GLOWING_CHORUS), new ItemStack(Items.CHORUS_FRUIT), new ItemStack(Blocks.OBSIDIAN), new ItemStack(Items.GLOWSTONE_DUST), new ItemStack(Items.ENDER_EYE), new ItemStack(Items.DRAGON_BREATH)), "create_glowing_chorus");
+		createRitual(event.getRegistry(), new RitualCreateItem(new ItemStack(ArcaneWorldItems.ARCANE_HOE), of(new ItemStack(Items.GOLDEN_HOE)), of("plankWood"), of(new ItemStack(Items.NETHER_WART)), of(new ItemStack(Items.RABBIT_FOOT)), of(new ItemStack(Items.DYE, 1, 4))), "create_arcane_hoe");
+		createRitual(event.getRegistry(), new RitualCreateItem(new ItemStack(ArcaneWorldItems.FANG_WAND), of(new ItemStack(Items.STICK)), of("gemDiamond"), of(new ItemStack(Items.GOLD_INGOT)), of(new ItemStack(Items.GLOWSTONE_DUST)), of(new ItemStack(Items.ENDER_PEARL))), "create_evoking_wand");
+		createRitual(event.getRegistry(), new RitualCreateItem(new ItemStack(ArcaneWorldItems.GLOWING_CHORUS), of(new ItemStack(Items.CHORUS_FRUIT)), of(new ItemStack(Blocks.OBSIDIAN)), of(new ItemStack(Items.GLOWSTONE_DUST)), of(new ItemStack(Items.ENDER_EYE)), of(new ItemStack(Items.DRAGON_BREATH))), "create_glowing_chorus");
 
 		createSummonRitual(event.getRegistry(), EntityZombie.class, new ItemStack(Items.ROTTEN_FLESH), true, "summon_zombie");
 		createSummonRitual(event.getRegistry(), EntitySkeleton.class, new ItemStack(Items.BOW), true, "summon_skeleton");
@@ -94,7 +98,27 @@ public class RitualRegistry
 		ItemStack secondary = new ItemStack(isHostile ? ArcaneWorldItems.AMETHYST : ArcaneWorldItems.SAPPHIRE);
 		ItemStack bones = new ItemStack(Items.BONE);
 
-		return createRitual(registry, new RitualSummon(entity, primary, secondary, bones), name);
+		return createRitual(registry, new RitualSummon(entity, of(primary), of(secondary), of(bones)), name);
+	}
+
+	public static Ingredient of(String oreDict)
+	{
+		return new OreIngredient(oreDict);
+	}
+
+	public static Ingredient of(Item item)
+	{
+		return of(new ItemStack(item));
+	}
+
+	public static Ingredient of(Block block)
+	{
+		return of(new ItemStack(block));
+	}
+
+	public static Ingredient of(ItemStack stack)
+	{
+		return Ingredient.fromStacks(stack);
 	}
 
 	@SubscribeEvent

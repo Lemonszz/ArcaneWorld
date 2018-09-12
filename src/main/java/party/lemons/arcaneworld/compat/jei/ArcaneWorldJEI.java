@@ -23,7 +23,7 @@ public class ArcaneWorldJEI implements IModPlugin {
     }
 
     public void register(IModRegistry registry) {
-        registry.handleRecipes(Ritual.class, RitualRecipeWrapper::new, RitualRecipeCategory.ID);
+        registry.handleRecipes(Ritual.class, r -> new RitualRecipeWrapper(registry.getJeiHelpers(), r), RitualRecipeCategory.ID);
         registry.addRecipes(RitualRegistry.REGISTRY.getValuesCollection().stream().filter(r -> !r.isEmpty()).collect(Collectors.toList()), RitualRecipeCategory.ID);
         registry.addRecipeClickArea(GuiRitual.class, 0, 0, 20, 20, RitualRecipeCategory.ID);
         registry.addRecipeCatalyst(new ItemStack(ArcaneWorldBlocks.RITUAL_TABLE), RitualRecipeCategory.ID);

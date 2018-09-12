@@ -1,11 +1,13 @@
 package party.lemons.arcaneworld.compat.jei;
 
+import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.item.ItemStack;
 import party.lemons.arcaneworld.crafting.ritual.impl.Ritual;
 import party.lemons.arcaneworld.crafting.ritual.impl.RitualCreateItem;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,18 +19,11 @@ public class RitualRecipeWrapper implements IRecipeWrapper
     private Ritual ritual;
     private List<List<ItemStack>> ingreds;
 
-    public RitualRecipeWrapper(Ritual ritual)
+    public RitualRecipeWrapper(IJeiHelpers helpers, Ritual ritual)
     {
         this.ritual = ritual;
 
-        ArrayList<ItemStack> stacks = new ArrayList<>();
-        ingreds = new ArrayList<>();
-        for(int i = 0; i < ritual.getRequiredItems().size(); i++)
-        {
-            stacks.add(ritual.getRequiredItems().get(i));
-        }
-
-        ingreds.add(stacks);
+        ingreds = helpers.getStackHelper().expandRecipeItemStackInputs(ritual.getRequiredItems());
     }
 
     public Ritual getRitual()

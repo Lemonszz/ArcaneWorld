@@ -71,15 +71,16 @@ public class RitualRecipeCategory implements IRecipeCategory<RitualRecipeWrapper
         List<List<ItemStack>> output = ingredients.getOutputs(ItemStack.class);
 
         int in = 0;
-        for(int i = 0; i < inputs.get(0).size(); i++)
-        {
+        for(int i = 0; i  < inputs.size(); i++) {
             layout.getItemStacks().init(i, true, 43 + (18 * i), 9);
-            layout.getItemStacks().set(in++, inputs.get(0).get(i));
+            layout.getItemStacks().set(i, inputs.get(i));
+
+            in++;
         }
 
         if(output.size() > 0)
         for(int i = 0; i < output.get(0).size(); i++) {
-            layout.getItemStacks().init(in, true, 43 + (20 * in), 9);
+            layout.getItemStacks().init(in, false, 43 + (20 * in), 9);
             layout.getItemStacks().set(in++, output.get(0).get(i));
         }
     }

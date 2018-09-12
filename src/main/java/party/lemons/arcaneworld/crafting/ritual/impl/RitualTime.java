@@ -2,6 +2,7 @@ package party.lemons.arcaneworld.crafting.ritual.impl;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -18,7 +19,7 @@ public class RitualTime extends Ritual
 {
 	private final int targetTime;
 
-	public RitualTime(int targetTime, ItemStack... ingredients)
+	public RitualTime(int targetTime, Ingredient... ingredients)
 	{
 		super(ingredients);
 

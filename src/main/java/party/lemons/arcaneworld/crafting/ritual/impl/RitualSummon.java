@@ -5,6 +5,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -19,7 +20,7 @@ public class RitualSummon extends Ritual
 {
     private final Class<? extends EntityLiving> entity;
 
-    public RitualSummon(Class<? extends EntityLiving> entity, ItemStack... ing)
+    public RitualSummon(Class<? extends EntityLiving> entity, Ingredient... ing)
     {
         super(ing);
 

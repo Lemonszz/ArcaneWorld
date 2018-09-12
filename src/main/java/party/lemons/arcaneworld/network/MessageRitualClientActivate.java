@@ -3,6 +3,7 @@ package party.lemons.arcaneworld.network;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
@@ -59,9 +60,9 @@ public class MessageRitualClientActivate implements IMessage
 			double dis = pos.getDistance((int)serverPlayer.posX, (int)serverPlayer.posY, (int)serverPlayer.posZ);
 			WorldServer world = serverPlayer.getServerWorld();
 
-
 			world.addScheduledTask(()->{
-				if(!world.isBlockLoaded(pos) || dis > 10)
+
+				if(!world.isBlockLoaded(pos) || !world.isBlockModifiable(serverPlayer, pos) || dis > 10)
 					return;
 
 				TileEntity te = world.getTileEntity(pos);

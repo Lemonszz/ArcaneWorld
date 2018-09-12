@@ -3,6 +3,7 @@ package party.lemons.arcaneworld.block.tilentity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -112,7 +113,7 @@ public class TileEntityRitualTable extends TileEntity implements ITickable
 					setState(RitualState.FINISH);
 					particlesActivate();
 					if(!world.isRemote) {
-						currentRitual.onActivate(world, pos, currentRitual.getRequiredItems(), null);
+						currentRitual.onActivate(world, pos);
 					}
 				}
 				break;
@@ -178,12 +179,12 @@ public class TileEntityRitualTable extends TileEntity implements ITickable
 		worldServer.spawnParticle(EnumParticleTypes.SMOKE_LARGE, pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, 50, 0, -0.5, 0, 1F);
 	}
 
-	private void addItemOut(ItemStack stack)
+	private void addItemOut(Ingredient stack)
 	{
-		if(stack.isEmpty())
+		if(stack == Ingredient.EMPTY || stack.getMatchingStacks().length == 0)
 			return;
 
-		itemActivations.add(new ItemActivation(stack));
+		itemActivations.add(new ItemActivation(stack.getMatchingStacks()[0]));
 		world.playSound(null, pos, ArcaneWorldSounds.RITUAL_ITEM, SoundCategory.BLOCKS, 1F, 0.5F + (rand.nextFloat() / 2));
 	}
 
