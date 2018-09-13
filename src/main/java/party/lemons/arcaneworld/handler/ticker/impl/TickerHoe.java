@@ -118,6 +118,11 @@ public class TickerHoe implements ITicker
 		return world.provider.getDimension();
 	}
 
+	@Override
+	public boolean isUnique() {
+		return false;
+	}
+
 	private BlockPos getCurrentPos()
 	{
 		return origin.offset(direction, current);

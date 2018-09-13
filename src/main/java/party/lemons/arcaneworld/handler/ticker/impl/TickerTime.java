@@ -70,4 +70,9 @@ public class TickerTime implements ITicker
 	public int getDimension() {
 		return dimension;
 	}
+
+	@Override
+	public boolean isUnique() {
+		return true;
+	}
 }

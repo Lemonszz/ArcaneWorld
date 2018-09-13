@@ -28,7 +28,20 @@ public class TickerHandler
 		if(!worldTickers.containsKey(dim))
 			worldTickers.put(dim, new ArrayList<>());
 
+		//Don't have more than 1 instance of unique tickers
+		if(ticker.isUnique() && hasTickerOfType(dim, ticker.getClass()))
+			return;
+
 		worldTickers.get(dim).add(ticker);
+	}
+
+	private static boolean hasTickerOfType(int dim, Class<? extends ITicker> clazz)
+	{
+		if(!worldTickers.containsKey(dim))
+			return false;
+
+		System.out.println("herre!");
+		return worldTickers.get(dim).stream().anyMatch(t -> t.getClass() == clazz);
 	}
 
 	private static void removeFinishedTickers(World world)

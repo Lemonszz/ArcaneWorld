@@ -17,4 +17,5 @@ public interface ITicker
 	void readFromNBT(NBTTagCompound tagCompound);
 	boolean isTaskFinished(World world);
 	int getDimension();
+	boolean isUnique();
 }
