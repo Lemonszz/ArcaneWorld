@@ -1,5 +1,4 @@
 package party.lemons.arcaneworld.crafting.ritual;
-;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;

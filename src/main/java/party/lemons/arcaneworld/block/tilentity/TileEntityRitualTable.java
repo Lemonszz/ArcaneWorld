@@ -151,7 +151,6 @@ public class TileEntityRitualTable extends TileEntity implements ITickable
 
 		for (f2 = this.tRot - this.bookRotation; f2 >= (float)Math.PI; f2 -= ((float)Math.PI * 2F))
 		{
-			;
 		}
 
 		while (f2 < -(float)Math.PI)

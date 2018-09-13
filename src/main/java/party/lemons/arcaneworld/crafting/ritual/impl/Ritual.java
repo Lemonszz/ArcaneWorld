@@ -1,6 +1,5 @@
 package party.lemons.arcaneworld.crafting.ritual.impl;
 
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;

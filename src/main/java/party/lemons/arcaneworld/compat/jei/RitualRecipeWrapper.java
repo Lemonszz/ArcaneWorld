@@ -6,9 +6,6 @@ import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.item.ItemStack;
 import party.lemons.arcaneworld.crafting.ritual.impl.Ritual;
 import party.lemons.arcaneworld.crafting.ritual.impl.RitualCreateItem;
-
-import javax.jws.soap.SOAPBinding;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
