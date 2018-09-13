@@ -1,21 +1,25 @@
 package party.lemons.arcaneworld.gen;
 
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeVoid;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import party.lemons.arcaneworld.ArcaneWorld;
 import party.lemons.arcaneworld.block.ArcaneWorldBlocks;
 
@@ -27,8 +31,18 @@ import java.util.function.Supplier;
  * Created by Sam on 12/09/2018.
  */
 @Mod.EventBusSubscriber(modid = ArcaneWorld.MODID)
+@GameRegistry.ObjectHolder(ArcaneWorld.MODID)
 public class ArcaneWorldGen
 {
+    public static final Biome ARCANE_VOID = Biomes.VOID;
+
+    @SubscribeEvent
+    public static void onRegisterBiome(RegistryEvent.Register<Biome> event)
+    {
+        event.getRegistry().register(new BiomeArcaneVoid(new Biome.BiomeProperties("arcane_void").setRainDisabled().setWaterColor(0x38393a)).setRegistryName(ArcaneWorld.MODID, "arcane_void"));
+    }
+
+
     private static final WorldGenerator AMETHYST_GENERATOR = getOreGenerator(
             ArcaneWorldBlocks.ORE_AMETHYST::getDefaultState, b -> b.getBlock() == Blocks.END_STONE,8, 15, 0, 80
     );

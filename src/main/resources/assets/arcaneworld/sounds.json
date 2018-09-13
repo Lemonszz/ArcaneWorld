@@ -23,5 +23,18 @@
     "category": "block",
     "subtitle": "arcaneworld.subtitle.ritual_item_pop",
     "sounds": ["arcaneworld:ritual_item_pop"]
+  },
+  "general_woosh":{
+    "category": "world",
+    "subtitle": "arcaneworld.subtitle.woosh",
+    "sounds": ["arcaneworld:woosh"]
+  },
+  "general_break":{
+    "category": "world",
+    "sounds": ["arcaneworld:break"]
+  },
+  "general_break_squish":{
+    "category": "world",
+    "sounds": ["arcaneworld:break_squish"]
   }
 }

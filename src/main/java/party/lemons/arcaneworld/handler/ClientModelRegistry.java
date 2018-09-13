@@ -2,11 +2,15 @@ package party.lemons.arcaneworld.handler;
 
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.Mod;
@@ -16,6 +20,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import party.lemons.arcaneworld.ArcaneWorld;
 import party.lemons.arcaneworld.item.ArcaneWorldItems;
 import party.lemons.arcaneworld.item.IModel;
+import party.lemons.arcaneworld.item.ItemBiomeCrystal;
 
 /**
  * Created by Sam on 30/08/2018.
@@ -34,6 +39,20 @@ public class ClientModelRegistry
 		ArcaneWorldItems.itemList.stream().filter(i -> i instanceof ItemBlock).forEach(i ->registerSimpleModel(i));
 
 		registerSpecialModels();
+	}
+
+	@SubscribeEvent
+	public static void onRegisterColor(ColorHandlerEvent.Item event)
+	{
+		event.getItemColors().registerItemColorHandler((stack, tintIndex) -> {
+			if(ArcaneWorldItems.BIOME_CRYSTAL instanceof ItemBiomeCrystal)
+			{
+				if(((ItemBiomeCrystal) ArcaneWorldItems.BIOME_CRYSTAL).hasBiome(stack))
+					return ((ItemBiomeCrystal) ArcaneWorldItems.BIOME_CRYSTAL).getBiome(stack).getGrassColorAtPos(DUMMY_POS);
+			}
+
+			return 0xFFFFFF;
+		},ArcaneWorldItems.BIOME_CRYSTAL);
 	}
 
 	public static <ModelItem extends Item & IModel> void registerModel(ModelItem item)
@@ -56,4 +75,6 @@ public class ClientModelRegistry
 	{
 		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(location, "inventory"));
 	}
+
+	private static final BlockPos DUMMY_POS = new BlockPos(0,0,0);
 }

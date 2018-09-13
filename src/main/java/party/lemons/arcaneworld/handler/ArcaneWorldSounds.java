@@ -22,6 +22,9 @@ public class ArcaneWorldSounds
     public static final SoundEvent RITUAL_CHARGE = SoundEvents.UI_TOAST_OUT;
     public static final SoundEvent RITUAL_START = SoundEvents.UI_TOAST_OUT;
     public static final SoundEvent RITUAL_ITEM_POP = SoundEvents.UI_TOAST_OUT;
+    public static final SoundEvent GENERAL_WOOSH = SoundEvents.UI_TOAST_OUT;
+    public static final SoundEvent GENERAL_BREAK = SoundEvents.UI_TOAST_OUT;
+    public static final SoundEvent GENERAL_BREAK_SQUISH = SoundEvents.UI_TOAST_OUT;
 
     @SubscribeEvent
     public static void onRegisterSound(RegistryEvent.Register<SoundEvent> event)
@@ -31,6 +34,9 @@ public class ArcaneWorldSounds
         registerSound(event.getRegistry(), "ritual_charge");
         registerSound(event.getRegistry(), "ritual_start");
         registerSound(event.getRegistry(), "ritual_item_pop");
+        registerSound(event.getRegistry(), "general_woosh");
+        registerSound(event.getRegistry(), "general_break");
+        registerSound(event.getRegistry(), "general_break_squish");
     }
 
     public static void registerSound(IForgeRegistry<SoundEvent> r, String name)

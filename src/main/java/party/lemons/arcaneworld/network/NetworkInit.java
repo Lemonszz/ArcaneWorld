@@ -16,6 +16,7 @@ public class NetworkInit
 		registerMessage(MessageRitualCreateUpParticle.Handler.class, MessageRitualCreateUpParticle.class, Side.CLIENT);
 		registerMessage(MessageRitualClientActivate.Handler.class, MessageRitualClientActivate.class, Side.SERVER);
 		registerMessage(MessageServerActivateRitual.Handler.class, MessageServerActivateRitual.class, Side.CLIENT);
+		registerMessage(MessageUpdateBiomeArea.Handler.class, MessageUpdateBiomeArea.class, Side.CLIENT);
 	}
 
 	public static <REQ extends IMessage, REPLY extends IMessage> void registerMessage(Class<? extends IMessageHandler<REQ, REPLY>> messageHandler, Class<REQ> requestMessageType, Side side)
