@@ -9,6 +9,8 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -17,6 +19,8 @@ import net.minecraftforge.registries.IForgeRegistry;
 import party.lemons.arcaneworld.ArcaneWorld;
 import party.lemons.arcaneworld.crafting.ritual.impl.*;
 import party.lemons.arcaneworld.item.ArcaneWorldItems;
+
+import javax.annotation.Nonnull;
 
 /**
  * Created by Sam on 13/09/2018.
@@ -27,7 +31,7 @@ public class Rituals {
     @SubscribeEvent
     public static void onRegisterRitual(RegistryEvent.Register<Ritual> event)
     {
-        createRitual(event.getRegistry(), new Ritual().setEmpty(), "empty");
+        createRitual(event.getRegistry(), new Ritual() {public void onActivate(@Nonnull World world, @Nonnull BlockPos pos) { }}.setEmpty(), "empty");
         createRitual(event.getRegistry(), new RitualTime(6000, of(new ItemStack(Blocks.DOUBLE_PLANT, 1, 0)), of("dustGlowstone"), of("nuggetGold"), of("nuggetGold")), "time_skip");
         createRitual(event.getRegistry(), new RitualTime(-6000, of("gemQuartz"), of("dustRedstone"), of("nuggetGold"), of("nuggetGold")), "time_rewind");
         createRitual(event.getRegistry(), new RitualWeather(RitualWeather.WeatherType.CLEAR, of("sand"), of(Items.BLAZE_POWDER)), "clear_skies");

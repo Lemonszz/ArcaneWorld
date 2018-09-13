@@ -27,7 +27,7 @@ public class RitualSummon extends Ritual
         this.entity = entity;
     }
 
-    public void onActivate(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull NonNullList<ItemStack> ingredients, @Nullable EntityPlayer activator)
+    public void onActivate(@Nonnull World world, @Nonnull BlockPos pos)
     {
         try {
             EntityLiving mob = entity.getConstructor(World.class).newInstance(world);

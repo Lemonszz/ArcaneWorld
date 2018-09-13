@@ -25,7 +25,7 @@ public class RitualWeather extends Ritual
         this.type = type;
     }
 
-    public void onActivate(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull NonNullList<ItemStack> ingredients, @Nullable EntityPlayer activator)
+    public void onActivate(@Nonnull World world, @Nonnull BlockPos pos)
     {
         WorldServer ws = (WorldServer) world;
         int weatherTime = (300 + (ws.rand.nextInt(600)) * 20);

@@ -9,15 +9,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 /**
  * Created by Sam on 10/09/2018.
  */
-public class Ritual extends IForgeRegistryEntry.Impl<Ritual>
+public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual>
 {
 	private final List<Ingredient> ingredients;
 	private boolean empty = false;
@@ -73,10 +71,7 @@ public class Ritual extends IForgeRegistryEntry.Impl<Ritual>
 		return true;
 	}
 
-	public void onActivate(@Nonnull World world, @Nonnull BlockPos pos)
-	{
-
-	}
+	public abstract void onActivate(@Nonnull World world, @Nonnull BlockPos pos);
 
 	public boolean isEmpty()
 	{

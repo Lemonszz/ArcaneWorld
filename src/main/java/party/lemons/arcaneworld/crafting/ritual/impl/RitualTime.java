@@ -26,7 +26,7 @@ public class RitualTime extends Ritual
 		this.targetTime = targetTime;
 	}
 
-	public void onActivate(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull NonNullList<ItemStack> ingredients, @Nullable EntityPlayer activator)
+	public void onActivate(@Nonnull World world, @Nonnull BlockPos pos)
 	{
 		TickerHandler.addTicker(new TickerTime(targetTime, world), world.provider.getDimension());
 	}
