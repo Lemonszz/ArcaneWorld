@@ -23,7 +23,6 @@ public class Pair<A, B>
 	{
 		return a;
 	}
-
 	public B getSecond()
 	{
 		return b;

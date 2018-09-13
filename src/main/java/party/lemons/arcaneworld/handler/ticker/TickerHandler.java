@@ -40,7 +40,6 @@ public class TickerHandler
 		if(!worldTickers.containsKey(dim))
 			return false;
 
-		System.out.println("herre!");
 		return worldTickers.get(dim).stream().anyMatch(t -> t.getClass() == clazz);
 	}
 
