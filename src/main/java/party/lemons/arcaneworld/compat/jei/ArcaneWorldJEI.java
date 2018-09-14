@@ -7,6 +7,7 @@ import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.item.ItemStack;
 import party.lemons.arcaneworld.block.ArcaneWorldBlocks;
 import party.lemons.arcaneworld.crafting.ritual.RitualRegistry;
+import party.lemons.arcaneworld.crafting.ritual.container.ContainerRitual;
 import party.lemons.arcaneworld.crafting.ritual.container.GuiRitual;
 import party.lemons.arcaneworld.crafting.ritual.impl.Ritual;
 
@@ -28,5 +29,11 @@ public class ArcaneWorldJEI implements IModPlugin {
         registry.addRecipeClickArea(GuiRitual.class, 0, 0, 20, 20, RitualRecipeCategory.ID);
         registry.addRecipeCatalyst(new ItemStack(ArcaneWorldBlocks.RITUAL_TABLE), RitualRecipeCategory.ID);
 
+        registry.getRecipeTransferRegistry().addRecipeTransferHandler(
+                ContainerRitual.class,
+                RitualRecipeCategory.ID,
+                0, 5,
+                5, 36
+        );
     }
 }

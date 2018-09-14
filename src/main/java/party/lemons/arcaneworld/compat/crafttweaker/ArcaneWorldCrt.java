@@ -35,23 +35,23 @@ public class ArcaneWorldCrt
     }
 
     @ZenMethod
-    public static void createRitualSummon(String name, String entity, IIngredient... inputs)
+    public static void createRitualSummon(String name, String displayName, String entity, IIngredient... inputs)
     {
         Class<? extends Entity> e = EntityList.getClass(new ResourceLocation(entity));
         if(e == null || !EntityLiving.class.isAssignableFrom(e))
             return;
 
-        createRitual(name, new RitualSummon((Class<? extends EntityLiving>) e, getIngredients(inputs)));
+        createRitual(name, displayName, new RitualSummon((Class<? extends EntityLiving>) e, getIngredients(inputs)));
     }
 
     @ZenMethod
-    public static void createRitualDragonBreath(String name, IIngredient... inputs)
+    public static void createRitualDragonBreath(String name,String displayName, IIngredient... inputs)
     {
-        createRitual(name, new RitualDragonBreath(getIngredients(inputs)));
+        createRitual(name, displayName, new RitualDragonBreath(getIngredients(inputs)));
     }
 
     @ZenMethod
-    public static void createRitualWeather(String name, String weather, IIngredient... inputs)
+    public static void createRitualWeather(String name, String displayName, String weather, IIngredient... inputs)
     {
         RitualWeather.WeatherType type = RitualWeather.WeatherType.CLEAR;
         switch (weather.toLowerCase())
@@ -66,19 +66,19 @@ public class ArcaneWorldCrt
                 break;
         }
 
-        createRitual(name, new RitualWeather(type, getIngredients(inputs)));
+        createRitual(name, displayName, new RitualWeather(type, getIngredients(inputs)));
     }
 
     @ZenMethod
-    public static void createRitualTime(String name, int timeChange, IIngredient... inputs)
+    public static void createRitualTime(String name, String displayName, int timeChange, IIngredient... inputs)
     {
-        createRitual(name, new RitualTime(timeChange, getIngredients(inputs)));
+        createRitual(name, displayName, new RitualTime(timeChange, getIngredients(inputs)));
     }
 
     @ZenMethod
-    public static void createRitualCreateItem(String name, IItemStack result, IIngredient... inputs)
+    public static void createRitualCreateItem(String name, String displayName, IItemStack result, IIngredient... inputs)
     {
-        createRitual(name, new RitualCreateItem(CraftTweakerMC.getItemStack(result), getIngredients(inputs)));
+        createRitual(name,displayName, new RitualCreateItem(CraftTweakerMC.getItemStack(result), getIngredients(inputs)));
     }
 
     public static Ingredient[] getIngredients(IIngredient... inputs)
@@ -90,10 +90,11 @@ public class ArcaneWorldCrt
         return ingreds;
     }
 
-    public static void createRitual(String name, Ritual ritual)
+    public static void createRitual(String name, String displayName, Ritual ritual)
     {
         ResourceLocation location = new ResourceLocation("crafttweaker", name);
         ritual.setRegistryName(location);
+        ritual.setTranslationKey(displayName);
 
         RitualRegistry.REGISTRY.register(ritual);
     }

@@ -85,7 +85,7 @@ public class Rituals {
 
     public static Ritual createRitual(IForgeRegistry<Ritual> registry, Ritual ritual, String name)
     {
-        registry.register(ritual.setRegistryName(ArcaneWorld.MODID, name));
+        registry.register(ritual.setRegistryName(ArcaneWorld.MODID, name).setTranslationKey(ArcaneWorld.MODID + "." + name));
 
         return ritual;
     }

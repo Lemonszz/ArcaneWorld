@@ -5,6 +5,7 @@ import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import party.lemons.arcaneworld.ArcaneWorld;
@@ -18,17 +19,14 @@ import java.util.List;
  */
 public class RitualRecipeCategory implements IRecipeCategory<RitualRecipeWrapper>
 {
-    public static final ResourceLocation RITUAL_BG = new ResourceLocation(ArcaneWorld.MODID, "textures/gui/ritual_jei.png");
+    public static final ResourceLocation RITUAL_BG = new ResourceLocation(ArcaneWorld.MODID, "textures/gui/ritual.png");
     public static final String ID = "arcaneworld.ritual";
-    private String locName;
     private IDrawable background;
     private IDrawable icon;
 
     public RitualRecipeCategory(IGuiHelper guiHelper)
     {
-        //TODO: translate this properly
-        locName = "Rituals";
-        background = guiHelper.createDrawable(RITUAL_BG, 0, 0, 176, 38);
+        background = guiHelper.createDrawable(RITUAL_BG, 40, 3, 120, 25);
         icon = guiHelper.createDrawableIngredient(new ItemStack(ArcaneWorldBlocks.RITUAL_TABLE));
     }
 
@@ -39,7 +37,7 @@ public class RitualRecipeCategory implements IRecipeCategory<RitualRecipeWrapper
 
     @Override
     public String getTitle() {
-        return locName;
+        return I18n.format("arcaneworld.jei.rituals");
     }
 
     @Override
@@ -68,7 +66,7 @@ public class RitualRecipeCategory implements IRecipeCategory<RitualRecipeWrapper
 
         int in = 0;
         for(int i = 0; i  < inputs.size(); i++) {
-            layout.getItemStacks().init(i, true, 43 + (18 * i), 9);
+            layout.getItemStacks().init(i, true,  3 + (18 * i), 6);
             layout.getItemStacks().set(i, inputs.get(i));
 
             in++;
@@ -76,7 +74,7 @@ public class RitualRecipeCategory implements IRecipeCategory<RitualRecipeWrapper
 
         if(output.size() > 0)
         for(int i = 0; i < output.get(0).size(); i++) {
-            layout.getItemStacks().init(in, false, 43 + (20 * in), 9);
+            layout.getItemStacks().init(in, false, 3 + (20 * in), 6);
             layout.getItemStacks().set(in++, output.get(0).get(i));
         }
     }

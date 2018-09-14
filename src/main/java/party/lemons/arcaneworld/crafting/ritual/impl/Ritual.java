@@ -18,6 +18,7 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual>
 {
 	private final List<Ingredient> ingredients;
 	private boolean empty = false;
+	private String unlocName;
 
 	public Ritual(Ingredient... ingredients)
 	{
@@ -35,6 +36,17 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual>
 	{
 		this.empty = true;
 		return this;
+	}
+
+	public Ritual setTranslationKey(String key)
+	{
+		this.unlocName = key;
+		return this;
+	}
+
+	public String getTranslationKey()
+	{
+		return unlocName;
 	}
 
 	public boolean matches(NonNullList<ItemStack> inputs)

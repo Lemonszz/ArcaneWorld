@@ -3,6 +3,8 @@ package party.lemons.arcaneworld.compat.jei;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import party.lemons.arcaneworld.crafting.ritual.impl.Ritual;
 import party.lemons.arcaneworld.crafting.ritual.impl.RitualCreateItem;
@@ -26,6 +28,13 @@ public class RitualRecipeWrapper implements IRecipeWrapper
     public Ritual getRitual()
     {
         return ritual;
+    }
+
+    @Override
+    public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY)
+    {
+        String translate = I18n.format(ritual.getTranslationKey());
+        Minecraft.getMinecraft().fontRenderer.drawString(translate, 2, -2, 0x333333);
     }
 
     @Override
