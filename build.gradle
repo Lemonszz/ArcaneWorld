@@ -11,7 +11,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
 
-version = "${mc_version}-1.0.0"
+version = "${mc_version}-0.0.2"
 group = "party.lemons"
 archivesBaseName = "arcaneworld"
 
@@ -37,6 +37,7 @@ repositories {
         name = "ModMaven"
         url = "modmaven.k-4u.nl"
     }
+    maven { url 'http://maven.blamejared.com/' }
 }
 
 configurations {
@@ -47,6 +48,7 @@ configurations {
 dependencies {
     deobfProvided "mezz.jei:jei_${mc_version}:${jei_version}:api"
     runtime "mezz.jei:jei_${mc_version}:${jei_version}"
+    deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.9.6"
 }
 
 processResources {

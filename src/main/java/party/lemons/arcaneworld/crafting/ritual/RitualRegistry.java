@@ -25,7 +25,7 @@ public class RitualRegistry
 		REGISTRY = new RegistryBuilder<Ritual>()
 				.setType(Ritual.class)
 				.setDefaultKey(new ResourceLocation(ArcaneWorld.MODID, "empty"))
-				.setName(new ResourceLocation(ArcaneWorld.MODID, "rituals"))
+				.setName(new ResourceLocation(ArcaneWorld.MODID, "rituals")).allowModification()
 				.create();
 	}
 }
