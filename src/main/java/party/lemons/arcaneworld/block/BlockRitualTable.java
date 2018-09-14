@@ -4,7 +4,10 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
@@ -16,6 +19,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import party.lemons.arcaneworld.ArcaneWorld;
 import party.lemons.arcaneworld.block.tilentity.TileEntityRitualTable;
+import party.lemons.arcaneworld.util.ArcaneWorldUtil;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -45,6 +49,18 @@ public class BlockRitualTable extends BlockModel
 			}
 		}
 		return true;
+	}
+
+	public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
+	{
+		TileEntity tileentity = worldIn.getTileEntity(pos);
+
+		if (tileentity instanceof TileEntityRitualTable)
+		{
+			ArcaneWorldUtil.dropInventoryItems(worldIn, pos, ((TileEntityRitualTable) tileentity).getInventory());
+		}
+
+		super.breakBlock(worldIn, pos, state);
 	}
 
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
