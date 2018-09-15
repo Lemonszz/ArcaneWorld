@@ -17,7 +17,7 @@ import net.minecraftforge.items.ItemStackHandler;
 import party.lemons.arcaneworld.ArcaneWorld;
 import party.lemons.arcaneworld.block.tilentity.TileEntityRitualTable;
 import party.lemons.arcaneworld.crafting.ritual.RitualRegistry;
-import party.lemons.arcaneworld.crafting.ritual.impl.Ritual;
+import party.lemons.arcaneworld.crafting.ritual.Ritual;
 import party.lemons.arcaneworld.network.MessageRitualClientActivate;
 
 /**

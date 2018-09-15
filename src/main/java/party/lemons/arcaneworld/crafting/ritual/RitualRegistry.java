@@ -7,7 +7,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.RegistryBuilder;
 import party.lemons.arcaneworld.ArcaneWorld;
-import party.lemons.arcaneworld.crafting.ritual.impl.*;
 
 /**
  * Created by Sam on 10/09/2018.

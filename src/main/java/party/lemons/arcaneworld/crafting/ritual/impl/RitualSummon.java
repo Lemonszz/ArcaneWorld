@@ -4,6 +4,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import party.lemons.arcaneworld.crafting.ritual.Ritual;
 
 import javax.annotation.Nonnull;
 

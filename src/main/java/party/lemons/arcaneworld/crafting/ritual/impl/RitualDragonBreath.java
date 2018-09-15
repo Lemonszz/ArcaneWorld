@@ -1,7 +1,6 @@
 package party.lemons.arcaneworld.crafting.ritual.impl;
 
 import net.minecraft.entity.EntityAreaEffectCloud;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.crafting.Ingredient;
@@ -9,6 +8,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import party.lemons.arcaneworld.crafting.ritual.Ritual;
 
 import javax.annotation.Nonnull;
 

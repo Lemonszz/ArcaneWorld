@@ -1,4 +1,4 @@
-package party.lemons.arcaneworld.crafting.ritual.impl;
+package party.lemons.arcaneworld.crafting.ritual;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;

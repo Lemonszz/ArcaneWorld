@@ -1,8 +1,6 @@
 package party.lemons.arcaneworld.block.tilentity;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -22,7 +20,7 @@ import net.minecraftforge.items.ItemStackHandler;
 import party.lemons.arcaneworld.ArcaneWorld;
 import party.lemons.arcaneworld.block.tilentity.render.ItemActivation;
 import party.lemons.arcaneworld.crafting.ritual.RitualRegistry;
-import party.lemons.arcaneworld.crafting.ritual.impl.Ritual;
+import party.lemons.arcaneworld.crafting.ritual.Ritual;
 import party.lemons.arcaneworld.handler.ArcaneWorldSounds;
 import party.lemons.arcaneworld.network.MessageRitualCreateUpParticle;
 

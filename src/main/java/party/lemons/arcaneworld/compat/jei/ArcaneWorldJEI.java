@@ -9,7 +9,7 @@ import party.lemons.arcaneworld.block.ArcaneWorldBlocks;
 import party.lemons.arcaneworld.crafting.ritual.RitualRegistry;
 import party.lemons.arcaneworld.crafting.ritual.container.ContainerRitual;
 import party.lemons.arcaneworld.crafting.ritual.container.GuiRitual;
-import party.lemons.arcaneworld.crafting.ritual.impl.Ritual;
+import party.lemons.arcaneworld.crafting.ritual.Ritual;
 
 import java.util.stream.Collectors;
 

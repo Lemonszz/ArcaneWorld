@@ -3,7 +3,6 @@ package party.lemons.arcaneworld.network;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
@@ -15,7 +14,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import party.lemons.arcaneworld.ArcaneWorld;
 import party.lemons.arcaneworld.block.tilentity.TileEntityRitualTable;
 import party.lemons.arcaneworld.crafting.ritual.RitualRegistry;
-import party.lemons.arcaneworld.crafting.ritual.impl.Ritual;
+import party.lemons.arcaneworld.crafting.ritual.Ritual;
 
 /**
  * Created by Sam on 5/05/2018.

@@ -7,12 +7,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
-import party.lemons.arcaneworld.crafting.ritual.impl.Ritual;
+import party.lemons.arcaneworld.crafting.ritual.Ritual;
 import party.lemons.arcaneworld.crafting.ritual.impl.RitualCreateItem;
-import sun.net.www.MimeEntry;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
