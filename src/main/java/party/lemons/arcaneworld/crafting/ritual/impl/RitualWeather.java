@@ -1,5 +1,7 @@
 package party.lemons.arcaneworld.crafting.ritual.impl;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -22,7 +24,7 @@ public class RitualWeather extends Ritual
         this.type = type;
     }
 
-    public void onActivate(@Nonnull World world, @Nonnull BlockPos pos)
+    public void onActivate(@Nonnull World world, @Nonnull BlockPos pos, EntityPlayer player, ItemStack... items)
     {
         WorldServer ws = (WorldServer) world;
         int weatherTime = (1000 + (ws.rand.nextInt(600)) * 20);

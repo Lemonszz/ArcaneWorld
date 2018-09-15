@@ -2,7 +2,9 @@ package party.lemons.arcaneworld.crafting.ritual.impl;
 
 import net.minecraft.entity.EntityAreaEffectCloud;
 import net.minecraft.entity.boss.EntityDragon;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
@@ -23,7 +25,7 @@ public class RitualDragonBreath extends Ritual
     }
 
     @Override
-    public void onActivate(@Nonnull World world, @Nonnull BlockPos pos)
+    public void onActivate(@Nonnull World world, @Nonnull BlockPos pos, EntityPlayer player, ItemStack... items)
     {
         EntityAreaEffectCloud entityareaeffectcloud = new EntityAreaEffectCloud(world, pos.getX() + 0.5F, pos.getY() + 1F, pos.getZ() + 0.5F);
         entityareaeffectcloud.setOwner(new EntityDragon(world));

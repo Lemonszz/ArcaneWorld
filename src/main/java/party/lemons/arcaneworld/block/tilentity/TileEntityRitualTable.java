@@ -1,6 +1,7 @@
 package party.lemons.arcaneworld.block.tilentity;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -50,6 +51,8 @@ public class TileEntityRitualTable extends TileEntity implements ITickable
 	private Ritual currentRitual = RitualRegistry.EMPTY;
 	private RitualState state;
 	private float stateTime = 0;
+	private EntityPlayer player = null;
+	private ItemStack[] itemsUsed = new ItemStack[5];
 
 	public TileEntityRitualTable()
 	{
@@ -87,31 +90,30 @@ public class TileEntityRitualTable extends TileEntity implements ITickable
 
 				//TODO: Refactor
 				if (stateTime == 5) {
-					addItemOut(currentRitual.getRequiredItems().get(0));
+					addItemOut(itemsUsed[0]);
 				}
 
 				if (stateTime == 15) {
-					addItemOut(currentRitual.getRequiredItems().get(1));
+					addItemOut(itemsUsed[1]);
 				}
 
 				if (stateTime == 25) {
-					addItemOut(currentRitual.getRequiredItems().get(2));
-
+					addItemOut(itemsUsed[2]);
 				}
 
 				if (stateTime == 35) {
-					addItemOut((currentRitual.getRequiredItems().get(3)));
+					addItemOut(itemsUsed[3]);
 				}
 
 				if(stateTime == 45 ) {
-					addItemOut(currentRitual.getRequiredItems().get(4));
+					addItemOut(itemsUsed[4]);
 				}
 
 				if(stateTime > 60) {
 					setState(RitualState.FINISH);
 					particlesActivate();
 					if(!world.isRemote) {
-						currentRitual.onActivate(world, pos);
+						currentRitual.onActivate(world, pos, player, itemsUsed);
 					}
 				}
 				break;
@@ -176,12 +178,12 @@ public class TileEntityRitualTable extends TileEntity implements ITickable
 		worldServer.spawnParticle(EnumParticleTypes.SMOKE_LARGE, pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, 50, 0, -0.5, 0, 1F);
 	}
 
-	private void addItemOut(Ingredient stack)
+	private void addItemOut(ItemStack stack)
 	{
-		if(stack == Ingredient.EMPTY || stack.getMatchingStacks().length == 0)
+		if(stack.isEmpty())
 			return;
 
-		itemActivations.add(new ItemActivation(stack.getMatchingStacks()[0]));
+		itemActivations.add(new ItemActivation(stack));
 		world.playSound(null, pos, ArcaneWorldSounds.RITUAL_ITEM, SoundCategory.BLOCKS, 1F, 0.5F + (rand.nextFloat() / 2));
 	}
 
@@ -320,6 +322,16 @@ public class TileEntityRitualTable extends TileEntity implements ITickable
 	public void setRitual(Ritual ritual)
 	{
 		this.currentRitual = ritual;
+	}
+
+	public void setActivator(EntityPlayer player)
+	{
+		this.player = player;
+	}
+
+	public void setStacks(ItemStack[] stacks)
+	{
+		this.itemsUsed = stacks;
 	}
 
 	public  enum RitualState

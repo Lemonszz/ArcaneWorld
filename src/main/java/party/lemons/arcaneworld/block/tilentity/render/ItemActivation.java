@@ -21,7 +21,7 @@ public class ItemActivation
 		this.stack = stack;
 		activationTime = startValue;
 
-		if(stack.isEmpty())
+        if(stack.isEmpty())
 			activationTime = -1;
 		dirX = (random.nextFloat() / 75) * (random.nextBoolean() ? -1 : 1);
 		dirZ = (random.nextFloat() / 75) * (random.nextBoolean() ? -1 : 1);

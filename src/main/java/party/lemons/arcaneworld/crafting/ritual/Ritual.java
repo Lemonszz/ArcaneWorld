@@ -1,5 +1,6 @@
 package party.lemons.arcaneworld.crafting.ritual;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
@@ -82,7 +83,7 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual>
 		return true;
 	}
 
-	public abstract void onActivate(@Nonnull World world, @Nonnull BlockPos pos);
+	public abstract void onActivate(@Nonnull World world, @Nonnull BlockPos pos, EntityPlayer player, ItemStack... items);
 
 	public boolean isEmpty()
 	{

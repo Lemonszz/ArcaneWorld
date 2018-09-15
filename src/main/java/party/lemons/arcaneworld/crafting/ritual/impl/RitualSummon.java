@@ -1,6 +1,8 @@
 package party.lemons.arcaneworld.crafting.ritual.impl;
 
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -22,7 +24,7 @@ public class RitualSummon extends Ritual
         this.entity = entity;
     }
 
-    public void onActivate(@Nonnull World world, @Nonnull BlockPos pos)
+    public void onActivate(@Nonnull World world, @Nonnull BlockPos pos, EntityPlayer player, ItemStack... items)
     {
         try {
             EntityLiving mob = entity.getConstructor(World.class).newInstance(world);

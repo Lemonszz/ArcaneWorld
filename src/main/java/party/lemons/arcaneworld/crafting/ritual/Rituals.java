@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.*;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -31,7 +32,7 @@ public class Rituals {
     @SubscribeEvent
     public static void onRegisterRitual(RegistryEvent.Register<Ritual> event)
     {
-        createRitual(event.getRegistry(), new Ritual() {public void onActivate(@Nonnull World world, @Nonnull BlockPos pos) { }}.setEmpty(), "empty");
+        createRitual(event.getRegistry(), new Ritual() {public void onActivate(@Nonnull World world, @Nonnull BlockPos pos, EntityPlayer player, ItemStack... items) { }}.setEmpty(), "empty");
         createRitual(event.getRegistry(), new RitualTime(6000, of(new ItemStack(Blocks.DOUBLE_PLANT, 1, 0)), of("dustGlowstone"), of("nuggetGold"), of("nuggetGold")), "time_skip");
         createRitual(event.getRegistry(), new RitualTime(-6000, of("gemQuartz"), of("dustRedstone"), of("nuggetGold"), of("nuggetGold")), "time_rewind");
         createRitual(event.getRegistry(), new RitualWeather(RitualWeather.WeatherType.CLEAR, of("sand"), of(Items.BLAZE_POWDER)), "clear_skies");

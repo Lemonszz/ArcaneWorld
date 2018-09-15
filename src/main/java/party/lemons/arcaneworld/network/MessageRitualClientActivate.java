@@ -80,20 +80,28 @@ public class MessageRitualClientActivate implements IMessage
 						if(ritual.matches(stacks))
 						{
 							((TileEntityRitualTable)te).setRitual(ritual);
+							((TileEntityRitualTable)te).setActivator(serverPlayer);
 							((TileEntityRitualTable)te).setState(TileEntityRitualTable.RitualState.START_UP);
+
+							ItemStack[] usedStacks = new ItemStack[5];
+							for(int i = 0; i < 5; i++)
+							{
+								usedStacks[i] = ((TileEntityRitualTable) te).getInventory().getStackInSlot(i).copy();
+							}
+							((TileEntityRitualTable) te).setStacks(usedStacks);
 
 							for(int i = 0; i < ((TileEntityRitualTable) te).getInventory().getSlots(); i++)
 							{
 								((TileEntityRitualTable) te).getInventory().getStackInSlot(i).shrink(1);
 							}
 
-							ArcaneWorld.NETWORK.sendToAllTracking(new MessageServerActivateRitual(ritual.getRegistryName(), te.getPos()), new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64));
+							ArcaneWorld.NETWORK.sendToAllTracking(new MessageServerActivateRitual(ritual.getRegistryName(), te.getPos(), serverPlayer, usedStacks), new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64));
 							break;
 						}
 					}
 				}
 
-			});
+			})			;
 
 			return null;
 		}
