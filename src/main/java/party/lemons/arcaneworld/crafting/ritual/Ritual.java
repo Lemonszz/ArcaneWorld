@@ -7,6 +7,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;
+import party.lemons.arcaneworld.util.ArcaneWorldUtil;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
@@ -63,16 +64,19 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual>
 		inputList.removeIf(is -> is.isEmpty());
 		ingreds.removeIf(is -> is == Ingredient.EMPTY);
 
+        if(ingreds.size() != inputList.size())
+            return false;
+
 		for(Ingredient ingredient : ingreds)
 		{
 			int removeIndex = -1;
 			for(int i = 0; i < inputList.size(); i++)
 			{
-				if(ingredient.apply(inputList.get(i)))
-				{
-					removeIndex = i;
-					break;
-				}
+			    if(ArcaneWorldUtil.ingredientMatch(ingredient, inputList.get(i)))
+                {
+                    removeIndex = i;
+                    break;
+                }
 			}
 
 			if(removeIndex == -1)
@@ -89,6 +93,14 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual>
 	{
 		return empty;
 	}
+
+    /**
+     * If ritual can drop in the form of a ritual scroll from illagers
+     */
+	public boolean canDrop()
+    {
+        return true;
+    }
 
     public List<Ingredient>  getRequiredItems() {
 		return ingredients;

@@ -7,6 +7,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
+import party.lemons.arcaneworld.block.tilentity.TileEntityRitualTable;
 
 /**
  * Created by Sam on 10/09/2018.
@@ -79,4 +80,9 @@ public class ContainerRitual extends Container
 
 		return itemstack;
 	}
+
+    public ItemStackHandler getTableInventory()
+    {
+        return this.ritualInventory;
+    }
 }

@@ -32,6 +32,7 @@ public class Rituals {
     @SubscribeEvent
     public static void onRegisterRitual(RegistryEvent.Register<Ritual> event)
     {
+        createRitual(event.getRegistry(), new RitualScroll(of(ArcaneWorldItems.RITUAL_SCROLL)), "ritual_scroll");
         createRitual(event.getRegistry(), new Ritual() {public void onActivate(@Nonnull World world, @Nonnull BlockPos pos, EntityPlayer player, ItemStack... items) { }}.setEmpty(), "empty");
         createRitual(event.getRegistry(), new RitualTime(6000, of(new ItemStack(Blocks.DOUBLE_PLANT, 1, 0)), of("dustGlowstone"), of("nuggetGold"), of("nuggetGold")), "time_skip");
         createRitual(event.getRegistry(), new RitualTime(-6000, of("gemQuartz"), of("dustRedstone"), of("nuggetGold"), of("nuggetGold")), "time_rewind");

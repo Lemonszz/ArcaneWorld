@@ -22,6 +22,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import party.lemons.arcaneworld.ArcaneWorld;
 import party.lemons.arcaneworld.block.ArcaneWorldBlocks;
+import party.lemons.arcaneworld.config.ArcaneWorldConfig;
 
 import java.util.Random;
 import java.util.function.Predicate;
@@ -44,7 +45,7 @@ public class ArcaneWorldGen
 
 
     private static final WorldGenerator AMETHYST_GENERATOR = getOreGenerator(
-            ArcaneWorldBlocks.ORE_AMETHYST::getDefaultState, b -> b.getBlock() == Blocks.END_STONE,8, 15, 0, 80
+            ArcaneWorldBlocks.ORE_AMETHYST::getDefaultState, b -> b.getBlock() == Blocks.END_STONE,ArcaneWorldConfig.ORES.AMETHYST_GENERATION.vein_size, ArcaneWorldConfig.ORES.AMETHYST_GENERATION.vein_count, ArcaneWorldConfig.ORES.AMETHYST_GENERATION.min_height, ArcaneWorldConfig.ORES.AMETHYST_GENERATION.max_height
     );
 
     @SubscribeEvent
@@ -57,7 +58,7 @@ public class ArcaneWorldGen
 
         //Create sapphire generator here since it needs to check the biome.
         //TODO: look into moving this elsewhere so doesn't need to be created more than once
-        getOreGenerator(ArcaneWorldBlocks.ORE_SAPPHIRE::getDefaultState, b -> b.getBlock() == Blocks.STONE, 5, isWetBiome(biome) ? 15 : 5, 0, 80).generate(world, rand, pos);
+        getOreGenerator(ArcaneWorldBlocks.ORE_SAPPHIRE::getDefaultState, b -> b.getBlock() == Blocks.STONE, ArcaneWorldConfig.ORES.SAPPHIRE_GENERATION.vein_size, isWetBiome(biome) ? ArcaneWorldConfig.ORES.SAPPHIRE_GENERATION.vein_count * 3 : ArcaneWorldConfig.ORES.SAPPHIRE_GENERATION.vein_count, ArcaneWorldConfig.ORES.SAPPHIRE_GENERATION.min_height, ArcaneWorldConfig.ORES.SAPPHIRE_GENERATION.max_height).generate(world, rand, pos);
 
         AMETHYST_GENERATOR.generate(world, rand, pos);
     }

@@ -18,8 +18,12 @@ public class RitualCreateItem extends Ritual
     private final ItemStack result;
     public RitualCreateItem(ItemStack result, Ingredient... ing)
     {
-        super(ing);
+        this(result, true, ing);
+    }
 
+    public RitualCreateItem(ItemStack result, boolean canDrop, Ingredient... ing)
+    {
+        super(ing);
         this.result = result;
     }
 

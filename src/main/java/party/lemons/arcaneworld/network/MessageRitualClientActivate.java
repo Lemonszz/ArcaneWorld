@@ -3,6 +3,7 @@ package party.lemons.arcaneworld.network;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
@@ -68,6 +69,7 @@ public class MessageRitualClientActivate implements IMessage
 				if(te instanceof TileEntityRitualTable)
 				{
 					//TODO: move this somewhere (tile entity?)
+                    //TODO: Also it really needs a cleanup
 					for(Ritual ritual : RitualRegistry.REGISTRY.getValuesCollection())
 					{
 						if(ritual.isEmpty())
@@ -90,9 +92,15 @@ public class MessageRitualClientActivate implements IMessage
 							}
 							((TileEntityRitualTable) te).setStacks(usedStacks);
 
+							//Take from tile entity inventory
 							for(int i = 0; i < ((TileEntityRitualTable) te).getInventory().getSlots(); i++)
 							{
-								((TileEntityRitualTable) te).getInventory().getStackInSlot(i).shrink(1);
+							    Ingredient ingredient = ritual.getRequiredItems().get(i);
+                                if(ingredient != Ingredient.EMPTY)
+                                {
+                                    int size = ingredient.getMatchingStacks()[0].getCount();
+                                    ((TileEntityRitualTable) te).getInventory().getStackInSlot(i).shrink(size);
+                                }
 							}
 
 							ArcaneWorld.NETWORK.sendToAllTracking(new MessageServerActivateRitual(ritual.getRegistryName(), te.getPos(), serverPlayer, usedStacks), new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64));
@@ -101,7 +109,7 @@ public class MessageRitualClientActivate implements IMessage
 					}
 				}
 
-			})			;
+			});
 
 			return null;
 		}

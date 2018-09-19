@@ -31,6 +31,7 @@ public class ArcaneWorldItems
 	public static final Item AMETHYST = Items.AIR;
 	public static final Item GLOWING_CHORUS = Items.AIR;
 	public static final Item BIOME_CRYSTAL = Items.AIR;
+	public static final Item RITUAL_SCROLL = Items.AIR;
 
 	@SubscribeEvent
 	public static void onRegisterItem(RegistryEvent.Register<Item> event)
@@ -43,6 +44,7 @@ public class ArcaneWorldItems
 		registerItem(r, new ItemModel(), "amethyst", "gemAmethyst");
 		registerItem(r, new ItemGlowingChorusFruit(), "glowing_chorus");
 		registerItem(r, new ItemBiomeCrystal(5), "biome_crystal");
+		registerItem(r, new ItemRitualScroll(), "ritual_scroll");
 	}
 
 	public static Item registerItem(IForgeRegistry<Item> registry, Item item, String name, String... oredict)

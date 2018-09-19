@@ -8,6 +8,8 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import party.lemons.arcaneworld.config.ArcaneWorldConfig;
+import party.lemons.arcaneworld.config.ConfigEntitySpawn;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,10 +23,18 @@ public class ArcaneWorldEntities
     {
         List<Biome> biomesList =  ForgeRegistries.BIOMES.getValuesCollection().stream().filter(b -> !BiomeDictionary.getTypes(b).contains(BiomeDictionary.Type.NETHER) && !BiomeDictionary.getTypes(b).contains(BiomeDictionary.Type.END)).collect(Collectors.toList());
         Biome[] biomes = biomesList.toArray(new Biome[biomesList.size()]);
-        System.out.println(biomes.length + " " + ForgeRegistries.BIOMES.getValuesCollection().size());
 
-        EntityRegistry.addSpawn(EntityIllusionIllager.class, 2, 1, 1, EnumCreatureType.MONSTER, biomes);
-        EntityRegistry.addSpawn(EntityVindicator.class, 2, 1, 1, EnumCreatureType.MONSTER, biomes);
-        EntityRegistry.addSpawn(EntityEvoker.class, 2, 1, 1, EnumCreatureType.MONSTER, biomes);
+        ConfigEntitySpawn illusionerSpawn = ArcaneWorldConfig.ENTITIES.ILLUSIONER_SPAWN;
+        ConfigEntitySpawn vindicatorSpawn = ArcaneWorldConfig.ENTITIES.VINDICATOR_SPAWN;
+        ConfigEntitySpawn evokerSpawn = ArcaneWorldConfig.ENTITIES.EVOKER_SPAWN;
+
+        if(illusionerSpawn.enabled)
+            EntityRegistry.addSpawn(EntityIllusionIllager.class, illusionerSpawn.rarity, illusionerSpawn.min, illusionerSpawn.max, EnumCreatureType.MONSTER, biomes);
+
+        if(vindicatorSpawn.enabled)
+            EntityRegistry.addSpawn(EntityVindicator.class, vindicatorSpawn.rarity, vindicatorSpawn.min, vindicatorSpawn.max, EnumCreatureType.MONSTER, biomes);
+
+        if(evokerSpawn.enabled)
+            EntityRegistry.addSpawn(EntityEvoker.class, evokerSpawn.rarity, evokerSpawn.min, evokerSpawn.max, EnumCreatureType.MONSTER, biomes);
     }
 }

@@ -184,8 +184,8 @@ public class TileEntityRitualTable extends TileEntity implements ITickable
 			return;
 
 		itemActivations.add(new ItemActivation(stack));
-		world.playSound(null, pos, ArcaneWorldSounds.RITUAL_ITEM, SoundCategory.BLOCKS, 1F, 0.5F + (rand.nextFloat() / 2));
-	}
+        world.playSound(null, pos, ArcaneWorldSounds.RITUAL_ITEM, SoundCategory.BLOCKS, 1F, 0.5F + (rand.nextFloat() / 2));
+    }
 
 	private void particlesStartUp()
 	{

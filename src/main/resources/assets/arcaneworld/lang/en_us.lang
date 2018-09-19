@@ -15,6 +15,7 @@ item.arcaneworld.sapphire.name=Sapphire
 item.arcaneworld.amethyst.name=Amethyst
 item.arcaneworld.glowing_chorus.name=Glowing Chorus Fruit
 item.arcaneworld.biome_crystal.name=Biome Crystal
+item.arcaneworld.ritual_scroll.name=Scroll
 
 arcaneworld.subtitle.ritual_out=Ritual Bangs
 arcaneworld.subtitle.ritual_item=Ritual Pops
@@ -70,6 +71,7 @@ arcaneworld.summon_squid=Conjure Squid
 arcaneworld.summon_villager=Conjure Villager
 arcaneworld.summon_llama=Conjure Llama
 arcaneworld.summon_wolf=Conjure Wolf
+arcaneworld.ritual_scroll=Activate Scroll
 
 
 

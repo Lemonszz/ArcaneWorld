@@ -38,4 +38,9 @@ public class RitualDragonBreath extends Ritual
         world.playEvent(2006, pos, 0);
         world.spawnEntity(entityareaeffectcloud);
     }
+
+    public boolean canDrop()
+    {
+        return false;
+    }
 }
