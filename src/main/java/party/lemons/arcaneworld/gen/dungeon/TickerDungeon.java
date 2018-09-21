@@ -1,9 +1,8 @@
-package party.lemons.arcaneworld.handler.ticker.impl;
+package party.lemons.arcaneworld.gen.dungeon;
 
 import net.minecraft.nbt.NBTTagCompound;;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
-import party.lemons.arcaneworld.gen.dungeon.DungeonGenerator;
 import party.lemons.arcaneworld.handler.ticker.ITicker;
 
 /**
@@ -40,7 +39,7 @@ public class TickerDungeon implements ITicker
 
 		age++;
 
-		if(age % 1 == 0)
+		if(age % 3 == 0)
         {
             boolean generated = false;
             while(!generated)

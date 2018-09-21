@@ -85,6 +85,8 @@ public class TickerHandler
 
 	public static void readFromNBT(NBTTagList tickerList)
 	{
+	    worldTickers.clear();
+
 		World world = FMLCommonHandler.instance().getMinecraftServerInstance().getEntityWorld();
 		for(int i = 0; i < tickerList.tagCount(); i++)
 		{
@@ -113,6 +115,8 @@ public class TickerHandler
 		tick(event.world);
 		removeFinishedTickers(event.world);
 	}
+
+
 
 	@SubscribeEvent
 	public static void onWorldLoad(WorldEvent.Load event)

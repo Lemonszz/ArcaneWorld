@@ -1,8 +1,11 @@
 package party.lemons.arcaneworld.proxy;
 
 import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import party.lemons.arcaneworld.block.tilentity.TileEntityRitualTable;
 import party.lemons.arcaneworld.block.tilentity.render.TESRRitualTable;
+import party.lemons.arcaneworld.entity.EntityRecallOrb;
+import party.lemons.arcaneworld.entity.model.RenderRecallOrb;
 
 /**
  * Created by Sam on 30/08/2018.
@@ -13,5 +16,6 @@ public class ClientProxy implements IProxy
 	public void registerSided()
 	{
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRitualTable.class, new TESRRitualTable());
+        RenderingRegistry.registerEntityRenderingHandler(EntityRecallOrb.class, RenderRecallOrb::new);
 	}
 }

@@ -1,5 +1,8 @@
 package party.lemons.arcaneworld.gen.dungeon;
 
+import net.minecraft.util.Mirror;
+import net.minecraft.util.Rotation;
+
 import java.util.HashMap;
 
 /**
@@ -60,42 +63,128 @@ public class RoomDirection
 
     public String getDirectory()
     {
-        String str = "";
-        if(isOpen(Direction.EAST))
-            str += "east_";
-
-        if(isOpen(Direction.NORTH))
-            str += "north_";
-
-        if(isOpen(Direction.WEST))
-            str += "west_";
-
-        if(isOpen(Direction.SOUTH))
-            str += "south_";
-
-        return str;
+        return getShape().getDirectory();
     }
 
-    public void setFromDirectoryString(String directoryString)
+    public RoomShape getShape()
     {
-        String[] split = directoryString.split("_");
-        for(String s : split)
+        int openCount = getOpenCount();
+
+        if(openCount == 0)
+            return RoomShape.SEALED;
+        else if(openCount == 3)
+            return RoomShape.T;
+        else if(openCount == 4)
+            return RoomShape.OPEN;
+        else if(openCount == 1)
+            return RoomShape.CAP;
+        else if(openCount == 2)
         {
-            switch(s)
-            {
-                case "east":
-                    this.withDirection(Direction.EAST, true);
-                    break;
-                case "north":
-                    this.withDirection(Direction.NORTH, true);
-                    break;
-                case "west":
-                    this.withDirection(Direction.WEST, true);
-                    break;
-                case "south":
-                    this.withDirection(Direction.SOUTH, true);
-                    break;
-            }
+            if((isOpen(Direction.SOUTH) && isOpen(Direction.NORTH)) || (isOpen(Direction.EAST) && isOpen(Direction.WEST)))
+                return RoomShape.CORRIDOR;
+            else
+                return RoomShape.CORNER;
+        }
+
+        return RoomShape.SEALED;
+    }
+
+    private int getOpenCount()
+    {
+        int count = 0;
+        for(Direction direction : Direction.values())
+        {
+            if(isOpen(direction))
+                count++;
+        }
+        return count;
+    }
+
+    public Mirror getMirror()
+    {
+        return Mirror.NONE;
+    }
+
+    public Rotation getRotation()
+    {
+        Rotation rotation = Rotation.NONE;
+        RoomShape shape = getShape();
+
+        switch (shape)
+        {
+            case CORNER:
+                if(isOpen(Direction.NORTH) && isOpen(Direction.EAST))
+                    rotation = Rotation.CLOCKWISE_90;
+                else if(isOpen(Direction.SOUTH) && isOpen(Direction.EAST))
+                    rotation = Rotation.CLOCKWISE_180;
+                else if(isOpen(Direction.SOUTH) && isOpen(Direction.WEST))
+                    rotation = Rotation.COUNTERCLOCKWISE_90;
+                break;
+            case T:
+                if(isOpen(Direction.NORTH) && isOpen(Direction.SOUTH) && isOpen(Direction.EAST))
+                    rotation = Rotation.CLOCKWISE_90;
+                else if(isOpen(Direction.SOUTH) && isOpen(Direction.EAST) && isOpen(Direction.WEST))
+                    rotation = Rotation.CLOCKWISE_180;
+                else if(isOpen(Direction.NORTH) && isOpen(Direction.SOUTH) && isOpen(Direction.WEST))
+                    rotation = Rotation.COUNTERCLOCKWISE_90;
+                break;
+            case CORRIDOR:
+                if(isOpen(Direction.EAST))
+                    rotation = Rotation.CLOCKWISE_90;
+                break;
+            case CAP:
+                if(isOpen(Direction.NORTH))
+                {
+                    rotation = Rotation.NONE;
+                }
+                if(isOpen(Direction.EAST))
+                {
+                    rotation = Rotation.CLOCKWISE_90;
+                }
+                else if(isOpen(Direction.WEST))
+                {
+                    rotation = Rotation.COUNTERCLOCKWISE_90;
+                }
+                else if(isOpen(Direction.SOUTH))
+                {
+                    rotation = Rotation.CLOCKWISE_180;
+                }
+                break;
+        }
+        return rotation;
+    }
+
+    @Override
+    public String toString()
+    {
+        String s = "";
+        for(Direction direction : Direction.values())
+        {
+            s += direction.toString() + " " + isOpen(direction) + ", ";
+        }
+
+        return s;
+    }
+
+    enum RoomShape
+    {
+        SEALED("sealed"),
+        OPEN("open"),
+        CORNER("corner"),
+        T("t"),
+        CORRIDOR("corridor"),
+        CAP("cap");
+
+        private String directory;
+
+        RoomShape(String directory)
+        {
+            this.directory = directory;
+        }
+
+        public String getDirectory()
+        {
+            return directory;
         }
     }
 }

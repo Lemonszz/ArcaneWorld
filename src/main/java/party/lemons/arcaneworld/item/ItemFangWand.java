@@ -29,7 +29,7 @@ public class ItemFangWand extends ItemModel
 		if(worldIn.isRemote)
 			return EnumActionResult.SUCCESS;
 
-		new DungeonGenerator(worldIn, pos.offset(EnumFacing.UP, 10)).generate();
+		new DungeonGenerator(worldIn, pos.up(10)).generate();
 
 		float f = (float) MathHelper.atan2((pos.getZ() + hitZ) - player.posZ, (pos.getX() + hitX) - player.posX);
 		double pY = pos.up().getY();

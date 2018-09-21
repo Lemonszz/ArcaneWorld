@@ -8,7 +8,6 @@ import net.minecraft.world.gen.structure.template.PlacementSettings;
 import net.minecraft.world.gen.structure.template.Template;
 import party.lemons.arcaneworld.ArcaneWorld;
 import party.lemons.arcaneworld.handler.ticker.TickerHandler;
-import party.lemons.arcaneworld.handler.ticker.impl.TickerDungeon;
 
 import java.io.*;
 import java.net.URISyntaxException;
@@ -61,10 +60,28 @@ public class DungeonGenerator
         if(!direction.isSealed())
         {
             BlockPos generatePos = origin.add(x * ROOM_WIDTH, 0, y * ROOM_WIDTH);
-            PlacementSettings settings = new PlacementSettings().setRotation(Rotation.NONE);
+            Rotation rotation = direction.getRotation();
+
+            int offsetX = 0;
+            int offsetZ = 0;
+            switch (rotation)
+            {
+                case CLOCKWISE_90:
+                    offsetX = 12;
+                    break;
+                case CLOCKWISE_180:
+                    offsetX = 12;
+                    offsetZ = 12;
+                    break;
+                case COUNTERCLOCKWISE_90:
+                    offsetZ = 12;
+                    break;
+            }
+
+            PlacementSettings settings = new PlacementSettings().setRotation(direction.getRotation()).setMirror(direction.getMirror());
             ResourceLocation layout = getRoomLayout(direction);
             Template template = world.getSaveHandler().getStructureTemplateManager().getTemplate(world.getMinecraftServer(), layout);
-            template.addBlocksToWorld(world, generatePos, settings);
+            template.addBlocksToWorld(world, generatePos.add(offsetX, 0, offsetZ), settings);
 
             return true;
         }
@@ -83,33 +100,23 @@ public class DungeonGenerator
             if(z != height - 1)
             {
                 Direction moveDirection = random.nextBoolean() ? Direction.EAST : Direction.WEST;
-
-                if(x + moveDirection.getX() >= 0 && x + moveDirection.getX() < width)
+                if(!(x + moveDirection.getX() > 0 && x + moveDirection.getX() < width))
                 {
-                    currentRoom.withDirection(moveDirection, true);
-                    x += moveDirection.getX();
-                    directions[x][z].withDirection(moveDirection.opposite(), true);
+                   moveDirection = Direction.SOUTH;
                 }
-                else
-                {
-                    currentRoom.withDirection(Direction.SOUTH, true);
-                    z += 1;
-                    directions[x][z].withDirection(Direction.NORTH, true);
-                }
+                currentRoom.withDirection(moveDirection, true);
+                directions[x + moveDirection.getX()][ z + moveDirection.getY()].withDirection(moveDirection.opposite(), true);
+                x += moveDirection.getX();
+                z += moveDirection.getY();
             }
             else
             {
                 if(x != width - 1)
                 {
-                    Direction dir;
-                    if(width > x)
-                        dir = Direction.WEST;
-                    else
-                        dir = Direction.EAST;
+                    currentRoom.withDirection(Direction.EAST, true);
+                    directions[x +1][z].withDirection(Direction.WEST, true);
 
-                    currentRoom.withDirection(dir, true);
-                    x += dir.getX();
-                    directions[x][z].withDirection(dir.opposite(), true);
+                    x += 1;
                 }
                 else
                 {
@@ -118,7 +125,7 @@ public class DungeonGenerator
             }
         }
 
-        for(int i = 0; i < 20; i++)
+        for(int i = 0; i < 40; i++)
         {
             int mutateX =  random.nextInt(width);
             int mutateZ =  random.nextInt(height);
@@ -140,11 +147,12 @@ public class DungeonGenerator
             Direction moveDirection = mutateDir;
             if(mutateDir.isVertical())  //TODO: Why the fuck do i need to do this
             {
-                moveDirection = mutateDir.opposite();
+              //  moveDirection = mutateDir.opposite();
             }
 
-            direction.withDirection(moveDirection, true);
-            directions[mutateX + mutateDir.getX()][mutateZ + mutateDir.getY()].withDirection(moveDirection.opposite(), true);
+            System.out.println("muate");
+           direction.withDirection(moveDirection, true);
+           directions[mutateX + mutateDir.getX()][mutateZ + mutateDir.getY()].withDirection(moveDirection.opposite(), true);
         }
     }
 
