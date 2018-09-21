@@ -3,6 +3,7 @@ package party.lemons.arcaneworld.item;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -32,7 +33,8 @@ public class ArcaneWorldItems
 	public static final Item GLOWING_CHORUS = Items.AIR;
 	public static final Item BIOME_CRYSTAL = Items.AIR;
 	public static final Item RITUAL_SCROLL = Items.AIR;
-
+    public static final Item RECALLER = Items.AIR;
+    public static final Item RECALL_EYE = Items.AIR;
 	@SubscribeEvent
 	public static void onRegisterItem(RegistryEvent.Register<Item> event)
 	{
@@ -45,6 +47,13 @@ public class ArcaneWorldItems
 		registerItem(r, new ItemGlowingChorusFruit(), "glowing_chorus");
 		registerItem(r, new ItemBiomeCrystal(5), "biome_crystal");
 		registerItem(r, new ItemRitualScroll(), "ritual_scroll");
+		registerItem(r, new ItemRecaller(), "recaller");
+
+
+		////TODO: Do this btter
+		Item internalRecallEye = new ItemModel().setRegistryName(new ResourceLocation(ArcaneWorld.MODID, "recall_eye"));
+		event.getRegistry().register(internalRecallEye);
+		itemList.add(internalRecallEye);
 	}
 
 	public static Item registerItem(IForgeRegistry<Item> registry, Item item, String name, String... oredict)

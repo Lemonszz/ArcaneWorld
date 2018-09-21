@@ -11,6 +11,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import party.lemons.arcaneworld.gen.dungeon.DungeonGenerator;
 
 /**
  * Created by Sam on 9/09/2018.
@@ -27,6 +28,8 @@ public class ItemFangWand extends ItemModel
 	{
 		if(worldIn.isRemote)
 			return EnumActionResult.SUCCESS;
+
+		new DungeonGenerator(worldIn, pos.offset(EnumFacing.UP, 10)).generate();
 
 		float f = (float) MathHelper.atan2((pos.getZ() + hitZ) - player.posZ, (pos.getX() + hitX) - player.posX);
 		double pY = pos.up().getY();

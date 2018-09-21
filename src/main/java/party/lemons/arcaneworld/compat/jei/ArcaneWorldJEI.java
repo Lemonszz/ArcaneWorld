@@ -5,11 +5,13 @@ import mezz.jei.api.IModRegistry;
 import mezz.jei.api.JEIPlugin;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import party.lemons.arcaneworld.block.ArcaneWorldBlocks;
 import party.lemons.arcaneworld.crafting.ritual.RitualRegistry;
 import party.lemons.arcaneworld.crafting.ritual.container.ContainerRitual;
 import party.lemons.arcaneworld.crafting.ritual.container.GuiRitual;
 import party.lemons.arcaneworld.crafting.ritual.Ritual;
+import party.lemons.arcaneworld.item.ArcaneWorldItems;
 
 import java.util.stream.Collectors;
 
@@ -35,5 +37,7 @@ public class ArcaneWorldJEI implements IModPlugin {
                 0, 5,
                 5, 36
         );
+
+        registry.getJeiHelpers().getIngredientBlacklist().addIngredientToBlacklist(new ItemStack(ArcaneWorldItems.RECALL_EYE));
     }
 }

@@ -7,6 +7,7 @@ import crafttweaker.api.minecraft.CraftTweakerMC;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistryModifiable;
@@ -79,6 +80,14 @@ public class ArcaneWorldCrt
     @ZenMethod
     public static void createRitualCreateItem(String name, String displayName, IItemStack result, IIngredient... inputs)
     {
+        ItemStack stack = CraftTweakerMC.getItemStack(result);
+        System.out.println(stack);
+        System.out.println(stack);
+        System.out.println(stack);
+        System.out.println(stack);
+        System.out.println(stack);
+        System.out.println(stack);
+        System.out.println(stack);
         createRitual(name,displayName, new RitualCreateItem(CraftTweakerMC.getItemStack(result), getIngredients(inputs)));
     }
 

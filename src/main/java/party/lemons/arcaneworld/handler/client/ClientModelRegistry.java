@@ -1,4 +1,4 @@
-package party.lemons.arcaneworld.handler;
+package party.lemons.arcaneworld.handler.client;
 
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -30,7 +30,18 @@ public class ClientModelRegistry
 {
 	private static void registerSpecialModels()
 	{
-	}
+        ModelResourceLocation recaller_off = new ModelResourceLocation(ArcaneWorldItems.RECALLER.getRegistryName() + "_off", "inventory");
+        ModelResourceLocation recaller_on = new ModelResourceLocation(ArcaneWorldItems.RECALLER.getRegistryName() + "_on", "inventory");
+        ModelBakery.registerItemVariants(ArcaneWorldItems.RECALLER, recaller_off, recaller_on);
+        ModelLoader.setCustomMeshDefinition(ArcaneWorldItems.RECALLER, s ->
+        {
+            if(s.hasTagCompound() && s.getTagCompound().hasKey("position"))
+                return recaller_on;
+
+            return recaller_off;
+        });
+
+    }
 
 	@SubscribeEvent
 	public static void onRegisterModel(ModelRegistryEvent event)
