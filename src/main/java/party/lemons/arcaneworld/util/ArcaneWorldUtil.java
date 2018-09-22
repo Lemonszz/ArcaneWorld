@@ -6,12 +6,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.items.IItemHandler;
 import party.lemons.arcaneworld.crafting.ritual.Ritual;
 import party.lemons.arcaneworld.crafting.ritual.RitualRegistry;
 import party.lemons.arcaneworld.item.ArcaneWorldItems;
 import party.lemons.arcaneworld.item.ItemRitualScroll;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -87,4 +89,43 @@ public class ArcaneWorldUtil
             return false;
         }
     }
+
+    public static int getEntityPortalTime(Entity entity)
+    {
+        if(portalTimeField == null)
+            getPortalTimeField();
+
+        try
+        {
+            return portalTimeField.getInt(entity);
+
+        } catch (IllegalAccessException e)
+        {
+            e.printStackTrace();
+        }
+
+        return entity.getMaxInPortalTime();
+    }
+
+    public static void setEntityPortalTime(Entity entity, int value)
+    {
+        if(portalTimeField == null)
+            getPortalTimeField();
+
+        try
+        {
+            portalTimeField.setInt(entity, value);
+        } catch (IllegalAccessException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    private static void getPortalTimeField()
+    {
+        portalTimeField = ReflectionHelper.findField(Entity.class, "portalCounter", "field_82153_h");
+        portalTimeField.setAccessible(true);
+    }
+
+    private static Field portalTimeField = null;
 }

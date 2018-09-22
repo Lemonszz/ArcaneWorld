@@ -1,0 +1,21 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "particle": "arcaneworld:blocks/return_portal",
+      "portal": "arcaneworld:blocks/return_portal"
+    },
+    "model": "portal_ew",
+    "uvlock": true
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory":
+    {
+      "model": "portal_ew",
+      "transform": "forge:default-block"
+    },
+    "axis=z": { "model": "portal_ew" },
+    "axis=x": { "model": "portal_ns" }
+  }
+}

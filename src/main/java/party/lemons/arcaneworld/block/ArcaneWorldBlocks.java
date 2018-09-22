@@ -35,6 +35,7 @@ public class ArcaneWorldBlocks
 	public static final Block RITUAL_TABLE = Blocks.AIR;
 	public static final Block ORE_SAPPHIRE =Blocks.AIR ;
 	public static final Block ORE_AMETHYST =Blocks.AIR ;
+	public static final Block RETURN_PORTAL =Blocks.AIR ;
 
 	@SubscribeEvent
 	public static void onRegisterBlock(RegistryEvent.Register<Block> event)
@@ -46,6 +47,7 @@ public class ArcaneWorldBlocks
 		setProperties(registerBlock(r, new BlockModel(Material.IRON), "block_sapphire", "blockSapphire"), 3F, 5F, 0F);
 		setProperties(registerBlock(r, new BlockModel(Material.IRON), "block_amethyst", "blockAmethyst"), 3F, 5F, 0F);
 		setProperties(registerBlock(r, new BlockRitualTable(), "ritual_table"), 3F, 5F, 0F);
+        registerBlock(r, new BlockReturnPortal(), "return_portal").setBlockUnbreakable();
 
 		GameRegistry.registerTileEntity(TileEntityRitualTable.class, new ResourceLocation(ArcaneWorld.MODID, "ritual_table"));
 	}

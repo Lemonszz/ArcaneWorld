@@ -1,6 +1,6 @@
 package party.lemons.arcaneworld.gen.dungeon.generation;
 
-import net.minecraft.nbt.NBTTagCompound;;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import party.lemons.arcaneworld.handler.ticker.ITicker;

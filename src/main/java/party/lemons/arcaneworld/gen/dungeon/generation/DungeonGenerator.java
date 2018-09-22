@@ -81,7 +81,36 @@ public class DungeonGenerator
             }
 
             PlacementSettings settings = new PlacementSettings().setRotation(direction.getRotation()).setMirror(direction.getMirror());
-            ResourceLocation layout = getRoomLayout(direction);
+            ResourceLocation layout;
+
+            if(x == width - 1 && y == height -1)
+            {
+                switch (direction.getShape())
+                {
+                    case OPEN:
+                        layout = new ResourceLocation(ArcaneWorld.MODID, "dungeon/portals/open_end_1");
+                        break;
+                    case CORNER:
+                        layout = new ResourceLocation(ArcaneWorld.MODID, "dungeon/portals/corner_end_1");
+                        break;
+                    case T:
+                        layout = new ResourceLocation(ArcaneWorld.MODID, "dungeon/portals/t_end_1");
+                        break;
+                    case CORRIDOR:
+                        layout = new ResourceLocation(ArcaneWorld.MODID, "dungeon/portals/corridor_end_1");
+                        break;
+                    case CAP:
+                        layout = new ResourceLocation(ArcaneWorld.MODID, "dungeon/portals/end_cap_1");
+                        break;
+                    default:
+                        layout = new ResourceLocation(ArcaneWorld.MODID, "dungeon/portals/end_cap_1");
+                        break;
+                }
+            }
+            else
+            {
+                layout = getRoomLayout(direction);
+            }
             Template template = world.getSaveHandler().getStructureTemplateManager().getTemplate(world.getMinecraftServer(), layout);
             template.addBlocksToWorld(world, generatePos.add(offsetX, 0, offsetZ), settings);
 
@@ -165,8 +194,11 @@ public class DungeonGenerator
 
                 for (File files : templates)
                 {
-                    String name = files.getName().substring(0, files.getName().lastIndexOf("."));
-                    locations.add(new ResourceLocation(ArcaneWorld.MODID, "dungeon/" + directory + "/" + name));
+                    if(!files.isDirectory())
+                    {
+                        String name = files.getName().substring(0, files.getName().lastIndexOf("."));
+                        locations.add(new ResourceLocation(ArcaneWorld.MODID, "dungeon/" + directory + "/" + name));
+                    }
                 }
             }catch (URISyntaxException e)
             {
