@@ -3,15 +3,16 @@ package party.lemons.arcaneworld.item;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityEvokerFangs;
-import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import party.lemons.arcaneworld.gen.dungeon.DungeonGenerator;
+import net.minecraft.world.WorldServer;
+import party.lemons.arcaneworld.config.ArcaneWorldConfig;
+import party.lemons.arcaneworld.gen.dungeon.dimension.TeleporterDungeon;
+import party.lemons.arcaneworld.gen.dungeon.generation.DungeonGenerator;
 
 /**
  * Created by Sam on 9/09/2018.
@@ -29,7 +30,10 @@ public class ItemFangWand extends ItemModel
 		if(worldIn.isRemote)
 			return EnumActionResult.SUCCESS;
 
-		new DungeonGenerator(worldIn, pos.up(10)).generate();
+		if(!player.isSneaking())
+		    new DungeonGenerator(worldIn, pos.up(10)).generate();
+		else
+		    player.changeDimension(ArcaneWorldConfig.ConfigDungeonDimension.DIM_ID, new TeleporterDungeon((WorldServer) worldIn));
 
 		float f = (float) MathHelper.atan2((pos.getZ() + hitZ) - player.posZ, (pos.getX() + hitX) - player.posX);
 		double pY = pos.up().getY();

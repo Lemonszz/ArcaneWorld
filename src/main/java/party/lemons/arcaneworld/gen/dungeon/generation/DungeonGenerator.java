@@ -1,4 +1,4 @@
-package party.lemons.arcaneworld.gen.dungeon;
+package party.lemons.arcaneworld.gen.dungeon.generation;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Rotation;
@@ -11,18 +11,20 @@ import party.lemons.arcaneworld.handler.ticker.TickerHandler;
 
 import java.io.*;
 import java.net.URISyntaxException;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by Sam on 20/09/2018.
  */
 public class DungeonGenerator
 {
-    private final int MIN_WIDTH = 5;
-    private final int MIN_HEIGHT = 5;
-    private final int MAX_WIDTH = 10;
-    private final int MAX_HEIGHT = 10;
-    private final int ROOM_WIDTH = 13;
+    private static Map<String, List<ResourceLocation>> cachedTemplates = new HashMap<>();
+
+    private static final int MIN_WIDTH = 5;
+    private static final int MIN_HEIGHT = 5;
+    private static final int MAX_WIDTH = 10;
+    private static final int MAX_HEIGHT = 10;
+    public static final int ROOM_WIDTH = 13;
 
     private BlockPos origin;
     private World world;
@@ -143,34 +145,40 @@ public class DungeonGenerator
                 continue;
             if(mutateZ == height - 1 && mutateDir.getY() > 0)
                 continue;
-
             Direction moveDirection = mutateDir;
-            if(mutateDir.isVertical())  //TODO: Why the fuck do i need to do this
-            {
-              //  moveDirection = mutateDir.opposite();
-            }
 
-            System.out.println("muate");
-           direction.withDirection(moveDirection, true);
-           directions[mutateX + mutateDir.getX()][mutateZ + mutateDir.getY()].withDirection(moveDirection.opposite(), true);
+            direction.withDirection(moveDirection, true);
+            directions[mutateX + mutateDir.getX()][mutateZ + mutateDir.getY()].withDirection(moveDirection.opposite(), true);
         }
     }
 
-    public ResourceLocation getRoomLayout(RoomDirection direction)  //TODO: Cache this?
+    public ResourceLocation getRoomLayout(RoomDirection direction)
     {
-        try
+        String directory = direction.getDirectory();
+        if(!cachedTemplates.containsKey(directory))
         {
-            File file = new File(this.getClass().getClassLoader().getResource("assets/" + ArcaneWorld.MODID +  "/structures/dungeon/" + direction.getDirectory()).toURI());
-            File[] templates = file.listFiles();
-            String selected = templates[random.nextInt(templates.length)].getName();
-            selected = selected.substring(0, selected.lastIndexOf("."));
+            List<ResourceLocation> locations = new ArrayList<>();
+            try
+            {
+                File file = new File(this.getClass().getClassLoader().getResource("assets/" + ArcaneWorld.MODID + "/structures/dungeon/" + directory).toURI());
+                File[] templates = file.listFiles();
 
-            return new ResourceLocation(ArcaneWorld.MODID, "dungeon/"+ direction.getDirectory() +"/" + selected);
-        } catch (URISyntaxException e)
-        {
-            e.printStackTrace();
+                for (File files : templates)
+                {
+                    String name = files.getName().substring(0, files.getName().lastIndexOf("."));
+                    locations.add(new ResourceLocation(ArcaneWorld.MODID, "dungeon/" + directory + "/" + name));
+                }
+            }catch (URISyntaxException e)
+            {
+                e.printStackTrace();
+            }
+
+            cachedTemplates.put(directory, locations);
         }
-        return null;
+
+        List<ResourceLocation> selectFrom = cachedTemplates.get(directory);
+        ResourceLocation selected = selectFrom.get(random.nextInt(selectFrom.size()));
+        return selected;
     }
 
     public int getWidth()

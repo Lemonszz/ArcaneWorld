@@ -1,4 +1,4 @@
-package party.lemons.arcaneworld.gen.dungeon;
+package party.lemons.arcaneworld.gen.dungeon.generation;
 
 import net.minecraft.nbt.NBTTagCompound;;
 import net.minecraft.world.World;

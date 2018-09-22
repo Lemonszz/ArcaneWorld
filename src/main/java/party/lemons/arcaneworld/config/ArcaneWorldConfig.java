@@ -15,6 +15,15 @@ public class ArcaneWorldConfig
     @Config.Name("Entities")
     public static ConfigEntity ENTITIES = new ConfigEntity();
 
+    @Config.Name("Dungeon")
+    public static ConfigDungeonDimension DUNGEONS = new ConfigDungeonDimension();
+
+    public static class ConfigDungeonDimension
+    {
+        @Config.Name("Dimension ID")
+        public static int DIM_ID = -546;
+    }
+
     public static class ConfigOres
     {
         @Config.Name("Sapphire Generation")

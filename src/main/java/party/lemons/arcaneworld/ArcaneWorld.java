@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import party.lemons.arcaneworld.entity.ArcaneWorldEntities;
+import party.lemons.arcaneworld.gen.dungeon.dimension.DungeonDimension;
 import party.lemons.arcaneworld.handler.ArcaneWorldGuiHandler;
 import party.lemons.arcaneworld.handler.OreDictHandler;
 import party.lemons.arcaneworld.network.NetworkInit;
@@ -36,6 +37,7 @@ public class ArcaneWorld
 	{
 		NetworkInit.init();
 		ArcaneWorldEntities.init();
+        DungeonDimension.init();
 		proxy.registerSided();
 	}
 

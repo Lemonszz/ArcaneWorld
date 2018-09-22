@@ -40,6 +40,7 @@ public class Rituals {
         createRitual(event.getRegistry(), new RitualWeather(RitualWeather.WeatherType.RAIN, of("dustPrismarine"), of("gemPrismarine")), "raining");
         createRitual(event.getRegistry(), new RitualWeather(RitualWeather.WeatherType.THUNDER, of("dustPrismarine"), of("gemPrismarine"), of("gunpowder")), "thundering");
         createRitual(event.getRegistry(), new RitualDragonBreath(of(Items.DRAGON_BREATH), of(Items.ENDER_EYE), of("blockPrismarine"), of("netherrack"), of("ingotGold")), "dragon_breath");
+        createRitual(event.getRegistry(), new RitualDungeon(of(Items.APPLE)),"dungeon");
 
         createRitual(event.getRegistry(), new RitualCreateItem(new ItemStack(ArcaneWorldItems.ARCANE_HOE), of(Items.GOLDEN_HOE), of("gemDiamond"), of("cropNetherWart"), of(Items.RABBIT_FOOT), of("dyeBlack")), "create_arcane_hoe");
         createRitual(event.getRegistry(), new RitualCreateItem(new ItemStack(ArcaneWorldItems.FANG_WAND), of("stickWood"), of("gemDiamond"), of("ingotGold"), of("dustGlowstone"), of("enderpearl")), "create_evoking_wand");
