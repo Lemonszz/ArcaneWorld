@@ -85,7 +85,7 @@ public class ArcaneWorldCrt
     }
 
     @ZenMethod
-    public static void createRitualDungeon((String name, String displayName, IIngredient... inputs)
+    public static void createRitualDungeon(String name, String displayName, IIngredient... inputs)
     {
         createRitual(name, displayName, new RitualDungeon(getIngredients(inputs)));
     }
