@@ -1,24 +1,13 @@
 package party.lemons.arcaneworld.handler.client;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.client.GuiIngameForge;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -28,7 +17,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import party.lemons.arcaneworld.ArcaneWorld;
 import party.lemons.arcaneworld.item.ArcaneWorldItems;
 import party.lemons.arcaneworld.item.ItemRecaller;
-import party.lemons.arcaneworld.util.ArcaneWorldUtil;
 
 /**
  * Created by Sam on 19/09/2018.
@@ -36,8 +24,6 @@ import party.lemons.arcaneworld.util.ArcaneWorldUtil;
 @Mod.EventBusSubscriber(modid = ArcaneWorld.MODID,  value = Side.CLIENT)
 public class ArcaneWorldClientEventHandler
 {
-    @GameRegistry.ItemStackHolder("arcaneworld:recall_eye")
-    public static final ItemStack RECALL_EYE = new ItemStack(Items.ENDER_EYE);
     public static EntityItem entityItem = null;
 
     @SubscribeEvent
@@ -62,7 +48,7 @@ public class ArcaneWorldClientEventHandler
 
                 if(entityItem == null)
                 {
-                    entityItem = new EntityItem(mc.world, 0, 0, 0, RECALL_EYE);
+                    entityItem = new EntityItem(mc.world, 0, 0, 0, new ItemStack(ArcaneWorldItems.RECALL_EYE));
                     entityItem.setInfinitePickupDelay();
                     entityItem.setNoDespawn();
                     entityItem.setGlowing(true);

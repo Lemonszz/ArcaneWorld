@@ -83,7 +83,31 @@ public class DungeonGenerator
             PlacementSettings settings = new PlacementSettings().setRotation(direction.getRotation()).setMirror(direction.getMirror());
             ResourceLocation layout;
 
-            if(x == width - 1 && y == height -1)
+            if(x == 0 && y == 0)
+            {
+                switch (direction.getShape())
+                {
+                    case OPEN:
+                        layout = new ResourceLocation(ArcaneWorld.MODID, "dungeon/start/open_start_1");
+                        break;
+                    case CORNER:
+                        layout = new ResourceLocation(ArcaneWorld.MODID, "dungeon/start/corner_start_1");
+                        break;
+                    case T:
+                        layout = new ResourceLocation(ArcaneWorld.MODID, "dungeon/start/t_start_1");
+                        break;
+                    case CORRIDOR:
+                        layout = new ResourceLocation(ArcaneWorld.MODID, "dungeon/start/corridor_start_1");
+                        break;
+                    case CAP:
+                        layout = new ResourceLocation(ArcaneWorld.MODID, "dungeon/start/cap_start_1");
+                        break;
+                    default:
+                        layout = new ResourceLocation(ArcaneWorld.MODID, "dungeon/start/end_start_1");
+                        break;
+                }
+            }
+            else if(x == width - 1 && y == height -1)
             {
                 switch (direction.getShape())
                 {
@@ -112,7 +136,7 @@ public class DungeonGenerator
                 layout = getRoomLayout(direction);
             }
             Template template = world.getSaveHandler().getStructureTemplateManager().getTemplate(world.getMinecraftServer(), layout);
-            template.addBlocksToWorld(world, generatePos.add(offsetX, 0, offsetZ), settings);
+            template.addBlocksToWorld(world, generatePos.add(offsetX, 0, offsetZ), new DungeonRoomProcessor(), settings, 2);
 
             return true;
         }

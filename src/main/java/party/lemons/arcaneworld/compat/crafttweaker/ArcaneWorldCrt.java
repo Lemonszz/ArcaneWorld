@@ -81,13 +81,6 @@ public class ArcaneWorldCrt
     public static void createRitualCreateItem(String name, String displayName, IItemStack result, IIngredient... inputs)
     {
         ItemStack stack = CraftTweakerMC.getItemStack(result);
-        System.out.println(stack);
-        System.out.println(stack);
-        System.out.println(stack);
-        System.out.println(stack);
-        System.out.println(stack);
-        System.out.println(stack);
-        System.out.println(stack);
         createRitual(name,displayName, new RitualCreateItem(CraftTweakerMC.getItemStack(result), getIngredients(inputs)));
     }
 

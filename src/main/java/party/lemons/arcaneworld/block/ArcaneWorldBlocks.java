@@ -47,7 +47,10 @@ public class ArcaneWorldBlocks
 		setProperties(registerBlock(r, new BlockModel(Material.IRON), "block_sapphire", "blockSapphire"), 3F, 5F, 0F);
 		setProperties(registerBlock(r, new BlockModel(Material.IRON), "block_amethyst", "blockAmethyst"), 3F, 5F, 0F);
 		setProperties(registerBlock(r, new BlockRitualTable(), "ritual_table"), 3F, 5F, 0F);
-        registerBlock(r, new BlockReturnPortal(), "return_portal").setBlockUnbreakable();
+
+        Block portal = new BlockReturnPortal().setBlockUnbreakable().setRegistryName(ArcaneWorld.MODID, "return_portal");
+        blockList.add(portal);
+        r.register(portal);
 
 		GameRegistry.registerTileEntity(TileEntityRitualTable.class, new ResourceLocation(ArcaneWorld.MODID, "ritual_table"));
 	}

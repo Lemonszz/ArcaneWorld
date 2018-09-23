@@ -6,4 +6,5 @@ package party.lemons.arcaneworld.proxy;
 public interface IProxy
 {
 	default void registerSided(){}
+	default void registerSidedInit(){};
 }

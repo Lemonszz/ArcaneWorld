@@ -39,5 +39,6 @@ public class ArcaneWorldJEI implements IModPlugin {
         );
 
         registry.getJeiHelpers().getIngredientBlacklist().addIngredientToBlacklist(new ItemStack(ArcaneWorldItems.RECALL_EYE));
+        registry.getJeiHelpers().getIngredientBlacklist().addIngredientToBlacklist(new ItemStack(ArcaneWorldBlocks.RETURN_PORTAL));
     }
 }

@@ -11,6 +11,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import party.lemons.arcaneworld.config.ArcaneWorldConfig;
 import party.lemons.arcaneworld.gen.dungeon.dimension.TeleporterDungeonReturn;
 import party.lemons.arcaneworld.item.IModel;
 import party.lemons.arcaneworld.util.ArcaneWorldUtil;
@@ -49,6 +50,9 @@ public class BlockReturnPortal extends BlockPortal implements IModel
 
     public void onEntityCollision(World worldIn, BlockPos pos, IBlockState state, Entity entity)
     {
+        if(worldIn.provider.getDimension() != ArcaneWorldConfig.ConfigDungeonDimension.DIM_ID)
+            return;
+
         if (!entity.isRiding() && !entity.isBeingRidden() && entity.isNonBoss())
         {
             entity.setPortal(pos);
@@ -59,7 +63,7 @@ public class BlockReturnPortal extends BlockPortal implements IModel
             int i =  entity.getMaxInPortalTime() - 1;
             ArcaneWorldUtil.setEntityPortalTime(entity, ArcaneWorldUtil.getEntityPortalTime(entity) + 1);
 
-            if (ArcaneWorldUtil.getEntityPortalTime(entity) >= i)
+            if ((entity instanceof EntityPlayer && ((EntityPlayer)entity).isCreative()) || ArcaneWorldUtil.getEntityPortalTime(entity) >= i)
             {
                 entity.timeUntilPortal = entity.getPortalCooldown();
                 entity.changeDimension(0, new TeleporterDungeonReturn((WorldServer) worldIn));
@@ -72,6 +76,4 @@ public class BlockReturnPortal extends BlockPortal implements IModel
     {
         return getRegistryName();
     }
-
-
 }

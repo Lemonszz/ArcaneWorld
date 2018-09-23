@@ -1,40 +1,56 @@
 {
-  "ritual_out":{
+  "ritual_out": {
     "category": "block",
     "subtitle": "arcaneworld.subtitle.ritual_out",
     "sounds": ["arcaneworld:ritual_out"]
   },
-  "ritual_item":{
+  "ritual_item": {
     "category": "block",
     "subtitle": "arcaneworld.subtitle.ritual_item",
     "sounds": ["arcaneworld:ritual_item"]
   },
-  "ritual_charge":{
+  "ritual_charge": {
     "category": "block",
     "subtitle": "arcaneworld.subtitle.ritual_charge",
     "sounds": ["arcaneworld:ritual_charge"]
   },
-  "ritual_start":{
+  "ritual_start": {
     "category": "block",
     "subtitle": "arcaneworld.subtitle.ritual_start",
     "sounds": ["arcaneworld:ritual_start"]
   },
-  "ritual_item_pop":{
+  "ritual_item_pop": {
     "category": "block",
     "subtitle": "arcaneworld.subtitle.ritual_item_pop",
     "sounds": ["arcaneworld:ritual_item_pop"]
   },
-  "general_woosh":{
+  "general_woosh": {
     "category": "world",
     "subtitle": "arcaneworld.subtitle.woosh",
     "sounds": ["arcaneworld:woosh"]
   },
-  "general_break":{
+  "general_break": {
     "category": "world",
     "sounds": ["arcaneworld:break"]
   },
-  "general_break_squish":{
+  "general_break_squish": {
     "category": "world",
     "sounds": ["arcaneworld:break_squish"]
+  },
+  "music_dungeon": {
+    "category": "music",
+    "sounds": [
+      {
+      "name": "arcaneworld:music_barren_settlement",
+      "stream": true
+      },
+      {
+      "name": "arcaneworld:music_dark_cave",
+      "stream": true
+      },
+      {
+      "name": "arcaneworld:music_lunar_ambience",
+      "stream": true
+    }]
   }
 }

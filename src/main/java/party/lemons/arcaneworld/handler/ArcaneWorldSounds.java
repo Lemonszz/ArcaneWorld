@@ -1,8 +1,11 @@
 package party.lemons.arcaneworld.handler;
 
+import net.minecraft.client.audio.MusicTicker;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
+import net.minecraftforge.client.EnumHelperClient;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -25,6 +28,8 @@ public class ArcaneWorldSounds
     public static final SoundEvent GENERAL_WOOSH = SoundEvents.UI_TOAST_OUT;
     public static final SoundEvent GENERAL_BREAK = SoundEvents.UI_TOAST_OUT;
     public static final SoundEvent GENERAL_BREAK_SQUISH = SoundEvents.UI_TOAST_OUT;
+    public static final SoundEvent MUSIC_DUNGEON = SoundEvents.UI_TOAST_OUT;
+
 
     @SubscribeEvent
     public static void onRegisterSound(RegistryEvent.Register<SoundEvent> event)
@@ -37,6 +42,8 @@ public class ArcaneWorldSounds
         registerSound(event.getRegistry(), "general_woosh");
         registerSound(event.getRegistry(), "general_break");
         registerSound(event.getRegistry(), "general_break_squish");
+        registerSound(event.getRegistry(), "music_dungeon");
+
     }
 
     public static void registerSound(IForgeRegistry<SoundEvent> r, String name)

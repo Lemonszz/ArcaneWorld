@@ -8,6 +8,7 @@ tile.arcaneworld.block_sapphire.name=Sapphire Block
 tile.arcaneworld.block_amethyst.name=Amethyst Block
 tile.arcaneworld.block_amethyst.name=Amethyst Block
 tile.arcaneworld.ritual_table.name=Ritual Table
+tile.arcaneworld.return_portal.name=Return Portal
 
 item.arcaneworld.arcane_hoe.name=Arcane Hoe
 item.arcaneworld.fang_wand.name=Wand of Evocation
@@ -72,6 +73,7 @@ arcaneworld.summon_villager=Conjure Villager
 arcaneworld.summon_llama=Conjure Llama
 arcaneworld.summon_wolf=Conjure Wolf
 arcaneworld.ritual_scroll=Activate Scroll
+arcaneworld.dungeon=Dungeon Raid
 
 
 

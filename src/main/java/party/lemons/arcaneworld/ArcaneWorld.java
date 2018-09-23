@@ -46,5 +46,6 @@ public class ArcaneWorld
 	{
 		OreDictHandler.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(INSTANCE, new ArcaneWorldGuiHandler());
+		proxy.registerSidedInit();
 	}
 }
