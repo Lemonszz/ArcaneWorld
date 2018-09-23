@@ -21,7 +21,7 @@ public class ArcaneWorld
 {
 	public static final String MODID = "arcaneworld";
 	public static final String NAME = "Arcane World";
-	public static final String VERSION = "0.0.4";
+	public static final String VERSION = "0.0.5";
 
 	@Mod.Instance(MODID)
 	public static ArcaneWorld INSTANCE;

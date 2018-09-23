@@ -17,6 +17,7 @@ item.arcaneworld.amethyst.name=Amethyst
 item.arcaneworld.glowing_chorus.name=Glowing Chorus Fruit
 item.arcaneworld.biome_crystal.name=Biome Crystal
 item.arcaneworld.ritual_scroll.name=Scroll
+item.arcaneworld.recaller.name=Recaller
 
 arcaneworld.subtitle.ritual_out=Ritual Bangs
 arcaneworld.subtitle.ritual_item=Ritual Pops
@@ -36,6 +37,7 @@ arcaneworld.create_arcane_hoe=Imbue Hoe
 arcaneworld.create_evoking_wand=Imbue Wand
 arcaneworld.create_glowing_chorus=Radiant Chorus
 arcaneworld.create_biome_crystal=Crystal Forge
+arcaneworld.create_recaller=Call Of the Void
 arcaneworld.summon_zombie=Conjure Zombie
 arcaneworld.summon_skeleton=Conjure Skeleton
 arcaneworld.summon_spider=Conjure Spider

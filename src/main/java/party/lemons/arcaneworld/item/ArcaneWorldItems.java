@@ -45,9 +45,10 @@ public class ArcaneWorldItems
 		registerItem(r, new ItemModel(), "sapphire", "gemSapphire");
 		registerItem(r, new ItemModel(), "amethyst", "gemAmethyst");
 		registerItem(r, new ItemGlowingChorusFruit(), "glowing_chorus");
-		registerItem(r, new ItemBiomeCrystal(5), "biome_crystal");
+        registerItem(r, new ItemRecaller(), "recaller");
+
+        registerItem(r, new ItemBiomeCrystal(5), "biome_crystal");
 		registerItem(r, new ItemRitualScroll(), "ritual_scroll");
-		registerItem(r, new ItemRecaller(), "recaller");
 
 
 		////TODO: Do this btter

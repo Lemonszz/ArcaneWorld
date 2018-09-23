@@ -41,6 +41,8 @@ public class ArcaneWorldGen
     public static void onRegisterBiome(RegistryEvent.Register<Biome> event)
     {
         event.getRegistry().register(new BiomeArcaneVoid(new Biome.BiomeProperties("arcane_void").setRainDisabled().setWaterColor(0x38393a)).setRegistryName(ArcaneWorld.MODID, "arcane_void"));
+
+        BiomeDictionary.addTypes(ARCANE_VOID, BiomeDictionary.Type.VOID);
     }
 
 
