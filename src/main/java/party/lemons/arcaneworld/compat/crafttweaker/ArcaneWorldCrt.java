@@ -63,6 +63,7 @@ public class ArcaneWorldCrt
                 break;
             case "rain":
                 type = RitualWeather.WeatherType.RAIN;
+                break;
             case "thunder":
                 type = RitualWeather.WeatherType.THUNDER;
                 break;
@@ -80,8 +81,13 @@ public class ArcaneWorldCrt
     @ZenMethod
     public static void createRitualCreateItem(String name, String displayName, IItemStack result, IIngredient... inputs)
     {
-        ItemStack stack = CraftTweakerMC.getItemStack(result);
         createRitual(name,displayName, new RitualCreateItem(CraftTweakerMC.getItemStack(result), getIngredients(inputs)));
+    }
+
+    @ZenMethod
+    public static void createRitualDungeon((String name, String displayName, IIngredient... inputs)
+    {
+        createRitual(name, displayName, new RitualDungeon(getIngredients(inputs)));
     }
 
     public static Ingredient[] getIngredients(IIngredient... inputs)

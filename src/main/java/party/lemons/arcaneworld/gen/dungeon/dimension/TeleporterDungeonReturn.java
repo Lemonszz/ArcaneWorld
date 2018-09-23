@@ -31,7 +31,7 @@ public class TeleporterDungeonReturn extends Teleporter
             boolean hasBed = true;
 
             BlockPos bedLocation = player.getBedLocation();
-            if (bedLocation == null || player.getBedSpawnLocation(world, bedLocation, false) == null)
+            if (bedLocation == null || EntityPlayer.getBedSpawnLocation(world, bedLocation, false) == null)
                 hasBed = false;
 
             if (!hasBed)
@@ -41,7 +41,7 @@ public class TeleporterDungeonReturn extends Teleporter
             }
             else
             {
-                returnPos = player.getBedSpawnLocation(world, bedLocation, false);
+                returnPos = EntityPlayer.getBedSpawnLocation(world, bedLocation, false);
             }
         }
 
