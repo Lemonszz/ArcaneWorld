@@ -30,11 +30,6 @@ public class ItemFangWand extends ItemModel
 		if(worldIn.isRemote)
 			return EnumActionResult.SUCCESS;
 
-		if(!player.isSneaking())
-		    new DungeonGenerator(worldIn, pos.up(10)).generate();
-		else
-		    player.changeDimension(ArcaneWorldConfig.ConfigDungeonDimension.DIM_ID, new TeleporterDungeon((WorldServer) worldIn));
-
 		float f = (float) MathHelper.atan2((pos.getZ() + hitZ) - player.posZ, (pos.getX() + hitX) - player.posX);
 		double pY = pos.up().getY();
 
