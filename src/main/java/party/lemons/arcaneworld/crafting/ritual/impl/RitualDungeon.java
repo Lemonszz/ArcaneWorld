@@ -31,6 +31,6 @@ public class RitualDungeon extends Ritual
         TeleporterDungeon teleporter = new TeleporterDungeon(ws);
         List<EntityLivingBase> players = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(pos).grow(5, 5, 5));
 
-        players.forEach(p -> p.changeDimension(ArcaneWorldConfig.ConfigDungeonDimension.DIM_ID, teleporter));
+        players.forEach(p -> p.changeDimension(ArcaneWorldConfig.DUNGEONS.DIM_ID, teleporter));
     }
 }

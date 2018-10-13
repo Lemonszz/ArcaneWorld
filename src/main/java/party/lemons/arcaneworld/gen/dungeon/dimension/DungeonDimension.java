@@ -27,11 +27,11 @@ import party.lemons.arcaneworld.config.ArcaneWorldConfig;
  */
 public class DungeonDimension
 {
-    public static DimensionType TYPE = DimensionType.register("dungeon", "dungeon", ArcaneWorldConfig.ConfigDungeonDimension.DIM_ID, DungeonDimensionProvider.class, false);
+    public static DimensionType TYPE = DimensionType.register("dungeon", "dungeon", ArcaneWorldConfig.DUNGEONS.DIM_ID, DungeonDimensionProvider.class, false);
 
     public static void init()
     {
-        DimensionManager.registerDimension(ArcaneWorldConfig.ConfigDungeonDimension.DIM_ID, TYPE);
+        DimensionManager.registerDimension(ArcaneWorldConfig.DUNGEONS.DIM_ID, TYPE);
     }
 
     private static void cancelIfInDim(World world, Event event)
@@ -48,7 +48,7 @@ public class DungeonDimension
 
     private static boolean isInDim(World world)
     {
-        return world.provider.getDimension() == ArcaneWorldConfig.ConfigDungeonDimension.DIM_ID;
+        return world.provider.getDimension() == ArcaneWorldConfig.DUNGEONS.DIM_ID;
     }
 
 

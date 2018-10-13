@@ -78,7 +78,7 @@ public class ArcaneWorldGen
 
     private static WorldGenerator getRiftGenerator()
     {
-        return new FeatureChance(new FeatureRift(), ArcaneWorldConfig.ConfigRift.SPAWN_CHANCE);
+        return new FeatureChance(new FeatureRift(), ArcaneWorldConfig.RIFTS.SPAWN_CHANCE);
     }
 
     private static boolean isWetBiome(Biome biome)

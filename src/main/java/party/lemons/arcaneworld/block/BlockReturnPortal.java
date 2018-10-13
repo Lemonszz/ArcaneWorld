@@ -50,7 +50,7 @@ public class BlockReturnPortal extends BlockPortal implements IModel
 
     public void onEntityCollision(World worldIn, BlockPos pos, IBlockState state, Entity entity)
     {
-        if(worldIn.provider.getDimension() != ArcaneWorldConfig.ConfigDungeonDimension.DIM_ID)
+        if(worldIn.provider.getDimension() != ArcaneWorldConfig.DUNGEONS.DIM_ID)
             return;
 
         if (!entity.isRiding() && !entity.isBeingRidden() && entity.isNonBoss())
