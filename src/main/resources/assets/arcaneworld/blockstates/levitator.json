@@ -1,0 +1,42 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "bottom": "arcaneworld:blocks/levitator_bottom",
+      "side": "arcaneworld:blocks/levitator_side",
+      "top": "arcaneworld:blocks/levitator_side",
+      "front":"arcaneworld:blocks/levitator_top"
+    },
+    "model": "observer",
+    "uvlock": true
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory":
+    {
+      "model": "observer",
+      "transform": "forge:default-block"
+    },
+    "facing":
+    {
+      "north":{
+        "y": 0
+      },
+      "south":{
+        "y": 180
+      },
+      "east":{
+        "y": 90
+      },
+      "west":{
+        "y": 270
+      },
+      "up":{
+        "x": 270
+      },
+      "down":{
+        "x": 90
+      }
+    }
+  }
+}

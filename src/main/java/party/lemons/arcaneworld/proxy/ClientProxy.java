@@ -6,8 +6,8 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import party.lemons.arcaneworld.block.tilentity.TileEntityRitualTable;
 import party.lemons.arcaneworld.block.tilentity.render.TESRRitualTable;
-import party.lemons.arcaneworld.entity.EntityRecallOrb;
-import party.lemons.arcaneworld.entity.model.RenderRecallOrb;
+import party.lemons.arcaneworld.entity.EntityRift;
+import party.lemons.arcaneworld.entity.model.RenderRift;
 import party.lemons.arcaneworld.handler.ArcaneWorldSounds;
 
 /**
@@ -21,7 +21,7 @@ public class ClientProxy implements IProxy
 	public void registerSided()
 	{
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRitualTable.class, new TESRRitualTable());
-        RenderingRegistry.registerEntityRenderingHandler(EntityRecallOrb.class, RenderRecallOrb::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityRift.class, RenderRift::new);
     }
 
     @Override

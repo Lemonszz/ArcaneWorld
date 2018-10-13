@@ -13,6 +13,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 import party.lemons.arcaneworld.ArcaneWorld;
+import party.lemons.arcaneworld.block.tilentity.TileEntityLevitator;
 import party.lemons.arcaneworld.block.tilentity.TileEntityRitualTable;
 import party.lemons.arcaneworld.crafting.ArcaneWorldTab;
 import party.lemons.arcaneworld.item.ArcaneWorldItems;
@@ -36,6 +37,7 @@ public class ArcaneWorldBlocks
 	public static final Block ORE_SAPPHIRE =Blocks.AIR ;
 	public static final Block ORE_AMETHYST =Blocks.AIR ;
 	public static final Block RETURN_PORTAL =Blocks.AIR ;
+	public static final Block LEVITATOR =Blocks.AIR ;
 
 	@SubscribeEvent
 	public static void onRegisterBlock(RegistryEvent.Register<Block> event)
@@ -47,12 +49,14 @@ public class ArcaneWorldBlocks
 		setProperties(registerBlock(r, new BlockModel(Material.IRON), "block_sapphire", "blockSapphire"), 3F, 5F, 0F);
 		setProperties(registerBlock(r, new BlockModel(Material.IRON), "block_amethyst", "blockAmethyst"), 3F, 5F, 0F);
 		setProperties(registerBlock(r, new BlockRitualTable(), "ritual_table"), 3F, 5F, 0F);
+		setProperties(registerBlock(r, new BlockLevitator(), "levitator"), 3F, 5F, 0F);
 
         Block portal = new BlockReturnPortal().setBlockUnbreakable().setRegistryName(ArcaneWorld.MODID, "return_portal");
         blockList.add(portal);
         r.register(portal);
 
 		GameRegistry.registerTileEntity(TileEntityRitualTable.class, new ResourceLocation(ArcaneWorld.MODID, "ritual_table"));
+		GameRegistry.registerTileEntity(TileEntityLevitator.class, new ResourceLocation(ArcaneWorld.MODID, "levitator"));
 	}
 
 	@SubscribeEvent

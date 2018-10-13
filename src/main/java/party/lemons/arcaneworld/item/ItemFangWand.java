@@ -3,6 +3,10 @@ package party.lemons.arcaneworld.item;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityEvokerFangs;
+import net.minecraft.init.Enchantments;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -62,6 +66,7 @@ public class ItemFangWand extends ItemModel
 			EntityEvokerFangs fangs = new EntityEvokerFangs(worldIn, pX, pY, pZ, player.rotationYaw, (int)time_offset, player);
 			worldIn.spawnEntity(fangs);
 		}
+
 		player.getHeldItem(hand).damageItem(1, player);
 		player.getCooldownTracker().setCooldown(this, 30);
 		return EnumActionResult.SUCCESS;

@@ -18,10 +18,20 @@ public class ArcaneWorldConfig
     @Config.Name("Dungeon")
     public static ConfigDungeonDimension DUNGEONS = new ConfigDungeonDimension();
 
+    @Config.Name("Rifts")
+    public static ConfigRift RIFTS = new ConfigRift();
+
     public static class ConfigDungeonDimension
     {
         @Config.Name("Dimension ID")
-        public static int DIM_ID = -546;
+        public int DIM_ID = -546;
+    }
+
+    public static class ConfigRift
+    {
+        @Config.Name("Spawn Chance")
+        @Config.RangeInt(min = 0)
+        public int SPAWN_CHANCE = 1000;
     }
 
     public static class ConfigOres

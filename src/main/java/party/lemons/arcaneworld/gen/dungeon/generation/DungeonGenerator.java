@@ -211,9 +211,31 @@ public class DungeonGenerator
         if(!cachedTemplates.containsKey(directory))
         {
             List<ResourceLocation> locations = new ArrayList<>();
-            try
+            switch (directory)
             {
-                File file = new File(this.getClass().getClassLoader().getResource("assets/" + ArcaneWorld.MODID + "/structures/dungeon/" + directory).toURI());
+                case "cap":
+                    loadTemplates(locations, directory, 15);
+                break;
+                case "corner":
+                    loadTemplates(locations, directory, 5);
+                    break;
+                case "corridor":
+                    loadTemplates(locations, directory, 10);
+                    break;
+                case "open":
+                    loadTemplates(locations, directory, 1);
+                    break;
+                case "sealed":
+                    locations.add(new ResourceLocation(ArcaneWorld.MODID, "dungeon/" + directory + "/" + directory));
+                    break;
+                case "t":
+                    loadTemplates(locations, directory, 11);
+                    break;
+            }
+
+          /*  try
+            {
+               /* File file = new File(this.getClass().getClassLoader().getResource("assets/" + ArcaneWorld.MODID + "/structures/dungeon/" + directory).toURI());
                 File[] templates = file.listFiles();
 
                 for (File files : templates)
@@ -228,13 +250,21 @@ public class DungeonGenerator
             {
                 e.printStackTrace();
             }
-
+        */
             cachedTemplates.put(directory, locations);
         }
 
         List<ResourceLocation> selectFrom = cachedTemplates.get(directory);
         ResourceLocation selected = selectFrom.get(random.nextInt(selectFrom.size()));
         return selected;
+    }
+
+    private void loadTemplates(List<ResourceLocation> locations, String directory, int size)
+    {
+        for(int i = 1; i < size + 1; i++)
+        {
+            locations.add((new ResourceLocation(ArcaneWorld.MODID, "dungeon/" + directory + "/" + directory + "_" + i)));
+        }
     }
 
     public int getWidth()

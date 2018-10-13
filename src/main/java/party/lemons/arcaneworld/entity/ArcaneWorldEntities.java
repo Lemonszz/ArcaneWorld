@@ -24,7 +24,7 @@ public class ArcaneWorldEntities
     public static void init()
     {
         int id = 0;
-        EntityRegistry.registerModEntity(new ResourceLocation(ArcaneWorld.MODID, "recall_orb"), EntityRecallOrb.class, "RecallOrb", id++, ArcaneWorld.INSTANCE, 32, 12, false);
+        EntityRegistry.registerModEntity(new ResourceLocation(ArcaneWorld.MODID, "rift"), EntityRift.class, "Rift", id++, ArcaneWorld.INSTANCE, 32, 12, false);
 
 
         List<Biome> biomesList =  ForgeRegistries.BIOMES.getValuesCollection().stream().filter(b -> !BiomeDictionary.getTypes(b).contains(BiomeDictionary.Type.NETHER) && !BiomeDictionary.getTypes(b).contains(BiomeDictionary.Type.END)).collect(Collectors.toList());

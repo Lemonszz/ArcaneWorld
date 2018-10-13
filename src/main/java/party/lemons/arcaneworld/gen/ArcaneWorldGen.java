@@ -50,6 +50,9 @@ public class ArcaneWorldGen
             ArcaneWorldBlocks.ORE_AMETHYST::getDefaultState, b -> b.getBlock() == Blocks.END_STONE,ArcaneWorldConfig.ORES.AMETHYST_GENERATION.vein_size, ArcaneWorldConfig.ORES.AMETHYST_GENERATION.vein_count, ArcaneWorldConfig.ORES.AMETHYST_GENERATION.min_height, ArcaneWorldConfig.ORES.AMETHYST_GENERATION.max_height
     );
 
+    private static final WorldGenerator RIFT_GENERATE = getRiftGenerator();
+
+
     @SubscribeEvent
     public static void onPopulateChunk(PopulateChunkEvent.Pre event)
     {
@@ -63,11 +66,19 @@ public class ArcaneWorldGen
         getOreGenerator(ArcaneWorldBlocks.ORE_SAPPHIRE::getDefaultState, b -> b.getBlock() == Blocks.STONE, ArcaneWorldConfig.ORES.SAPPHIRE_GENERATION.vein_size, isWetBiome(biome) ? ArcaneWorldConfig.ORES.SAPPHIRE_GENERATION.vein_count * 3 : ArcaneWorldConfig.ORES.SAPPHIRE_GENERATION.vein_count, ArcaneWorldConfig.ORES.SAPPHIRE_GENERATION.min_height, ArcaneWorldConfig.ORES.SAPPHIRE_GENERATION.max_height).generate(world, rand, pos);
 
         AMETHYST_GENERATOR.generate(world, rand, pos);
+
+        //Generate rifts
+        getRiftGenerator().generate(world, rand, pos);
     }
 
     private static WorldGenerator getOreGenerator(Supplier<IBlockState> state, Predicate<IBlockState> predicate, int size, int count, int minHeight, int maxHeight)
     {
         return new FeatureRange(new FeatureVein(b -> state.get(), size, predicate), count, minHeight, maxHeight);
+    }
+
+    private static WorldGenerator getRiftGenerator()
+    {
+        return new FeatureChance(new FeatureRift(), ArcaneWorldConfig.ConfigRift.SPAWN_CHANCE);
     }
 
     private static boolean isWetBiome(Biome biome)

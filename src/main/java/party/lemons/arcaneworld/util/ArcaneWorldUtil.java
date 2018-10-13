@@ -8,17 +8,28 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.items.IItemHandler;
+import party.lemons.arcaneworld.ArcaneWorld;
 import party.lemons.arcaneworld.crafting.ritual.Ritual;
 import party.lemons.arcaneworld.crafting.ritual.RitualRegistry;
 import party.lemons.arcaneworld.item.ArcaneWorldItems;
 import party.lemons.arcaneworld.item.ItemRitualScroll;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.lang.reflect.Field;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Random;
 import java.util.stream.Collectors;
+
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 /**
  * Created by Sam on 15/09/2018.
@@ -90,6 +101,36 @@ public class ArcaneWorldUtil
         }
     }
 
+    public static void copyFile(String inputPath, String outputPath ) throws IOException
+    {
+
+        InputStream inputStream = null;
+        OutputStream outputStream = null;
+        try
+        {
+
+            inputStream = ArcaneWorld.class.getResourceAsStream(inputPath);
+            outputStream = new FileOutputStream(outputPath);
+
+            byte[] buf = new byte[1024];
+
+            int bytesRead;
+
+            while ((bytesRead = inputStream.read(buf)) > 0)
+            {
+
+                outputStream.write(buf, 0, bytesRead);
+
+            }
+
+        } finally
+        {
+            inputStream.close();
+            outputStream.close();
+
+        }
+    }
+
     public static int getEntityPortalTime(Entity entity)
     {
         if(portalTimeField == null)
@@ -126,6 +167,8 @@ public class ArcaneWorldUtil
         portalTimeField = ReflectionHelper.findField(Entity.class, "portalCounter", "field_82153_h");
         portalTimeField.setAccessible(true);
     }
+
+
 
     private static Field portalTimeField = null;
 }
