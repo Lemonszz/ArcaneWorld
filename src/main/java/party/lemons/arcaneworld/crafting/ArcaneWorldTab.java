@@ -1,7 +1,6 @@
 package party.lemons.arcaneworld.crafting;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import party.lemons.arcaneworld.ArcaneWorld;
 import party.lemons.arcaneworld.item.ArcaneWorldItems;

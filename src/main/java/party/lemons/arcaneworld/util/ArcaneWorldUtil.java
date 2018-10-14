@@ -30,7 +30,7 @@ public class ArcaneWorldUtil
 {
     public static ItemStack getRandomRitualScrollForDrop(Random random)
     {
-        Collection<Ritual> list = RitualRegistry.REGISTRY.getValuesCollection().stream().filter(r -> r.canDrop()).collect(Collectors.toList());
+        Collection<Ritual> list = RitualRegistry.REGISTRY.getValuesCollection().stream().filter(Ritual::canDrop).collect(Collectors.toList());
         Ritual ritual = list.stream().skip(random.nextInt(list.size()-1)).findFirst().get();
         while (ritual.isEmpty())
         {

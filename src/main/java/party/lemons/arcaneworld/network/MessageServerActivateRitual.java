@@ -16,8 +16,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import party.lemons.arcaneworld.block.tilentity.TileEntityRitualTable;
 import party.lemons.arcaneworld.crafting.ritual.RitualRegistry;
 
-import java.util.UUID;
-
 /**
  * Created by Sam on 5/05/2018.
  */

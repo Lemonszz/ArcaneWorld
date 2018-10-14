@@ -1,9 +1,9 @@
 package party.lemons.arcaneworld.gen;
 
-/**
- * Created by Sam on 13/09/2018.
- * Stole from pau101
- * https://github.com/pau101/Wings/blob/master/src/main/java/me/paulf/wings/server/world/feature/FeatureVein.java
+/*
+  Created by Sam on 13/09/2018.
+  Stole from pau101
+  https://github.com/pau101/Wings/blob/master/src/main/java/me/paulf/wings/server/world/feature/FeatureVein.java
  */
 import net.minecraft.block.BlockStone;
 import net.minecraft.block.state.IBlockState;

@@ -9,8 +9,6 @@ import net.minecraft.world.gen.structure.template.Template;
 import party.lemons.arcaneworld.ArcaneWorld;
 import party.lemons.arcaneworld.handler.ticker.TickerHandler;
 
-import java.io.*;
-import java.net.URISyntaxException;
 import java.util.*;
 
 /**
@@ -255,8 +253,7 @@ public class DungeonGenerator
         }
 
         List<ResourceLocation> selectFrom = cachedTemplates.get(directory);
-        ResourceLocation selected = selectFrom.get(random.nextInt(selectFrom.size()));
-        return selected;
+        return selectFrom.get(random.nextInt(selectFrom.size()));
     }
 
     private void loadTemplates(List<ResourceLocation> locations, String directory, int size)

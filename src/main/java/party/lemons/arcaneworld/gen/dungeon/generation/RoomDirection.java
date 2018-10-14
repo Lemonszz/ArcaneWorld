@@ -157,13 +157,13 @@ public class RoomDirection
     @Override
     public String toString()
     {
-        String s = "";
+        StringBuilder s = new StringBuilder();
         for(Direction direction : Direction.values())
         {
-            s += direction.toString() + " " + isOpen(direction) + ", ";
+            s.append(direction.toString()).append(" ").append(isOpen(direction)).append(", ");
         }
 
-        return s;
+        return s.toString();
     }
 
     enum RoomShape

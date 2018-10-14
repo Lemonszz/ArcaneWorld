@@ -6,9 +6,7 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.client.config.GuiButtonExt;
@@ -16,8 +14,6 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.items.ItemStackHandler;
 import party.lemons.arcaneworld.ArcaneWorld;
 import party.lemons.arcaneworld.block.tilentity.TileEntityRitualTable;
-import party.lemons.arcaneworld.crafting.ritual.RitualRegistry;
-import party.lemons.arcaneworld.crafting.ritual.Ritual;
 import party.lemons.arcaneworld.network.MessageRitualClientActivate;
 
 /**

@@ -2,20 +2,13 @@ package party.lemons.arcaneworld.network;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldServer;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import party.lemons.arcaneworld.ArcaneWorld;
 import party.lemons.arcaneworld.block.tilentity.TileEntityRitualTable;
-import party.lemons.arcaneworld.crafting.ritual.RitualRegistry;
-import party.lemons.arcaneworld.crafting.ritual.Ritual;
 
 /**
  * Created by Sam on 5/05/2018.

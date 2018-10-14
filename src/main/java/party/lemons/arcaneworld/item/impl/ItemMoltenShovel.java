@@ -1,6 +1,5 @@
 package party.lemons.arcaneworld.item.impl;
 
-import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.util.ResourceLocation;
 import party.lemons.arcaneworld.item.IModel;

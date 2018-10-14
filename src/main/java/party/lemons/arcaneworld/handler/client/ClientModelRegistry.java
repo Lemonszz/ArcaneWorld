@@ -44,7 +44,7 @@ public class ClientModelRegistry
 	public static void onRegisterModel(ModelRegistryEvent event)
 	{
 		ArcaneWorldItems.itemList.stream().filter(i -> i instanceof IModel).forEach(i -> registerModel((Item & IModel)i));
-		ArcaneWorldItems.itemList.stream().filter(i -> i instanceof ItemBlock).forEach(i ->registerSimpleModel(i));
+		ArcaneWorldItems.itemList.stream().filter(i -> i instanceof ItemBlock).forEach(ClientModelRegistry::registerSimpleModel);
 
 		registerSpecialModels();
 	}

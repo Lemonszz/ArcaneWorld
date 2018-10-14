@@ -5,7 +5,6 @@ import mezz.jei.api.IModRegistry;
 import mezz.jei.api.JEIPlugin;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
 import party.lemons.arcaneworld.block.ArcaneWorldBlocks;
 import party.lemons.arcaneworld.crafting.ritual.RitualRegistry;
 import party.lemons.arcaneworld.crafting.ritual.container.ContainerRitual;

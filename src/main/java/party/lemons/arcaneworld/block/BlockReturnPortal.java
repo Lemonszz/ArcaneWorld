@@ -14,7 +14,6 @@ import net.minecraft.world.WorldServer;
 import party.lemons.arcaneworld.config.ArcaneWorldConfig;
 import party.lemons.arcaneworld.gen.dungeon.dimension.TeleporterDungeonReturn;
 import party.lemons.arcaneworld.item.IModel;
-import party.lemons.arcaneworld.util.ArcaneWorldUtil;
 
 import java.util.Random;
 

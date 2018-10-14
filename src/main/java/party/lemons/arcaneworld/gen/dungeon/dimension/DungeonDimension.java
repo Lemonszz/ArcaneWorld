@@ -1,7 +1,6 @@
 package party.lemons.arcaneworld.gen.dungeon.dimension;
 
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;

@@ -1,7 +1,5 @@
 package party.lemons.arcaneworld.gen.dungeon.generation;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
@@ -17,8 +15,6 @@ import net.minecraft.world.storage.loot.LootTableList;
 
 import javax.annotation.Nullable;
 import java.util.List;
-
-import static net.minecraft.init.Biomes.PLAINS;
 
 /**
  * Created by Sam on 22/09/2018.

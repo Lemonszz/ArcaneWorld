@@ -1,7 +1,6 @@
 package party.lemons.arcaneworld.gen.dungeon.dimension;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.World;

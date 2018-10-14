@@ -1,6 +1,5 @@
 package party.lemons.arcaneworld.block.tilentity;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -271,15 +270,11 @@ public class TileEntityRitualTable extends TileEntity implements ITickable
 			{
 				float f1 = this.flipT;
 
-				while (true)
-				{
-					this.flipT += (float)(rand.nextInt(4) - rand.nextInt(4));
+                do
+                {
+                    this.flipT += (float) (rand.nextInt(4) - rand.nextInt(4));
 
-					if (f1 != this.flipT)
-					{
-						break;
-					}
-				}
+                } while (!(f1 != this.flipT));
 			}
 		}
 		else

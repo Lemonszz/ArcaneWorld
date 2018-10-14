@@ -61,7 +61,7 @@ public abstract class Ritual extends IForgeRegistryEntry.Impl<Ritual>
 		for(int i = 0; i < inputs.size(); i++)
 			inputList.add(inputs.get(i));
 
-		inputList.removeIf(is -> is.isEmpty());
+		inputList.removeIf(ItemStack::isEmpty);
 		ingreds.removeIf(is -> is == Ingredient.EMPTY);
 
         if(ingreds.size() != inputList.size())
