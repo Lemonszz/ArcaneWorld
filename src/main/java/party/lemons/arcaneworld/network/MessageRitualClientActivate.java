@@ -67,47 +67,9 @@ public class MessageRitualClientActivate implements IMessage
 
 				TileEntity te = world.getTileEntity(pos);
 				if(te instanceof TileEntityRitualTable)
-				{
-					//TODO: move this somewhere (tile entity?)
-                    //TODO: Also it really needs a cleanup
-					for(Ritual ritual : RitualRegistry.REGISTRY.getValuesCollection())
-					{
-						if(ritual.isEmpty())
-							continue;
-
-						NonNullList<ItemStack> stacks = NonNullList.withSize(5, ItemStack.EMPTY);
-						for(int i = 0; i < stacks.size(); i++)
-							stacks.set(i, ((TileEntityRitualTable) te).getInventory().getStackInSlot(i));
-
-						if(ritual.matches(stacks))
-						{
-							((TileEntityRitualTable)te).setRitual(ritual);
-							((TileEntityRitualTable)te).setActivator(serverPlayer);
-							((TileEntityRitualTable)te).setState(TileEntityRitualTable.RitualState.START_UP);
-
-							ItemStack[] usedStacks = new ItemStack[5];
-							for(int i = 0; i < 5; i++)
-							{
-								usedStacks[i] = ((TileEntityRitualTable) te).getInventory().getStackInSlot(i).copy();
-							}
-							((TileEntityRitualTable) te).setStacks(usedStacks);
-
-							//Take from tile entity inventory
-							for(int i = 0; i < ((TileEntityRitualTable) te).getInventory().getSlots(); i++)
-							{
-							    Ingredient ingredient = ritual.getRequiredItems().get(i);
-                                if(ingredient != Ingredient.EMPTY)
-                                {
-                                    int size = ingredient.getMatchingStacks()[0].getCount();
-                                    ((TileEntityRitualTable) te).getInventory().getStackInSlot(i).shrink(size);
-                                }
-							}
-
-							ArcaneWorld.NETWORK.sendToAllTracking(new MessageServerActivateRitual(ritual.getRegistryName(), te.getPos(), serverPlayer, usedStacks), new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64));
-							break;
-						}
-					}
-				}
+                {
+                    ((TileEntityRitualTable) te).attemptActivateRitual(serverPlayer);
+                }
 
 			});
 

@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import party.lemons.arcaneworld.item.ItemRitualScroll;
+import party.lemons.arcaneworld.item.impl.ItemRitualScroll;
 
 import javax.annotation.Nonnull;
 

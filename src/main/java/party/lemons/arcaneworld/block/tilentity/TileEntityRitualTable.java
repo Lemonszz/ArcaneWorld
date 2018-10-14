@@ -1,14 +1,12 @@
 package party.lemons.arcaneworld.block.tilentity;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.ITickable;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.WorldServer;
@@ -24,6 +22,7 @@ import party.lemons.arcaneworld.crafting.ritual.RitualRegistry;
 import party.lemons.arcaneworld.crafting.ritual.Ritual;
 import party.lemons.arcaneworld.handler.ArcaneWorldSounds;
 import party.lemons.arcaneworld.network.MessageRitualCreateUpParticle;
+import party.lemons.arcaneworld.network.MessageServerActivateRitual;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -58,6 +57,50 @@ public class TileEntityRitualTable extends TileEntity implements ITickable
 	{
 		this.state = RitualState.NONE;
 	}
+
+    public void attemptActivateRitual(EntityPlayer player)
+    {
+        if(!canCast())
+            return;
+
+        for(Ritual ritual : RitualRegistry.REGISTRY.getValuesCollection())
+        {
+            if(ritual.isEmpty())
+                continue;
+
+            NonNullList<ItemStack> stacks = NonNullList.withSize(5, ItemStack.EMPTY);
+            for(int i = 0; i < stacks.size(); i++)
+                stacks.set(i, getInventory().getStackInSlot(i));
+
+            if(ritual.matches(stacks))
+            {
+                setRitual(ritual);
+                setActivator(player);
+                setState(RitualState.START_UP);
+
+                ItemStack[] usedStacks = new ItemStack[5];
+                for(int i = 0; i < 5; i++)
+                {
+                    usedStacks[i] = getInventory().getStackInSlot(i).copy();
+                }
+                setStacks(usedStacks);
+
+                //Take from tile entity inventory
+                for(int i = 0; i < getInventory().getSlots(); i++)
+                {
+                    Ingredient ingredient = ritual.getRequiredItems().get(i);
+                    if(ingredient != Ingredient.EMPTY)
+                    {
+                        int size = ingredient.getMatchingStacks()[0].getCount();
+                        getInventory().getStackInSlot(i).shrink(size);
+                    }
+                }
+
+                ArcaneWorld.NETWORK.sendToAllTracking(new MessageServerActivateRitual(ritual.getRegistryName(), getPos(), player, usedStacks), new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64));
+                break;
+            }
+        }
+    }
 
 	public void update()
 	{
@@ -333,6 +376,29 @@ public class TileEntityRitualTable extends TileEntity implements ITickable
 	{
 		this.itemsUsed = stacks;
 	}
+
+	public boolean canCast()
+    {
+        if(getState() == TileEntityRitualTable.RitualState.NONE)
+        {
+            for (Ritual ritual : RitualRegistry.REGISTRY.getValuesCollection())
+            {
+                if (ritual.isEmpty())
+                    continue;
+
+                NonNullList<ItemStack> stacks = NonNullList.withSize(5, ItemStack.EMPTY);
+                for (int i = 0; i < stacks.size(); i++)
+                    stacks.set(i, getInventory().getStackInSlot(i));
+
+                if (ritual.matches(stacks))
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
 
 	public  enum RitualState
 	{

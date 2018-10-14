@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 import party.lemons.arcaneworld.ArcaneWorld;
 import party.lemons.arcaneworld.crafting.ArcaneWorldTab;
+import party.lemons.arcaneworld.item.impl.*;
 import party.lemons.arcaneworld.util.Pair;
 
 import java.util.ArrayList;
@@ -35,6 +36,11 @@ public class ArcaneWorldItems
 	public static final Item RITUAL_SCROLL = Items.AIR;
     public static final Item RECALLER = Items.AIR;
     public static final Item RECALL_EYE = Items.AIR;
+    public static final Item MOLTEN_CORE = Items.AIR;
+    public static final Item MOLTEN_PICKAXE = Items.AIR;
+    public static final Item MOLTEN_SHOVEL = Items.AIR;
+    public static final Item MOLTEN_AXE = Items.AIR;
+
 	@SubscribeEvent
 	public static void onRegisterItem(RegistryEvent.Register<Item> event)
 	{
@@ -49,6 +55,11 @@ public class ArcaneWorldItems
 
         registerItem(r, new ItemBiomeCrystal(5), "biome_crystal");
 		registerItem(r, new ItemRitualScroll(), "ritual_scroll");
+		registerItem(r, new ItemModel(), "molten_core");
+
+		registerItem(r, new ItemMoltenPickaxe(Item.ToolMaterial.IRON), "molten_pickaxe");
+		registerItem(r, new ItemMoltenShovel(Item.ToolMaterial.IRON), "molten_shovel");
+		registerItem(r, new ItemMoltenAxe(Item.ToolMaterial.IRON), "molten_axe");
 
 
 		////TODO: Do this btter

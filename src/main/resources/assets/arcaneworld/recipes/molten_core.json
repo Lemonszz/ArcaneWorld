@@ -1,0 +1,27 @@
+{
+  "result": {
+    "item": "arcaneworld:molten_core",
+    "count": 1
+  },
+  "pattern": [
+    "AFA",
+    "FLF",
+    "MFM"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "A": {
+      "type": "forge:ore_dict",
+      "ore": "gemAmethyst"
+    },
+    "F":{
+      "item": "minecraft:fire_charge"
+    },
+    "L":{
+      "item": "minecraft:lava_bucket"
+    },
+    "M":{
+      "item": "minecraft:magma_cream"
+    }
+  }
+}

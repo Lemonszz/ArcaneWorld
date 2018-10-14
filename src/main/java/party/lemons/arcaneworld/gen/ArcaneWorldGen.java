@@ -47,7 +47,11 @@ public class ArcaneWorldGen
 
 
     private static final WorldGenerator AMETHYST_GENERATOR = getOreGenerator(
-            ArcaneWorldBlocks.ORE_AMETHYST::getDefaultState, b -> b.getBlock() == Blocks.END_STONE,ArcaneWorldConfig.ORES.AMETHYST_GENERATION.vein_size, ArcaneWorldConfig.ORES.AMETHYST_GENERATION.vein_count, ArcaneWorldConfig.ORES.AMETHYST_GENERATION.min_height, ArcaneWorldConfig.ORES.AMETHYST_GENERATION.max_height
+            ArcaneWorldBlocks.ORE_AMETHYST::getDefaultState, b -> b.getBlock() == Blocks.END_STONE,ArcaneWorldConfig.ORES.AMETHYST_GENERATION.vein_size, ArcaneWorldConfig.ORES.AMETHYST_GENERATION.vein_count, ArcaneWorldConfig.ORES.AMETHYST_GENERATION.min_height, ArcaneWorldConfig.ORES.AMETHYST_GENERATION.max_height, 1
+    );
+
+    private static final WorldGenerator AMETHYST_GENERATOR_NETHER = getOreGenerator(
+            ArcaneWorldBlocks.ORE_AMETHYST_NETHER::getDefaultState, b -> b.getBlock() == Blocks.NETHERRACK,ArcaneWorldConfig.ORES.AMETHYST_GENERATION_NETHER.vein_size, ArcaneWorldConfig.ORES.AMETHYST_GENERATION_NETHER.vein_count, ArcaneWorldConfig.ORES.AMETHYST_GENERATION_NETHER.min_height, ArcaneWorldConfig.ORES.AMETHYST_GENERATION_NETHER.max_height, -1
     );
 
     private static final WorldGenerator RIFT_GENERATE = getRiftGenerator();
@@ -63,17 +67,18 @@ public class ArcaneWorldGen
 
         //Create sapphire generator here since it needs to check the biome.
         //TODO: look into moving this elsewhere so doesn't need to be created more than once
-        getOreGenerator(ArcaneWorldBlocks.ORE_SAPPHIRE::getDefaultState, b -> b.getBlock() == Blocks.STONE, ArcaneWorldConfig.ORES.SAPPHIRE_GENERATION.vein_size, isWetBiome(biome) ? ArcaneWorldConfig.ORES.SAPPHIRE_GENERATION.vein_count * 3 : ArcaneWorldConfig.ORES.SAPPHIRE_GENERATION.vein_count, ArcaneWorldConfig.ORES.SAPPHIRE_GENERATION.min_height, ArcaneWorldConfig.ORES.SAPPHIRE_GENERATION.max_height).generate(world, rand, pos);
+        getOreGenerator(ArcaneWorldBlocks.ORE_SAPPHIRE::getDefaultState, b -> b.getBlock() == Blocks.STONE, ArcaneWorldConfig.ORES.SAPPHIRE_GENERATION.vein_size, isWetBiome(biome) ? ArcaneWorldConfig.ORES.SAPPHIRE_GENERATION.vein_count * 3 : ArcaneWorldConfig.ORES.SAPPHIRE_GENERATION.vein_count, ArcaneWorldConfig.ORES.SAPPHIRE_GENERATION.min_height, ArcaneWorldConfig.ORES.SAPPHIRE_GENERATION.max_height, 0).generate(world, rand, pos);
 
         AMETHYST_GENERATOR.generate(world, rand, pos);
+        AMETHYST_GENERATOR_NETHER.generate(world, rand, pos);
 
         //Generate rifts
         getRiftGenerator().generate(world, rand, pos);
     }
 
-    private static WorldGenerator getOreGenerator(Supplier<IBlockState> state, Predicate<IBlockState> predicate, int size, int count, int minHeight, int maxHeight)
+    private static WorldGenerator getOreGenerator(Supplier<IBlockState> state, Predicate<IBlockState> predicate, int size, int count, int minHeight, int maxHeight, int... dims)
     {
-        return new FeatureRange(new FeatureVein(b -> state.get(), size, predicate), count, minHeight, maxHeight);
+        return new FeatureDimension(new FeatureRange(new FeatureVein(b -> state.get(), size, predicate), count, minHeight, maxHeight), dims);
     }
 
     private static WorldGenerator getRiftGenerator()

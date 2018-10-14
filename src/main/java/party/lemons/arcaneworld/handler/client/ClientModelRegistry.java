@@ -2,12 +2,9 @@ package party.lemons.arcaneworld.handler.client;
 
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.client.event.ColorHandlerEvent;
@@ -20,7 +17,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import party.lemons.arcaneworld.ArcaneWorld;
 import party.lemons.arcaneworld.item.ArcaneWorldItems;
 import party.lemons.arcaneworld.item.IModel;
-import party.lemons.arcaneworld.item.ItemBiomeCrystal;
+import party.lemons.arcaneworld.item.impl.ItemBiomeCrystal;
 
 /**
  * Created by Sam on 30/08/2018.

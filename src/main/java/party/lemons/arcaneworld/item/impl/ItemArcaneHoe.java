@@ -1,4 +1,4 @@
-package party.lemons.arcaneworld.item;
+package party.lemons.arcaneworld.item.impl;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemHoe;
@@ -11,6 +11,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import party.lemons.arcaneworld.handler.ticker.TickerHandler;
 import party.lemons.arcaneworld.handler.ticker.impl.TickerHoe;
+import party.lemons.arcaneworld.item.IModel;
 
 /**
  * Created by Sam on 9/09/2018.

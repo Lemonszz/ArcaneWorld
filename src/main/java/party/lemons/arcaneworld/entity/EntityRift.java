@@ -91,7 +91,7 @@ public class EntityRift extends Entity
 
     public void teleportEntity(Entity e)
     {
-        if(world.isRemote)
+        if(world.isRemote || e.isRiding() || e.isBeingRidden())
             return;
 
         if(e instanceof EntityPlayer)

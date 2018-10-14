@@ -26,7 +26,6 @@ public class FeatureRift extends WorldGenerator
         rift.setPosition(position.getX() + 0.5F, yPos, position.getZ() + 0.5F);
         world.spawnEntity(rift);
 
-        System.out.println(rift.getPosition());
         return true;
     }
 }

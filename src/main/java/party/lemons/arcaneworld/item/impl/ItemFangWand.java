@@ -1,22 +1,14 @@
-package party.lemons.arcaneworld.item;
+package party.lemons.arcaneworld.item.impl;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityEvokerFangs;
-import net.minecraft.init.Enchantments;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
-import party.lemons.arcaneworld.config.ArcaneWorldConfig;
-import party.lemons.arcaneworld.gen.dungeon.dimension.TeleporterDungeon;
-import party.lemons.arcaneworld.gen.dungeon.generation.DungeonGenerator;
 
 /**
  * Created by Sam on 9/09/2018.

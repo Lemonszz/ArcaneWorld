@@ -36,6 +36,7 @@ public class ArcaneWorldBlocks
 	public static final Block RITUAL_TABLE = Blocks.AIR;
 	public static final Block ORE_SAPPHIRE =Blocks.AIR ;
 	public static final Block ORE_AMETHYST =Blocks.AIR ;
+	public static final Block ORE_AMETHYST_NETHER =Blocks.AIR ;
 	public static final Block RETURN_PORTAL =Blocks.AIR ;
 	public static final Block LEVITATOR =Blocks.AIR ;
 
@@ -46,6 +47,7 @@ public class ArcaneWorldBlocks
 
 		setProperties(registerBlock(r, new BlockArcaneOre(3, 2, ()->ArcaneWorldItems.SAPPHIRE), "ore_sapphire", "oreSapphire"), 3F, 5F, 0F);
 		setProperties(registerBlock(r, new BlockArcaneOre(2, 4, ()->ArcaneWorldItems.AMETHYST), "ore_amethyst", "oreAmethyst"), 3F, 5F, 0F);
+		setProperties(registerBlock(r, new BlockArcaneOre(2, 4, ()->ArcaneWorldItems.AMETHYST), "ore_amethyst_nether", "oreAmethyst"), 3F, 5F, 0F);
 		setProperties(registerBlock(r, new BlockModel(Material.IRON), "block_sapphire", "blockSapphire"), 3F, 5F, 0F);
 		setProperties(registerBlock(r, new BlockModel(Material.IRON), "block_amethyst", "blockAmethyst"), 3F, 5F, 0F);
 		setProperties(registerBlock(r, new BlockRitualTable(), "ritual_table"), 3F, 5F, 0F);

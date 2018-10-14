@@ -85,30 +85,13 @@ public class GuiRitual extends GuiContainer
 
 	private void updateButton()
 	{
-		castButton.enabled = false;
-
 		TileEntity te = Minecraft.getMinecraft().world.getTileEntity(blockPos);
 		if(te instanceof TileEntityRitualTable)
 		{
-			if(((TileEntityRitualTable)te).getState() != TileEntityRitualTable.RitualState.NONE)
-				return;
+            castButton.enabled = ((TileEntityRitualTable) te).canCast();
 		}
-
-		for(Ritual ritual : RitualRegistry.REGISTRY.getValuesCollection())
-		{
-			if(ritual.isEmpty())
-				continue;
-
-			NonNullList<ItemStack> stacks = NonNullList.withSize(5, ItemStack.EMPTY);
-			for(int i = 0; i < stacks.size(); i++)
-				stacks.set(i, ritualInventory.getStackInSlot(i));
-
-			if(ritual.matches(stacks))
-			{
-				castButton.enabled = true;
-				break;
-			}
-		}
+		else
+		    castButton.enabled = false;
 	}
 
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)

@@ -15,6 +15,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import party.lemons.arcaneworld.ArcaneWorld;
@@ -45,13 +46,30 @@ public class BlockRitualTable extends BlockModel
 
 			if (tileentity instanceof TileEntityRitualTable)
 			{
-				playerIn.openGui(ArcaneWorld.INSTANCE, 0, worldIn, pos.getX(), pos.getY(), pos.getZ());
+                if(playerIn instanceof FakePlayer)
+                {
+                    return doFakePlayerInteraction((FakePlayer) playerIn, (TileEntityRitualTable) tileentity, pos, worldIn);
+                }
+                else
+                {
+                    playerIn.openGui(ArcaneWorld.INSTANCE, 0, worldIn, pos.getX(), pos.getY(), pos.getZ());
+                }
 			}
 		}
 		return true;
 	}
 
-	public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
+    private boolean doFakePlayerInteraction(FakePlayer player, TileEntityRitualTable tile, BlockPos pos, World world)
+    {
+        if(tile.canCast())
+        {
+            tile.attemptActivateRitual(player);
+            return true;
+        }
+        return false;
+    }
+
+    public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
 	{
 		TileEntity tileentity = worldIn.getTileEntity(pos);
 

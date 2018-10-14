@@ -1,4 +1,4 @@
-package party.lemons.arcaneworld.item;
+package party.lemons.arcaneworld.item.impl;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;

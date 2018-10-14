@@ -4,6 +4,7 @@ arcaneworld.jei.rituals=Rituals
 
 tile.arcaneworld.ore_sapphire.name=Sapphire Ore
 tile.arcaneworld.ore_amethyst.name=Amethyst Ore
+tile.arcaneworld.ore_amethyst_nether.name=Amethyst Ore
 tile.arcaneworld.block_sapphire.name=Sapphire Block
 tile.arcaneworld.block_amethyst.name=Amethyst Block
 tile.arcaneworld.block_amethyst.name=Amethyst Block
@@ -19,6 +20,10 @@ item.arcaneworld.glowing_chorus.name=Glowing Chorus Fruit
 item.arcaneworld.biome_crystal.name=Biome Crystal
 item.arcaneworld.ritual_scroll.name=Scroll
 item.arcaneworld.recaller.name=Recaller
+item.arcaneworld.molten_core.name=Molten Core
+item.arcaneworld.molten_pickaxe.name=Molten Pickaxe
+item.arcaneworld.molten_shovel.name=Molten Shovel
+item.arcaneworld.molten_axe.name=Molten Axe
 
 arcaneworld.subtitle.ritual_out=Ritual Bangs
 arcaneworld.subtitle.ritual_item=Ritual Pops
