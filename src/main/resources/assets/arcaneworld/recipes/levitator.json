@@ -1,6 +1,6 @@
 {
   "result": {
-    "item": "arcaneworld:ritual_table",
+    "item": "arcaneworld:levitator",
     "count": 1
   },
   "pattern": [
@@ -12,15 +12,15 @@
   "key": {
     "W": {
       "type": "forge:ore_dict",
-      "ore" : "planksWood"
+      "ore": "plankWood"
     },
-    "S":{
+    "S": {
       "type": "forge:ore_dict",
-      "ore" : "blockSapphire"
+      "ore": "blockSapphire"
     },
-    "R":{
+    "R": {
       "type": "forge:ore_dict",
-      "ore" : "dustRedstone"
+      "ore": "dustRedstone"
     }
   }
 }

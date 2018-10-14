@@ -53,21 +53,11 @@ public class BlockReturnPortal extends BlockPortal implements IModel
         if(worldIn.provider.getDimension() != ArcaneWorldConfig.DUNGEONS.DIM_ID)
             return;
 
-        if (!entity.isRiding() && !entity.isBeingRidden() && entity.isNonBoss())
+        if(!worldIn.isRemote && entity instanceof EntityPlayer)
         {
-            entity.setPortal(pos);
-        }
-
-        if (!worldIn.isRemote && !entity.isRiding())
-        {
-            int i =  entity.getMaxInPortalTime() - 1;
-            ArcaneWorldUtil.setEntityPortalTime(entity, ArcaneWorldUtil.getEntityPortalTime(entity) + 1);
-
-            if ((entity instanceof EntityPlayer && ((EntityPlayer)entity).isCreative()) || ArcaneWorldUtil.getEntityPortalTime(entity) >= i)
-            {
-                entity.timeUntilPortal = entity.getPortalCooldown();
-                entity.changeDimension(0, new TeleporterDungeonReturn((WorldServer) worldIn));
-            }
+            entity.timeUntilPortal = entity.getPortalCooldown();
+            entity.changeDimension(0, new TeleporterDungeonReturn((WorldServer) worldIn));
+            return;
         }
     }
 

@@ -3,7 +3,6 @@ package party.lemons.arcaneworld.gen;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import scala.tools.nsc.settings.Final;
 
 import java.util.Random;
 
