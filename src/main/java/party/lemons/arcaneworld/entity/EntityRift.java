@@ -1,5 +1,6 @@
 package party.lemons.arcaneworld.entity;
 
+import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.player.EntityPlayer;
@@ -7,6 +8,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import party.lemons.arcaneworld.item.ArcaneWorldItems;
@@ -41,7 +43,7 @@ public class EntityRift extends Entity
     @Override
     protected void entityInit()
     {
-        int bound = world.getWorldBorder().getSize() / 5;
+        int bound = 5000000;
         this.moveX = -bound + rand.nextInt(bound * 2);
         this.moveZ = -bound + rand.nextInt(bound * 2);
 
@@ -61,6 +63,15 @@ public class EntityRift extends Entity
 
     public void onUpdate()
     {
+        if (this.world.isRemote)
+        {
+            for (int i = 0; i < 5; ++i)
+            {
+                this.world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, (this.rand.nextDouble() - 0.5D), -this.rand.nextDouble(), (this.rand.nextDouble() - 0.5D));
+                this.world.spawnParticle(EnumParticleTypes.PORTAL, this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, (this.rand.nextDouble() - 0.5D) * 2.0D, -this.rand.nextDouble(), (this.rand.nextDouble() - 0.5D) * 2.0D);
+            }
+        }
+
         if(world.isRemote || this.ticksExisted < 100)
             return;
 
@@ -163,4 +174,14 @@ public class EntityRift extends Entity
         d0 = d0 * 256;
         return distance < d0 * d0;
     }
+
+    public boolean canBeAttackedWithItem()
+    {
+        return false;
+    }
+    public EnumPushReaction getPushReaction()
+    {
+        return EnumPushReaction.IGNORE;
+    }
+
 }

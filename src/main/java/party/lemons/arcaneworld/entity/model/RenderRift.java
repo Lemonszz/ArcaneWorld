@@ -52,6 +52,7 @@ public class RenderRift extends Render<EntityRift>
         GlStateManager.callList(sphereIdOutside);
 
         GlStateManager.popMatrix();
+        GlStateManager.glDeleteLists(sphereIdOutside, 1);
     }
 
     @Nullable

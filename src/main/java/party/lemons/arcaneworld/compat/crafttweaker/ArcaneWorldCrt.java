@@ -40,10 +40,7 @@ public class ArcaneWorldCrt
     public static void createRitualSummon(String name, String displayName, String entity, IIngredient... inputs)
     {
         Class<? extends Entity> e = EntityList.getClass(new ResourceLocation(entity));
-        if(e == null || !EntityLiving.class.isAssignableFrom(e))
-            return;
-
-        createRitual(name, displayName, new RitualSummon((Class<? extends EntityLiving>) e, getIngredients(inputs)));
+        createRitual(name, displayName, new RitualSummon(e, getIngredients(inputs)));
     }
 
     @ZenMethod

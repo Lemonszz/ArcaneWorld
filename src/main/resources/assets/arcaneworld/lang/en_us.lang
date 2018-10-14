@@ -9,6 +9,7 @@ tile.arcaneworld.block_amethyst.name=Amethyst Block
 tile.arcaneworld.block_amethyst.name=Amethyst Block
 tile.arcaneworld.ritual_table.name=Ritual Table
 tile.arcaneworld.return_portal.name=Return Portal
+tile.arcaneworld.levitator.name=Levitator
 
 item.arcaneworld.arcane_hoe.name=Arcane Hoe
 item.arcaneworld.fang_wand.name=Wand of Evocation

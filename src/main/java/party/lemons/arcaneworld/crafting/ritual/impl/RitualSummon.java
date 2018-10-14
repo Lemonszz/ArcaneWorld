@@ -1,5 +1,6 @@
 package party.lemons.arcaneworld.crafting.ritual.impl;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -15,9 +16,9 @@ import javax.annotation.Nonnull;
  */
 public class RitualSummon extends Ritual
 {
-    private final Class<? extends EntityLiving> entity;
+    private final Class<? extends Entity> entity;
 
-    public RitualSummon(Class<? extends EntityLiving> entity, Ingredient... ing)
+    public RitualSummon(Class<? extends Entity> entity, Ingredient... ing)
     {
         super(ing);
 
@@ -27,8 +28,9 @@ public class RitualSummon extends Ritual
     public void onActivate(@Nonnull World world, @Nonnull BlockPos pos, EntityPlayer player, ItemStack... items)
     {
         try {
-            EntityLiving mob = entity.getConstructor(World.class).newInstance(world);
-            mob.onInitialSpawn(world.getDifficultyForLocation(pos), null);
+            Entity mob = entity.getConstructor(World.class).newInstance(world);
+            if(mob instanceof EntityLiving)
+                ((EntityLiving)mob).onInitialSpawn(world.getDifficultyForLocation(pos), null);
             mob.setPosition(pos.getX() + 0.5F, pos.getY() + mob.height, pos.getZ() + 0.5F);
             world.spawnEntity(mob);
         }
