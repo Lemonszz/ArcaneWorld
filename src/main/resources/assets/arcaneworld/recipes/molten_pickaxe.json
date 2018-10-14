@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_pickaxe"
+    },
+    {
+      "item": "arcaneworld:molten_core"
+    }
+  ],
+  "result": {
+    "item": "arcaneworld:molten_pickaxe"
+  }
+}
