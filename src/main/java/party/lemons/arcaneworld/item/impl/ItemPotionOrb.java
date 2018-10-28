@@ -65,7 +65,7 @@ public class ItemPotionOrb extends ItemModel
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
         List<PotionEffect> list = PotionUtils.getEffectsFromStack(stack);
-        List<Tuple<String, AttributeModifier>> list1 = Lists.<Tuple<String, AttributeModifier>>newArrayList();
+        List<Tuple<String, AttributeModifier>> list1 = Lists.newArrayList();
 
         if (list.isEmpty())
         {

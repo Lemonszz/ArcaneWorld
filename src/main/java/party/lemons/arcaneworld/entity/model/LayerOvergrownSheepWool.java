@@ -35,7 +35,7 @@ public class LayerOvergrownSheepWool implements LayerRenderer<EntityOvergrownShe
                 int j = EnumDyeColor.values().length;
                 int k = i % j;
                 int l = (i + 1) % j;
-                float f = ((float)(sheep.ticksExisted % time) + partialTicks) / time;
+                float f = ((sheep.ticksExisted % time) + partialTicks) / time;
                 float[] afloat1 = EntitySheep.getDyeRgb(EnumDyeColor.byMetadata(k));
                 float[] afloat2 = EntitySheep.getDyeRgb(EnumDyeColor.byMetadata(l));
                 GlStateManager.color(afloat1[0] * (1.0F - f) + afloat2[0] * f, afloat1[1] * (1.0F - f) + afloat2[1] * f, afloat1[2] * (1.0F - f) + afloat2[2] * f);
