@@ -44,7 +44,6 @@ public class Rituals {
         createRitual(event.getRegistry(), new RitualDragonBreath(of(Items.DRAGON_BREATH), of(Items.ENDER_EYE), of("blockPrismarine"), of("netherrack"), of("ingotGold")), "dragon_breath");
         createRitual(event.getRegistry(), new RitualDungeon(of("blockSapphire"), of("ingotGold")),"dungeon");
         createRitual(event.getRegistry(), new RitualArena(EntityWither.class, of("blockAmethyst"), of(new ItemStack(Items.SKULL, 1, 1)), of(new ItemStack(Items.SKULL, 1, 1)), of(new ItemStack(Items.SKULL, 1, 1))),"wither_arena");
-        createRitual(event.getRegistry(), new RitualArena(EntityParrot.class, of("blockAmethyst")),"arena_test");
 
         createRitual(event.getRegistry(), new RitualCreateItem(new ItemStack(ArcaneWorldItems.ARCANE_HOE), of(Items.GOLDEN_HOE), of("gemDiamond"), of("cropNetherWart"), of(Items.RABBIT_FOOT), of("dyeBlack")), "create_arcane_hoe");
         createRitual(event.getRegistry(), new RitualCreateItem(new ItemStack(ArcaneWorldItems.FANG_WAND), of("stickWood"), of("gemDiamond"), of("ingotGold"), of("dustGlowstone"), of("enderpearl")), "create_evoking_wand");
