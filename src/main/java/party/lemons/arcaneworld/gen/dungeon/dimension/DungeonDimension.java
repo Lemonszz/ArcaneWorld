@@ -1,6 +1,8 @@
 package party.lemons.arcaneworld.gen.dungeon.dimension;
 
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.boss.EntityWither;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -10,6 +12,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.event.DrawBlockHighlightEvent;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.event.entity.EntityMobGriefingEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
@@ -19,6 +22,7 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import party.lemons.arcaneworld.ArcaneWorld;
+import party.lemons.arcaneworld.block.ArcaneWorldBlocks;
 import party.lemons.arcaneworld.config.ArcaneWorldConfig;
 
 /**
@@ -54,6 +58,45 @@ public class DungeonDimension
     @Mod.EventBusSubscriber(modid = ArcaneWorld.MODID)
     public static class DungeonDimensionEvents
     {
+
+        @SubscribeEvent
+        public static void onEntityDeath(LivingDeathEvent event)
+        {
+            World world = event.getEntity().world;
+
+            if(isInDim(world))
+            {
+                if(event.getEntity().getTags().contains("arena_entity"))
+                {
+                    BlockPos pos = event.getEntity().getPosition();
+                    while(world.isAirBlock(pos))
+                    {
+                        pos = pos.down();
+                    }
+
+                    BlockPos startPos = pos.up(3);
+
+                    for(int x = -1; x < 4; x++)
+                    {
+                        for(int z = -1; z < 3; z++)
+                        {
+                            world.setBlockState(startPos.down(x).west(z), Blocks.OBSIDIAN.getDefaultState());
+                        }
+                    }
+
+                    for(int x = 0; x < 3; x++)
+                    {
+                        for(int z = 0; z < 2; z++)
+                        {
+                            world.setBlockState(startPos.down(x).west(z), ArcaneWorldBlocks.RETURN_PORTAL.getDefaultState());
+                        }
+                    }
+
+
+                }
+            }
+        }
+
         @SubscribeEvent
         public static void onPlaceBlock(BlockEvent.PlaceEvent event)
         {

@@ -1,0 +1,8 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "arcaneworld:items/sword_glow_bottom",
+    "layer1": "arcaneworld:items/ether_sword",
+    "layer2": "arcaneworld:items/sword_glow_top"
+  }
+}

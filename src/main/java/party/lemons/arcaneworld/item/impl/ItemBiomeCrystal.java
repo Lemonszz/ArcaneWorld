@@ -13,6 +13,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import party.lemons.arcaneworld.crafting.ArcaneWorldSpamTab;
 import party.lemons.arcaneworld.gen.ArcaneWorldGen;
 import party.lemons.arcaneworld.handler.ArcaneWorldSounds;
 import party.lemons.arcaneworld.handler.ticker.TickerHandler;
@@ -163,5 +164,11 @@ public class ItemBiomeCrystal extends ItemModel
                 }
             }
         }
+    }
+
+    @Nullable
+    public CreativeTabs getCreativeTab()
+    {
+        return ArcaneWorldSpamTab.INSTANCE;
     }
 }

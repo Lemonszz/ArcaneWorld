@@ -1,5 +1,8 @@
 package party.lemons.arcaneworld;
 
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.storage.loot.LootTableList;
+import net.minecraft.world.storage.loot.functions.LootFunctionManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -10,6 +13,7 @@ import party.lemons.arcaneworld.entity.ArcaneWorldEntities;
 import party.lemons.arcaneworld.gen.dungeon.dimension.DungeonDimension;
 import party.lemons.arcaneworld.handler.ArcaneWorldGuiHandler;
 import party.lemons.arcaneworld.handler.OreDictHandler;
+import party.lemons.arcaneworld.item.impl.ItemPotionOrb;
 import party.lemons.arcaneworld.network.NetworkInit;
 import party.lemons.arcaneworld.proxy.IProxy;
 
@@ -37,13 +41,13 @@ public class ArcaneWorld
 	@Mod.EventHandler
 	public void onPreInit(FMLPreInitializationEvent event)
 	{
-	    File modFolder = new File("./mods/arcaneworld/dungeon/");
-
-
         NetworkInit.init();
 		ArcaneWorldEntities.init();
         DungeonDimension.init();
 		proxy.registerSided();
+
+        LootTableList.register(new ResourceLocation(MODID, "raid_1"));
+        LootFunctionManager.registerFunction(new ItemPotionOrb.SetPotionLoot.Serializer());
 	}
 
 	@Mod.EventHandler

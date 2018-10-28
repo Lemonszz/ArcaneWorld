@@ -6,12 +6,14 @@ import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.structure.template.ITemplateProcessor;
 import net.minecraft.world.gen.structure.template.Template;
 import net.minecraft.world.storage.loot.LootTableList;
+import party.lemons.arcaneworld.ArcaneWorld;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -21,6 +23,8 @@ import java.util.List;
  */
 public class DungeonRoomProcessor implements ITemplateProcessor
 {
+    private static final ResourceLocation RAID_TABLE_1 = new ResourceLocation(ArcaneWorld.MODID, "raid_1");
+
     @Nullable
     @Override
     public Template.BlockInfo processBlock(World world, BlockPos pos, Template.BlockInfo blockInfo)
@@ -56,7 +60,9 @@ public class DungeonRoomProcessor implements ITemplateProcessor
                     TileEntity tileentity = world.getTileEntity(pos.down());
                     if (tileentity instanceof TileEntityChest)
                     {
-                        ((TileEntityChest)tileentity).setLootTable(LootTableList.CHESTS_SIMPLE_DUNGEON, world.rand.nextLong());
+                        ResourceLocation table = world.rand.nextBoolean() ? LootTableList.CHESTS_SIMPLE_DUNGEON : RAID_TABLE_1;
+
+                        ((TileEntityChest)tileentity).setLootTable(table, world.rand.nextLong());
                     }
                     break;
             }

@@ -11,6 +11,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import party.lemons.arcaneworld.crafting.ArcaneWorldSpamTab;
 import party.lemons.arcaneworld.crafting.ritual.Ritual;
 import party.lemons.arcaneworld.crafting.ritual.RitualRegistry;
 import party.lemons.arcaneworld.crafting.ritual.RitualScroll;
@@ -87,5 +88,11 @@ public class ItemRitualScroll extends ItemModel
         }
 
         return super.getItemStackDisplayName(stack);
+    }
+
+    @Nullable
+    public CreativeTabs getCreativeTab()
+    {
+        return ArcaneWorldSpamTab.INSTANCE;
     }
 }

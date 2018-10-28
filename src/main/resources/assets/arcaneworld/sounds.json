@@ -52,5 +52,17 @@
       "name": "arcaneworld:music_lunar_ambience",
       "stream": true
     }]
+  },
+  "rift_start": {
+    "category": "world",
+    "sounds": ["arcaneworld:rift_start"]
+  },
+  "rift_end": {
+    "category": "world",
+    "sounds": ["arcaneworld:rift_end"]
+  },
+  "rift_ambient": {
+    "category": "world",
+    "sounds": ["arcaneworld:rift_ambient_1", "arcaneworld:rift_ambient_2", "arcaneworld:rift_ambient_3"]
   }
 }

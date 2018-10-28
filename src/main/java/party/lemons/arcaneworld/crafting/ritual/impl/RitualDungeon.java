@@ -11,6 +11,7 @@ import net.minecraft.world.WorldServer;
 import party.lemons.arcaneworld.config.ArcaneWorldConfig;
 import party.lemons.arcaneworld.crafting.ritual.Ritual;
 import party.lemons.arcaneworld.gen.dungeon.dimension.TeleporterDungeon;
+import party.lemons.arcaneworld.gen.dungeon.generation.DungeonGenerator;
 
 import javax.annotation.Nonnull;
 import java.util.List;

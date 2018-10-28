@@ -6,7 +6,9 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import party.lemons.arcaneworld.block.tilentity.TileEntityRitualTable;
 import party.lemons.arcaneworld.block.tilentity.render.TESRRitualTable;
+import party.lemons.arcaneworld.entity.EntityOvergrownSheep;
 import party.lemons.arcaneworld.entity.EntityRift;
+import party.lemons.arcaneworld.entity.model.RenderOvergrownSheep;
 import party.lemons.arcaneworld.entity.model.RenderRift;
 import party.lemons.arcaneworld.handler.ArcaneWorldSounds;
 
@@ -22,6 +24,7 @@ public class ClientProxy implements IProxy
 	{
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRitualTable.class, new TESRRitualTable());
         RenderingRegistry.registerEntityRenderingHandler(EntityRift.class, RenderRift::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityOvergrownSheep.class, RenderOvergrownSheep::new);
     }
 
     @Override

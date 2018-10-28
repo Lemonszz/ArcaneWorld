@@ -26,6 +26,9 @@ public class ArcaneWorldSounds
     public static final SoundEvent GENERAL_BREAK = SoundEvents.UI_TOAST_OUT;
     public static final SoundEvent GENERAL_BREAK_SQUISH = SoundEvents.UI_TOAST_OUT;
     public static final SoundEvent MUSIC_DUNGEON = SoundEvents.UI_TOAST_OUT;
+    public static final SoundEvent RIFT_START = SoundEvents.UI_TOAST_OUT;
+    public static final SoundEvent RIFT_END = SoundEvents.UI_TOAST_OUT;
+    public static final SoundEvent RIFT_AMBIENT = SoundEvents.UI_TOAST_OUT;
 
 
     @SubscribeEvent
@@ -40,6 +43,9 @@ public class ArcaneWorldSounds
         registerSound(event.getRegistry(), "general_break");
         registerSound(event.getRegistry(), "general_break_squish");
         registerSound(event.getRegistry(), "music_dungeon");
+        registerSound(event.getRegistry(), "rift_start");
+        registerSound(event.getRegistry(), "rift_end");
+        registerSound(event.getRegistry(), "rift_ambient");
 
     }
 

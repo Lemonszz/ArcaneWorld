@@ -40,6 +40,8 @@ public class ArcaneWorldItems
     public static final Item MOLTEN_PICKAXE = Items.AIR;
     public static final Item MOLTEN_SHOVEL = Items.AIR;
     public static final Item MOLTEN_AXE = Items.AIR;
+    public static final Item POTION_ORB = Items.AIR;
+    public static final Item GROWTH_POWDER = Items.AIR;
 
 	@SubscribeEvent
 	public static void onRegisterItem(RegistryEvent.Register<Item> event)
@@ -60,6 +62,10 @@ public class ArcaneWorldItems
 		registerItem(r, new ItemMoltenPickaxe(Item.ToolMaterial.IRON), "molten_pickaxe");
 		registerItem(r, new ItemMoltenShovel(Item.ToolMaterial.IRON), "molten_shovel");
 		registerItem(r, new ItemMoltenAxe(Item.ToolMaterial.IRON), "molten_axe");
+
+		registerItem(r, new ItemEtherealSword(Item.ToolMaterial.DIAMOND), "ethereal_sword");
+		registerItem(r, new ItemPotionOrb(), "potion_orb");
+		registerItem(r, new ItemGrowthPowder(), "growth_powder");
 
 
 		////TODO: Do this btter

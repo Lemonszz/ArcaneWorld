@@ -48,6 +48,13 @@ public class ArcaneWorldCrt
     }
 
     @ZenMethod
+    public static void createArenaRitual(String name, String displayName, String entity, IIngredient... inputs)
+    {
+        Class<? extends Entity> e = EntityList.getClass(new ResourceLocation(entity));
+        createRitual(name, displayName, new RitualArena(e, getIngredients(inputs)));
+    }
+
+    @ZenMethod
     public static void createRitualWeather(String name, String displayName, String weather, IIngredient... inputs)
     {
         RitualWeather.WeatherType type = RitualWeather.WeatherType.CLEAR;

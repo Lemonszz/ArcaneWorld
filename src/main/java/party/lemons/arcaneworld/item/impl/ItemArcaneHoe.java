@@ -34,7 +34,7 @@ public class ItemArcaneHoe extends ItemHoe implements IModel
 		}
 
 		if(!worldIn.isRemote)
-			TickerHandler.addTicker(new TickerHoe(worldIn, 10, player.getHorizontalFacing(), pos), worldIn.provider.getDimension());
+			TickerHandler.addTicker(new TickerHoe(worldIn, player, 10, player.getHorizontalFacing(), pos), worldIn.provider.getDimension());
 
 		itemstack.damageItem(1, player);
 		return EnumActionResult.SUCCESS;

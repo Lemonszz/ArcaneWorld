@@ -5,8 +5,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import party.lemons.arcaneworld.handler.ArcaneWorldSounds;
 import party.lemons.arcaneworld.item.ArcaneWorldItems;
 
 import java.util.List;
@@ -71,6 +73,11 @@ public class EntityRift extends Entity
         if(world.isRemote || this.ticksExisted < 100)
             return;
 
+        if(rand.nextInt(100) == 0)
+        {
+            this.world.playSound(null, getPosition(), ArcaneWorldSounds.RIFT_AMBIENT, SoundCategory.NEUTRAL, 0.1F, rand.nextFloat() / 2F);
+        }
+
         List<Entity> list = this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox());
 
         for (int i = 0; i < list.size(); ++i)
@@ -90,12 +97,13 @@ public class EntityRift extends Entity
         if(world.isRemote || e.isRiding() || e.isBeingRidden())
             return;
 
+        world.playSound(null, e.getPosition(), ArcaneWorldSounds.RIFT_START, SoundCategory.NEUTRAL, 0.1F, 1);
         if(e instanceof EntityPlayer)
         {
             if(((EntityPlayer) e).getCooldownTracker().getCooldown(ArcaneWorldItems.RECALL_EYE, 0) != 0)
                 return;
             else
-                ((EntityPlayer) e).getCooldownTracker().setCooldown(ArcaneWorldItems.RECALL_EYE, 120);
+                ((EntityPlayer) e).getCooldownTracker().setCooldown(ArcaneWorldItems.RECALL_EYE, 70);
         }
 
         if(!hasCreatedExit)
@@ -103,6 +111,7 @@ public class EntityRift extends Entity
 
         BlockPos exitPos = getExitPosition();
         e.setPositionAndUpdate(exitPos.getX(), exitPos.getY(), exitPos.getZ());
+
     }
 
     public BlockPos getExitPosition()
