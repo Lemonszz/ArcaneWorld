@@ -1,19 +1,91 @@
 arcaneworld.gui.ritual.cast=Применение
 itemGroup.arcaneworld=Arcane World
+arcaneworld.jei.rituals=Ритуалы
 
-tile.arcaneworld.ore_sapphire.name=Руда сапфира
-tile.arcaneworld.ore_amethyst.name=Руда аметиста
-tile.arcaneworld.block_sapphire.name=Блок сапфира
-tile.arcaneworld.block_amethyst.name=Блок аметиста
+tile.arcaneworld.ore_sapphire.name=Сапфировая руда
+tile.arcaneworld.ore_amethyst.name=Аметистовая руда
+tile.arcaneworld.ore_amethyst_nether.name=Аметистовая руда
+tile.arcaneworld.block_sapphire.name=Сапфировый блок
+tile.arcaneworld.block_amethyst.name=Аметистовый блок
+tile.arcaneworld.block_amethyst.name=Аметистовый блок
 tile.arcaneworld.ritual_table.name=Ритуальный стол
+tile.arcaneworld.return_portal.name=Портал возвращения
+tile.arcaneworld.levitator.name=Левитатор
 
-item.arcaneworld.arcane_hoe.name=Мотыга тайн
+item.arcaneworld.arcane_hoe.name=Тайная мотыга
 item.arcaneworld.fang_wand.name=Посох Вызывателя
 item.arcaneworld.sapphire.name=Сапфир
 item.arcaneworld.amethyst.name=Аметист
+item.arcaneworld.glowing_chorus.name=Светящийся фрукт хоруса
+item.arcaneworld.biome_crystal.name=Кристалл биома
+item.arcaneworld.ritual_scroll.name=Свиток
+item.arcaneworld.recaller.name=Отзыв
+item.arcaneworld.molten_core.name=Расплавленное ядро
+item.arcaneworld.molten_pickaxe.name=Расплавленная кирка
+item.arcaneworld.molten_shovel.name=Расплавленная лопата
+item.arcaneworld.molten_axe.name=Расплавленный топор
+item.arcaneworld.growth_powder.name=Порошок роста
+item.arcaneworld.potion_orb.name=Катализатор зелья
+item.arcaneworld.ethereal_sword.name=Эфирный меч
 
-arcaneworld.subtitle.ritual_out=Ритуальный взрыв
+arcaneworld.subtitle.ritual_out=Ритуальные взрывы
 arcaneworld.subtitle.ritual_item=Ритуальный всплеск
-arcaneworld.subtitle.ritual_charge=Ритуальный заряд 
+arcaneworld.subtitle.ritual_charge=Ритуальный заряд
 arcaneworld.subtitle.ritual_start=Ритуальный удар
-arcaneworld.subtitle.ritual_item_pop=Ритуальный бласт
+arcaneworld.subtitle.ritual_item_pop=Ритуальные бласты
+arcaneworld.subtitle.woosh=Бух!
+
+
+arcaneworld.time_skip=Пропуск времени
+arcaneworld.time_rewind=Перемотка dремени
+arcaneworld.clear_skies=Чистое небо
+arcaneworld.raining=Серое небо
+arcaneworld.thundering=Грозовое yебо
+arcaneworld.dragon_breath=Ритуал дракона
+arcaneworld.create_arcane_hoe=Наполнить мотыгу
+arcaneworld.create_evoking_wand=Наполнить посох
+arcaneworld.create_glowing_chorus=Сияющий хорус
+arcaneworld.create_biome_crystal=Кристаллическая кузница
+arcaneworld.create_recaller=Зов пустоты
+arcaneworld.summon_zombie=Заклинание зомби
+arcaneworld.summon_skeleton=Заклинание скелета
+arcaneworld.summon_spider=Заклинание паука
+arcaneworld.summon_cave_spider=Заклинание пищерного паука
+arcaneworld.summon_enderpearl=Заклинание эндермена
+arcaneworld.summon_zombie_pigman=Заклинание зомби-свиночеловека
+arcaneworld.summon_blaze=Заклинание ифрита
+arcaneworld.summon_creeper=Заклинание крипера
+arcaneworld.summon_elder_guardian=Заклинание древнего стража
+arcaneworld.summon_endermite=Заклинание эндермита
+arcaneworld.summon_ghast=Заклинание гаста
+arcaneworld.summon_guardian=Заклинание стража
+arcaneworld.summon_magma_cube=Заклинание магмового куба
+arcaneworld.summon_shulker=Заклинание шалкера
+arcaneworld.summon_silverfish=Заклинание чешуйницы
+arcaneworld.summon_slimeball=Заклинание слизня
+arcaneworld.summon_witch=Заклинание ведьмы
+arcaneworld.summon_vindicator=Заклинание поборника
+arcaneworld.summon_evoker=Заклинание вызывателя
+arcaneworld.summon_polarbear=Заклинание полярного медведя
+arcaneworld.summon_illusioner=Заклинание иллюзиониста
+arcaneworld.summon_bat=Заклинание летучей мыши
+arcaneworld.summon_chicken=Заклинание курицы
+arcaneworld.summon_cow=Заклинание коровы
+arcaneworld.summon_donkey=Заклинание осла
+arcaneworld.summon_horse=Заклинание лошади
+arcaneworld.summon_mooshroom=Заклинание муухомора
+arcaneworld.summon_ocelot=Заклинание оцелота
+arcaneworld.summon_parrot=Заклинание попугая
+arcaneworld.summon_pig=Заклинание свиньи
+arcaneworld.summon_rabbit=Заклинание кролика
+arcaneworld.summon_sheep=Заклинание овцы
+arcaneworld.summon_squid=Заклинание спрута
+arcaneworld.summon_villager=Заклинание деревещины
+arcaneworld.summon_llama=Заклинание ламы
+arcaneworld.summon_wolf=Заклинание волка
+arcaneworld.ritual_scroll=Активировать свиток
+arcaneworld.dungeon=Рейд подземелья
+
+
+
+
