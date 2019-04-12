@@ -6,22 +6,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
-import party.lemons.arcaneworld.item.IModel;
+import party.lemons.lemonlib.item.IItemModel;
 
 /**
  * Created by Sam on 15/10/2018.
  */
-public class ItemEtherealSword extends ItemSword implements IModel
+public class ItemEtherealSword extends ItemSword implements IItemModel
 {
     public ItemEtherealSword(ToolMaterial material)
     {
         super(material);
-    }
-
-    @Override
-    public ResourceLocation getModelLocation()
-    {
-        return getRegistryName();
     }
 
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker)

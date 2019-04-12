@@ -12,12 +12,9 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import party.lemons.arcaneworld.entity.ArcaneWorldEntities;
 import party.lemons.arcaneworld.gen.dungeon.dimension.DungeonDimension;
 import party.lemons.arcaneworld.handler.ArcaneWorldGuiHandler;
-import party.lemons.arcaneworld.handler.OreDictHandler;
 import party.lemons.arcaneworld.item.impl.ItemPotionOrb;
 import party.lemons.arcaneworld.network.NetworkInit;
 import party.lemons.arcaneworld.proxy.IProxy;
-
-import java.io.File;
 
 /**
  * Created by Sam on 9/09/2018.
@@ -27,7 +24,7 @@ public class ArcaneWorld
 {
 	public static final String MODID = "arcaneworld";
 	public static final String NAME = "Arcane World";
-	public static final String VERSION = "0.0.8";
+	public static final String VERSION = "0.0.9";
 
 	@Mod.Instance(MODID)
 	public static ArcaneWorld INSTANCE;
@@ -53,7 +50,6 @@ public class ArcaneWorld
 	@Mod.EventHandler
 	public void onInit(FMLInitializationEvent event)
 	{
-		OreDictHandler.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(INSTANCE, new ArcaneWorldGuiHandler());
 		proxy.registerSidedInit();
 	}

@@ -16,8 +16,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import party.lemons.arcaneworld.crafting.ArcaneWorldSpamTab;
 import party.lemons.arcaneworld.gen.ArcaneWorldGen;
 import party.lemons.arcaneworld.handler.ArcaneWorldSounds;
-import party.lemons.arcaneworld.handler.ticker.TickerHandler;
-import party.lemons.arcaneworld.handler.ticker.impl.TickerSetBiome;
+import party.lemons.arcaneworld.handler.ticker.TickerSetBiome;
+import party.lemons.lemonlib.ticker.TickerHandler;
 
 import javax.annotation.Nullable;
 import java.util.List;

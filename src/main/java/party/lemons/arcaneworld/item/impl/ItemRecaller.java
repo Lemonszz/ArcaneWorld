@@ -1,5 +1,7 @@
 package party.lemons.arcaneworld.item.impl;
 
+import net.minecraft.client.renderer.block.model.ModelBakery;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -11,8 +13,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import party.lemons.arcaneworld.ArcaneWorld;
+import party.lemons.arcaneworld.item.ArcaneWorldItems;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -139,5 +147,24 @@ public class ItemRecaller extends Item
         }
 
         stack.setTagCompound(tags);
+    }
+
+    @Mod.EventBusSubscriber(modid = ArcaneWorld.MODID, value = Side.CLIENT)
+    public static class RecallerModelRegister
+    {
+        @SubscribeEvent
+        public static void onRegisterModel(ModelRegistryEvent event)
+        {
+            ModelResourceLocation recaller_off = new ModelResourceLocation(ArcaneWorldItems.RECALLER.getRegistryName() + "_off", "inventory");
+            ModelResourceLocation recaller_on = new ModelResourceLocation(ArcaneWorldItems.RECALLER.getRegistryName() + "_on", "inventory");
+            ModelBakery.registerItemVariants(ArcaneWorldItems.RECALLER, recaller_off, recaller_on);
+            ModelLoader.setCustomMeshDefinition(ArcaneWorldItems.RECALLER, s ->
+            {
+                if(s.hasTagCompound() && s.getTagCompound().hasKey("position"))
+                    return recaller_on;
+
+                return recaller_off;
+            });
+        }
     }
 }

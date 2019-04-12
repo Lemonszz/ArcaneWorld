@@ -4,7 +4,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.SPacketTimeUpdate;
 import net.minecraft.world.World;
-import party.lemons.arcaneworld.handler.ticker.ITicker;
+import party.lemons.lemonlib.ticker.ITicker;
 
 /**
  * Created by Sam on 10/09/2018.

@@ -9,14 +9,14 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import party.lemons.arcaneworld.handler.ticker.TickerHandler;
-import party.lemons.arcaneworld.handler.ticker.impl.TickerHoe;
-import party.lemons.arcaneworld.item.IModel;
+import party.lemons.arcaneworld.handler.ticker.TickerHoe;
+import party.lemons.lemonlib.item.IItemModel;
+import party.lemons.lemonlib.ticker.TickerHandler;
 
 /**
  * Created by Sam on 9/09/2018.
  */
-public class ItemArcaneHoe extends ItemHoe implements IModel
+public class ItemArcaneHoe extends ItemHoe implements IItemModel
 {
 	public ItemArcaneHoe()
 	{
@@ -38,11 +38,5 @@ public class ItemArcaneHoe extends ItemHoe implements IModel
 
 		itemstack.damageItem(1, player);
 		return EnumActionResult.SUCCESS;
-	}
-
-	@Override
-	public ResourceLocation getModelLocation()
-	{
-		return getRegistryName();
 	}
 }

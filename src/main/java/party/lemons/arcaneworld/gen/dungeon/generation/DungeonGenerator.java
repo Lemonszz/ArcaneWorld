@@ -7,7 +7,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.template.PlacementSettings;
 import net.minecraft.world.gen.structure.template.Template;
 import party.lemons.arcaneworld.ArcaneWorld;
-import party.lemons.arcaneworld.handler.ticker.TickerHandler;
+import party.lemons.lemonlib.ticker.TickerHandler;
 
 import java.util.*;
 

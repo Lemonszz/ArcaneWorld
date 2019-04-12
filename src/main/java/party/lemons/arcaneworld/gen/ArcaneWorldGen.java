@@ -17,6 +17,10 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import party.lemons.arcaneworld.ArcaneWorld;
 import party.lemons.arcaneworld.block.ArcaneWorldBlocks;
 import party.lemons.arcaneworld.config.ArcaneWorldConfig;
+import party.lemons.lemonlib.gen.feature.FeatureChance;
+import party.lemons.lemonlib.gen.feature.FeatureDimension;
+import party.lemons.lemonlib.gen.feature.FeatureRange;
+import party.lemons.lemonlib.gen.feature.FeatureVein;
 
 import java.util.Random;
 import java.util.function.Predicate;

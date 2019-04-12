@@ -13,14 +13,14 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import party.lemons.arcaneworld.config.ArcaneWorldConfig;
 import party.lemons.arcaneworld.gen.dungeon.dimension.TeleporterDungeonReturn;
-import party.lemons.arcaneworld.item.IModel;
+import party.lemons.lemonlib.item.IItemModel;
 
 import java.util.Random;
 
 /**
  * Created by Sam on 22/09/2018.
  */
-public class BlockReturnPortal extends BlockPortal implements IModel
+public class BlockReturnPortal extends BlockPortal implements IItemModel
 {
     public BlockReturnPortal()
     {
@@ -58,11 +58,5 @@ public class BlockReturnPortal extends BlockPortal implements IModel
             entity.changeDimension(0, new TeleporterDungeonReturn((WorldServer) worldIn));
             return;
         }
-    }
-
-    @Override
-    public ResourceLocation getModelLocation()
-    {
-        return getRegistryName();
     }
 }

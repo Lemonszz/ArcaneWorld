@@ -7,7 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import party.lemons.arcaneworld.item.IModel;
+import party.lemons.lemonlib.item.IItemModel;
 
 import java.util.Random;
 import java.util.function.Supplier;
@@ -15,7 +15,7 @@ import java.util.function.Supplier;
 /**
  * Created by Sam on 10/09/2018.
  */
-public class BlockArcaneOre extends Block implements IModel
+public class BlockArcaneOre extends Block implements IItemModel
 {
 	private final Supplier<Item> drop;
 	private final int maxDrop, xp;
@@ -66,11 +66,5 @@ public class BlockArcaneOre extends Block implements IModel
 			return 2 + rand.nextInt(xp);
 		}
 		return 0;
-	}
-
-	@Override
-	public ResourceLocation getModelLocation()
-	{
-		return getRegistryName();
 	}
 }

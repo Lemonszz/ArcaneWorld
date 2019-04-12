@@ -1,4 +1,4 @@
-package party.lemons.arcaneworld.handler.ticker.impl;
+package party.lemons.arcaneworld.handler.ticker;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFarmland;
@@ -16,8 +16,8 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import party.lemons.arcaneworld.ArcaneWorld;
-import party.lemons.arcaneworld.handler.ticker.ITicker;
 import party.lemons.arcaneworld.network.MessageEventArcaneHoeChange;
+import party.lemons.lemonlib.ticker.ITicker;
 
 /**
  * Created by Sam on 6/05/2018.
@@ -53,7 +53,7 @@ public class TickerHoe implements ITicker
 	@Override
 	public void update(World world)
 	{
-	    //If this is being updated with the wrong world... don't
+		//If this is being updated with the wrong world... don't
 		if(world.provider.getDimension() != dimension)
 			return;
 
@@ -70,41 +70,41 @@ public class TickerHoe implements ITicker
              */
 			if(world.getBlockState(currentPos.up()).getBlock() instanceof IGrowable || world.isAirBlock(currentPos.up()))
 			{
-			    if(isHoeable(state))    //If the state as position can be turned into farmland
-                {
-                    //Set the block to farmland
-                    world.setBlockState(currentPos, Blocks.FARMLAND.getDefaultState().withProperty(BlockFarmland.MOISTURE, 7));
+				if(isHoeable(state))    //If the state as position can be turned into farmland
+				{
+					//Set the block to farmland
+					world.setBlockState(currentPos, Blocks.FARMLAND.getDefaultState().withProperty(BlockFarmland.MOISTURE, 7));
 
                     /*
                         Handle seed planting.
                         Seeds can only be planted if the ticker knows about the player & the block above the current pos is air
                      */
-                    if(player != null && world.isAirBlock(currentPos.up()))
-                    {
-                        ItemStack offhand = player.getHeldItemOffhand();    //players offhand stack
-                        if(!offhand.isEmpty())
-                        {
-                            if(offhand.getItem() instanceof IPlantable) //If the held stack is a IPlantable, we can plant it
-                            {
-                                IBlockState plantState  = ((IPlantable)offhand.getItem()).getPlant(world, currentPos.up()); //The state to plant
-                                if(state.getBlock().canPlaceBlockAt(world, currentPos.up()))    //If the state can be placed, we can place the state
-                                {
-                                    //place seed
-                                    offhand.shrink(1);
-                                    world.setBlockState(currentPos.up(), plantState);
-                                    state.getBlock().onBlockPlacedBy(world, currentPos.up(), plantState, player, offhand);
-                                }
-                            }
-                        }
-                    }
+					if(player != null && world.isAirBlock(currentPos.up()))
+					{
+						ItemStack offhand = player.getHeldItemOffhand();    //players offhand stack
+						if(!offhand.isEmpty())
+						{
+							if(offhand.getItem() instanceof IPlantable) //If the held stack is a IPlantable, we can plant it
+							{
+								IBlockState plantState  = ((IPlantable)offhand.getItem()).getPlant(world, currentPos.up()); //The state to plant
+								if(state.getBlock().canPlaceBlockAt(world, currentPos.up()))    //If the state can be placed, we can place the state
+								{
+									//place seed
+									offhand.shrink(1);
+									world.setBlockState(currentPos.up(), plantState);
+									state.getBlock().onBlockPlacedBy(world, currentPos.up(), plantState, player, offhand);
+								}
+							}
+						}
+					}
 
-                    //Let clients know about the event
-                    ArcaneWorld.NETWORK.sendToAllTracking(new MessageEventArcaneHoeChange(currentPos, current),
-                            new NetworkRegistry.TargetPoint(dimension, currentPos.getX(), currentPos.getY(), currentPos.getZ(), 64));
+					//Let clients know about the event
+					ArcaneWorld.NETWORK.sendToAllTracking(new MessageEventArcaneHoeChange(currentPos, current),
+							new NetworkRegistry.TargetPoint(dimension, currentPos.getX(), currentPos.getY(), currentPos.getZ(), 64));
 
-                    //If we get to this point, it's guarenteed that the farmland was set
-                    set = true;
-                }
+					//If we get to this point, it's guarenteed that the farmland was set
+					set = true;
+				}
 			}
 			current++;
 
@@ -114,18 +114,18 @@ public class TickerHoe implements ITicker
 		age++;
 	}
 
-    private boolean isHoeable(IBlockState state)
-    {
-        for(int i = 0; i < hoeables.length; i++)
-        {
-            if (hoeables[i] == state.getBlock())
-                return true;
-        }
+	private boolean isHoeable(IBlockState state)
+	{
+		for(int i = 0; i < hoeables.length; i++)
+		{
+			if (hoeables[i] == state.getBlock())
+				return true;
+		}
 
-        return false;
-    }
+		return false;
+	}
 
-    private static Block[] hoeables = {Blocks.DIRT, Blocks.GRASS, Blocks.FARMLAND };
+	private static Block[] hoeables = {Blocks.DIRT, Blocks.GRASS, Blocks.FARMLAND };
 
 	@Override
 	public NBTTagCompound writeToNBT()

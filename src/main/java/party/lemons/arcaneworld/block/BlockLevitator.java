@@ -13,12 +13,12 @@ import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import party.lemons.arcaneworld.block.tilentity.TileEntityLevitator;
-import party.lemons.arcaneworld.item.IModel;
+import party.lemons.lemonlib.item.IItemModel;
 
 /**
  * Created by Sam on 24/09/2018.
  */
-public class BlockLevitator extends BlockDirectional implements IModel
+public class BlockLevitator extends BlockDirectional implements IItemModel
 {
     protected BlockLevitator()
     {
@@ -67,11 +67,5 @@ public class BlockLevitator extends BlockDirectional implements IModel
     public IBlockState getStateFromMeta(int meta)
     {
         return this.getDefaultState().withProperty(FACING, EnumFacing.byIndex(meta & 7));
-    }
-
-    @Override
-    public ResourceLocation getModelLocation()
-    {
-        return getRegistryName();
     }
 }

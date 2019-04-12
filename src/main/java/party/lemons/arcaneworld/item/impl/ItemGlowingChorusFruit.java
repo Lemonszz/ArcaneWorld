@@ -6,14 +6,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import party.lemons.arcaneworld.item.IModel;
+import party.lemons.lemonlib.item.IItemModel;
 
 /**
  * Created by Sam on 13/09/2018.
  */
-public class ItemGlowingChorusFruit extends ItemFood implements IModel
+public class ItemGlowingChorusFruit extends ItemFood implements IItemModel
 {
     public ItemGlowingChorusFruit()
     {
@@ -37,11 +36,5 @@ public class ItemGlowingChorusFruit extends ItemFood implements IModel
 
         playerIn.setActiveHand(handIn);
         return new ActionResult<>(EnumActionResult.SUCCESS, itemstack);
-    }
-
-
-    @Override
-    public ResourceLocation getModelLocation() {
-        return getRegistryName();
     }
 }

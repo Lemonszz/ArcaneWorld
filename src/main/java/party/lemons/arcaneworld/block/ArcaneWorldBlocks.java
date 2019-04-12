@@ -16,8 +16,8 @@ import party.lemons.arcaneworld.block.tilentity.TileEntityLevitator;
 import party.lemons.arcaneworld.block.tilentity.TileEntityRitualTable;
 import party.lemons.arcaneworld.crafting.ArcaneWorldTab;
 import party.lemons.arcaneworld.item.ArcaneWorldItems;
-import party.lemons.arcaneworld.item.IModel;
 import party.lemons.arcaneworld.util.Pair;
+import party.lemons.lemonlib.block.BlockRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +29,6 @@ import java.util.List;
 @GameRegistry.ObjectHolder(ArcaneWorld.MODID)
 public class ArcaneWorldBlocks
 {
-    public static List<Block> blockList = new ArrayList<>();
-	private static List<Pair<Block, String[]>> oreDict = new ArrayList<>();
 
 	public static final Block RITUAL_TABLE = Blocks.AIR;
 	public static final Block ORE_SAPPHIRE =Blocks.AIR ;
@@ -42,68 +40,19 @@ public class ArcaneWorldBlocks
 	@SubscribeEvent
 	public static void onRegisterBlock(RegistryEvent.Register<Block> event)
 	{
-		IForgeRegistry<Block> r = event.getRegistry();
+		BlockRegistry.setup(ArcaneWorld.MODID, event.getRegistry(), ArcaneWorldTab.INSTANCE);
 
-		setProperties(registerBlock(r, new BlockArcaneOre(3, 2, ()->ArcaneWorldItems.SAPPHIRE), "ore_sapphire", "oreSapphire"), 3F, 5F, 0F);
-		setProperties(registerBlock(r, new BlockArcaneOre(2, 4, ()->ArcaneWorldItems.AMETHYST), "ore_amethyst", "oreAmethyst"), 3F, 5F, 0F);
-		setProperties(registerBlock(r, new BlockArcaneOre(2, 4, ()->ArcaneWorldItems.AMETHYST), "ore_amethyst_nether", "oreAmethyst"), 3F, 5F, 0F);
-		setProperties(registerBlock(r, new BlockModel(Material.IRON), "block_sapphire", "blockSapphire"), 3F, 5F, 0F);
-		setProperties(registerBlock(r, new BlockModel(Material.IRON), "block_amethyst", "blockAmethyst"), 3F, 5F, 0F);
-		setProperties(registerBlock(r, new BlockRitualTable(), "ritual_table"), 3F, 5F, 0F);
-		setProperties(registerBlock(r, new BlockLevitator(), "levitator"), 3F, 5F, 0F);
+		BlockRegistry.registerBlock(BlockRegistry.setProperties(new BlockArcaneOre(3, 2, ()->ArcaneWorldItems.SAPPHIRE), 3F, 5F, 0F),"ore_sapphire", "oreSapphire");
+		BlockRegistry.registerBlock(BlockRegistry.setProperties(new BlockArcaneOre(2, 4, ()->ArcaneWorldItems.AMETHYST), 3F, 5F, 0), "ore_amethyst", "oreAmethyst");
+		BlockRegistry.registerBlock(BlockRegistry.setProperties(new BlockArcaneOre(2, 4, ()->ArcaneWorldItems.AMETHYST), 3F, 5F, 0), "ore_amethyst_nether", "oreAmethyst");
+		BlockRegistry.registerBlock(BlockRegistry.setProperties(new BlockModel(Material.IRON), 3F, 5F, 0), "block_sapphire", "blockSapphire");
+		BlockRegistry.registerBlock(BlockRegistry.setProperties(new BlockModel(Material.IRON), 3F, 5F, 0), "block_amethyst", "blockAmethyst");
+		BlockRegistry.registerBlock(BlockRegistry.setProperties(new BlockRitualTable(), 3F, 5F, 0), "ritual_table");
+		BlockRegistry.registerBlock(BlockRegistry.setProperties(new BlockLevitator(), 3F, 5F, 0), "levitator");
 
-        Block portal = new BlockReturnPortal().setBlockUnbreakable().setRegistryName(ArcaneWorld.MODID, "return_portal");
-        blockList.add(portal);
-        r.register(portal);
+		BlockRegistry.registerBlock(new BlockReturnPortal().setBlockUnbreakable(), "return_portal");
 
 		GameRegistry.registerTileEntity(TileEntityRitualTable.class, new ResourceLocation(ArcaneWorld.MODID, "ritual_table"));
 		GameRegistry.registerTileEntity(TileEntityLevitator.class, new ResourceLocation(ArcaneWorld.MODID, "levitator"));
-	}
-
-	@SubscribeEvent
-	public static void onRegisterItem(RegistryEvent.Register<Item> event)
-	{
-		blockList.stream().filter(b-> (b instanceof IModel) && ((IModel) b).hasModel()).forEach(b -> registerItemBlock(event.getRegistry(), b));
-	}
-
-	public static void registerItemBlock(IForgeRegistry<Item> registry, Block block)
-	{
-		ItemBlock ib = new ItemBlock(block);
-		ib.setRegistryName(block.getRegistryName());
-
-		ArcaneWorldItems.itemList.add(ib);
-		registry.register(ib);
-	}
-
-	public static Block setProperties(Block block, float hardness, float resistence, float light)
-	{
-		return block.setHardness(hardness).setResistance(resistence).setLightLevel(light);
-	}
-
-	public static Block registerBlock(IForgeRegistry<Block> registry, Block block, String name, String... oreDict)
-	{
-		return registerBlock(registry, block, name, ArcaneWorld.MODID, true, oreDict);
-	}
-
-	public static Block registerBlock(IForgeRegistry<Block> registry, Block block, String name, String domain, boolean addDomainToUnloc, String... ores)
-	{
-		String unloc = addDomainToUnloc ? (domain + ".") : "";
-
-		block.setTranslationKey(unloc + name);
-		block.setRegistryName(domain, name);
-		block.setCreativeTab(ArcaneWorldTab.INSTANCE);
-
-		if(ores.length > 0)
-			oreDict.add(Pair.of(block, ores));
-
-		blockList.add(block);
-		registry.register(block);
-
-		return block;
-	}
-
-	public static List<Pair<Block, String[]>> getOreDictEntries()
-	{
-		return oreDict;
 	}
 }

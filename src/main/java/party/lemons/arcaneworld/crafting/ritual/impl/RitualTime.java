@@ -6,8 +6,7 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import party.lemons.arcaneworld.crafting.ritual.Ritual;
-import party.lemons.arcaneworld.handler.ticker.TickerHandler;
-import party.lemons.arcaneworld.handler.ticker.impl.TickerTime;
+import party.lemons.lemonlib.ticker.TickerHandler;
 
 import javax.annotation.Nonnull;
 
@@ -27,6 +26,6 @@ public class RitualTime extends Ritual
 
 	public void onActivate(@Nonnull World world, @Nonnull BlockPos pos, EntityPlayer player, ItemStack... items)
 	{
-		TickerHandler.addTicker(new TickerTime(targetTime, world), world.provider.getDimension());
+		TickerHandler.addTicker(new party.lemons.arcaneworld.handler.ticker.impl.TickerTime(targetTime, world), world.provider.getDimension());
 	}
 }
