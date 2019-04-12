@@ -59,7 +59,7 @@
   },
   "rift_end": {
     "category": "world",
-    "sounds": ["arcaneworld:rift_end"]
+    "sounds": ["arcaneworld:rift_stop"]
   },
   "rift_ambient": {
     "category": "world",

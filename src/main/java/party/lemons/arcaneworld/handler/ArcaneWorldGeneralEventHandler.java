@@ -59,6 +59,6 @@ public final class ArcaneWorldGeneralEventHandler {
                 }
             }
         }
-    }
+}
 
 }

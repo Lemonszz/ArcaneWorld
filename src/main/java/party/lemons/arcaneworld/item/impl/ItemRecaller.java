@@ -77,7 +77,7 @@ public class ItemRecaller extends Item
 
     public void recall(EntityPlayer player, World world, ItemStack stack)
     {
-        if(world.isRemote)
+        if(world.isRemote || getDimension(stack) != world.provider.getDimension())
             return;
 
         BlockPos pos = getPosition(stack);
