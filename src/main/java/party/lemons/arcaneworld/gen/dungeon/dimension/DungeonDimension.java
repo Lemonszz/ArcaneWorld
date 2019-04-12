@@ -119,7 +119,10 @@ public class DungeonDimension
         @SubscribeEvent
         public static void onMobGriefing(EntityMobGriefingEvent event)
         {
+            if(event.getEntity() != null)
+            {
                 denyIfInDim(event.getEntity().world, event);
+            }
         }
 
         @SubscribeEvent
