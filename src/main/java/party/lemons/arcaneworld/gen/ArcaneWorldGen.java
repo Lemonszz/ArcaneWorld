@@ -71,7 +71,10 @@ public class ArcaneWorldGen
         AMETHYST_GENERATOR_NETHER.generate(world, rand, pos);
 
         //Generate rifts
-        getRiftGenerator().generate(world, rand, pos);
+        if(getRiftGenerator() != null)
+        {
+            getRiftGenerator().generate(world, rand, pos);
+        }
     }
 
     private static WorldGenerator getOreGenerator(Supplier<IBlockState> state, Predicate<IBlockState> predicate, int size, int count, int minHeight, int maxHeight, int... dims)
@@ -81,6 +84,9 @@ public class ArcaneWorldGen
 
     private static WorldGenerator getRiftGenerator()
     {
+        if(ArcaneWorldConfig.RIFTS.SPAWN_CHANCE <= 0)
+            return null;
+
         return new FeatureChance(new FeatureRift(), ArcaneWorldConfig.RIFTS.SPAWN_CHANCE);
     }
 

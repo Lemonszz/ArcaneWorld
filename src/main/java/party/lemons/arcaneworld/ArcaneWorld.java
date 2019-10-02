@@ -19,12 +19,12 @@ import party.lemons.arcaneworld.proxy.IProxy;
 /**
  * Created by Sam on 9/09/2018.
  */
-@Mod(modid= ArcaneWorld.MODID, name = ArcaneWorld.NAME, version = ArcaneWorld.VERSION)
+@Mod(modid= ArcaneWorld.MODID, name = ArcaneWorld.NAME, version = ArcaneWorld.VERSION, dependencies = "required-after:lemonlib")
 public class ArcaneWorld
 {
 	public static final String MODID = "arcaneworld";
 	public static final String NAME = "Arcane World";
-	public static final String VERSION = "0.0.9";
+	public static final String VERSION = "0.0.11";
 
 	@Mod.Instance(MODID)
 	public static ArcaneWorld INSTANCE;
