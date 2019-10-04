@@ -2,7 +2,6 @@ package party.lemons.arcaneworld.gen.dungeon.generation;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
@@ -34,7 +33,7 @@ public class DungeonRoomProcessor implements ITemplateProcessor
             switch (blockInfo.tileentityData.getString("metadata"))
             {
                 case "random_entity":
-                    List<Biome.SpawnListEntry> spawns =  Biomes.PLAINS.getSpawnableList(EnumCreatureType.MONSTER);
+                    List<Biome.SpawnListEntry> spawns =  world.getBiome(pos).getSpawnableList(EnumCreatureType.MONSTER);
                     Biome.SpawnListEntry entry = spawns.get(world.rand.nextInt(spawns.size()));
 
                     EntityLiving entity = null;
