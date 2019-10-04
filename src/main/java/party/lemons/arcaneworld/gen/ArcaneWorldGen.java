@@ -38,9 +38,13 @@ public class ArcaneWorldGen
     @SubscribeEvent
     public static void onRegisterBiome(RegistryEvent.Register<Biome> event)
     {
+        Biome dungeonBiome = new BiomeArcaneDungeon(new Biome.BiomeProperties("Arcane Dungeon").setRainDisabled().setWaterColor(0x38393a)).setRegistryName(ArcaneWorld.MODID, "arcane_dungeon");
+
         event.getRegistry().register(new BiomeArcaneVoid(new Biome.BiomeProperties("arcane_void").setRainDisabled().setWaterColor(0x38393a)).setRegistryName(ArcaneWorld.MODID, "arcane_void"));
+        event.getRegistry().register(dungeonBiome);
 
         BiomeDictionary.addTypes(ARCANE_VOID, BiomeDictionary.Type.VOID);
+        BiomeDictionary.addTypes(dungeonBiome, BiomeDictionary.Type.VOID);
     }
 
 

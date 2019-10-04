@@ -2,14 +2,15 @@ package party.lemons.arcaneworld.gen.dungeon.generation;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.WeightedRandom;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.Biome.SpawnListEntry;
 import net.minecraft.world.gen.structure.template.ITemplateProcessor;
 import net.minecraft.world.gen.structure.template.Template;
 import net.minecraft.world.storage.loot.LootTableList;
@@ -34,8 +35,8 @@ public class DungeonRoomProcessor implements ITemplateProcessor
             switch (blockInfo.tileentityData.getString("metadata"))
             {
                 case "random_entity":
-                    List<Biome.SpawnListEntry> spawns =  Biomes.PLAINS.getSpawnableList(EnumCreatureType.MONSTER);
-                    Biome.SpawnListEntry entry = spawns.get(world.rand.nextInt(spawns.size()));
+                    List<SpawnListEntry> spawns =  world.getBiome(pos).getSpawnableList(EnumCreatureType.MONSTER);
+                    SpawnListEntry entry = (SpawnListEntry) WeightedRandom.getRandomItem(world.rand, spawns);
 
                     EntityLiving entity = null;
                     try

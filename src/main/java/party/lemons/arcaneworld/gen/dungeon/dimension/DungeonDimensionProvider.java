@@ -3,18 +3,39 @@ package party.lemons.arcaneworld.gen.dungeon.dimension;
 import net.minecraft.client.audio.MusicTicker;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeProvider;
+import net.minecraft.world.biome.BiomeProviderSingle;
 import net.minecraft.world.gen.IChunkGenerator;
+import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import party.lemons.arcaneworld.ArcaneWorld;
 import party.lemons.arcaneworld.proxy.ClientProxy;
 
 import javax.annotation.Nullable;
+import java.util.Set;
 
 /**
  * Created by Sam on 22/09/2018.
  */
 public class DungeonDimensionProvider extends WorldProvider
 {
+
+    @Override
+    public BiomeProvider getBiomeProvider()
+    {
+        Set<Biome> biomes = BiomeDictionary.getBiomes(BiomeDictionary.Type.VOID);
+        for (Biome biome : biomes)
+        {
+            if (biome.getRegistryName().toString().equals(ArcaneWorld.MODID + ":arcane_dungeon"))
+            {
+                return new BiomeProviderSingle(biome);
+            }
+        }
+        return this.biomeProvider;
+    }
+
     public DimensionType getDimensionType()
     {
         return DungeonDimension.TYPE;
