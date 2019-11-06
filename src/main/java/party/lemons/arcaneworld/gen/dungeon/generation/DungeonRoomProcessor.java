@@ -9,7 +9,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.WeightedRandom;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biome.SpawnListEntry;
 import net.minecraft.world.gen.structure.template.ITemplateProcessor;
 import net.minecraft.world.gen.structure.template.Template;
@@ -36,27 +35,31 @@ public class DungeonRoomProcessor implements ITemplateProcessor
             {
                 case "random_entity":
                     List<SpawnListEntry> spawns =  world.getBiome(pos).getSpawnableList(EnumCreatureType.MONSTER);
-                    SpawnListEntry entry = (SpawnListEntry) WeightedRandom.getRandomItem(world.rand, spawns);
-
-                    EntityLiving entity = null;
-                    try
+                    if(!spawns.isEmpty())
                     {
-                        entity = entry.newInstance(world);
-                    }
-                    catch (Exception e)
-                    {
-                        e.printStackTrace();
-                    }
+                        SpawnListEntry entry = (SpawnListEntry) WeightedRandom.getRandomItem(world.rand, spawns);
 
-                    if(entity != null)
-                    {
-                        entity.setPosition(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F);
-                        entity.enablePersistence();
-                        entity.onInitialSpawn(world.getDifficultyForLocation(pos), null);
 
-                        world.spawnEntity(entity);
+                        EntityLiving entity = null;
+                        try
+                        {
+                            entity = entry.newInstance(world);
+                        }
+                        catch (Exception e)
+                        {
+                            e.printStackTrace();
+                        }
+
+                        if(entity != null)
+                        {
+                            entity.setPosition(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F);
+                            entity.enablePersistence();
+                            entity.onInitialSpawn(world.getDifficultyForLocation(pos), null);
+
+                            world.spawnEntity(entity);
+                        }
+                        break;
                     }
-                    break;
                 case "loot_random":
                     TileEntity tileentity = world.getTileEntity(pos.down());
                     if (tileentity instanceof TileEntityChest)
