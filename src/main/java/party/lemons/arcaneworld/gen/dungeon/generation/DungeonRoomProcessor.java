@@ -9,7 +9,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.WeightedRandom;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biome.SpawnListEntry;
 import net.minecraft.world.gen.structure.template.ITemplateProcessor;
 import net.minecraft.world.gen.structure.template.Template;
@@ -36,7 +35,10 @@ public class DungeonRoomProcessor implements ITemplateProcessor
             {
                 case "random_entity":
                     List<SpawnListEntry> spawns =  world.getBiome(pos).getSpawnableList(EnumCreatureType.MONSTER);
-                    SpawnListEntry entry = (SpawnListEntry) WeightedRandom.getRandomItem(world.rand, spawns);
+                    if(!spawns.isEmpty())
+                    {
+                        SpawnListEntry entry = (SpawnListEntry) WeightedRandom.getRandomItem(world.rand, spawns);
+                    }
 
                     EntityLiving entity = null;
                     try
