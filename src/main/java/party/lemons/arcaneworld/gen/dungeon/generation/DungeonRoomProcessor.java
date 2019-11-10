@@ -58,8 +58,8 @@ public class DungeonRoomProcessor implements ITemplateProcessor
 
                             world.spawnEntity(entity);
                         }
-                        break;
                     }
+                    break;
                 case "loot_random":
                     TileEntity tileentity = world.getTileEntity(pos.down());
                     if (tileentity instanceof TileEntityChest)
