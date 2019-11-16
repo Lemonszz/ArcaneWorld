@@ -41,7 +41,6 @@ public class RitualDungeon extends Ritual
 
             p.changeDimension(ArcaneWorldConfig.DUNGEONS.DIM_ID, teleporter);
 
-
         }
     }
 }
