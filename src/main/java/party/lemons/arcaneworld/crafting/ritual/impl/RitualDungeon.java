@@ -11,7 +11,7 @@ import net.minecraft.world.WorldServer;
 import party.lemons.arcaneworld.config.ArcaneWorldConfig;
 import party.lemons.arcaneworld.crafting.ritual.Ritual;
 import party.lemons.arcaneworld.gen.dungeon.dimension.TeleporterDungeon;
-import party.lemons.arcaneworld.gen.dungeon.generation.DungeonGenerator;
+import party.lemons.arcaneworld.util.capabilities.RitualCoordinateProvider;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -29,9 +29,19 @@ public class RitualDungeon extends Ritual
     {
         WorldServer ws = (WorldServer) world;
 
+
         TeleporterDungeon teleporter = new TeleporterDungeon(ws);
         List<EntityLivingBase> players = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(pos).grow(5, 5, 5));
 
-        players.forEach(p -> p.changeDimension(ArcaneWorldConfig.DUNGEONS.DIM_ID, teleporter));
+
+        for (EntityLivingBase p:players)
+        {
+            p.getCapability(RitualCoordinateProvider.RITUAL_COORDINATE_CAPABILITY, null).setPos(pos);
+            p.getCapability(RitualCoordinateProvider.RITUAL_COORDINATE_CAPABILITY, null).setDim(world.provider.getDimension());
+
+            p.changeDimension(ArcaneWorldConfig.DUNGEONS.DIM_ID, teleporter);
+
+
+        }
     }
 }
