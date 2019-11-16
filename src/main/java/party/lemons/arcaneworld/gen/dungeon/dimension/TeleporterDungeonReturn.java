@@ -1,11 +1,14 @@
 package party.lemons.arcaneworld.gen.dungeon.dimension;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import party.lemons.arcaneworld.util.capabilities.RitualCoordinate;
+import party.lemons.arcaneworld.util.capabilities.RitualCoordinateProvider;
 
 /**
  * Created by Sam on 22/09/2018.
@@ -24,26 +27,31 @@ public class TeleporterDungeonReturn extends Teleporter
         if(world.isRemote)
             return;
 
-        BlockPos returnPos = world.getSpawnPoint();
-        if(entity instanceof EntityPlayer)
-        {
-            EntityPlayer player = (EntityPlayer) entity;
-            boolean hasBed = true;
+        if(!(entity.hasCapability(RitualCoordinateProvider.RITUAL_COORDINATE_CAPABILITY, null)))
+            return;
 
-            BlockPos bedLocation = player.getBedLocation();
-            if (bedLocation == null || EntityPlayer.getBedSpawnLocation(world, bedLocation, false) == null)
-                hasBed = false;
 
-            if (!hasBed)
-            {
-                BlockPos blockpos = world.provider.getRandomizedSpawnPoint();
-                returnPos = world.getTopSolidOrLiquidBlock(blockpos);
-            }
-            else
-            {
-                returnPos = EntityPlayer.getBedSpawnLocation(world, bedLocation, false);
-            }
-        }
+        BlockPos ritualPos = entity.getCapability(RitualCoordinateProvider.RITUAL_COORDINATE_CAPABILITY, null).getPos();
+        BlockPos returnPos = world.getTopSolidOrLiquidBlock(ritualPos);
+//        if(entity instanceof EntityPlayer)
+//        {
+//            EntityPlayer player = (EntityPlayer) entity;
+//            boolean hasBed = true;
+//
+//            BlockPos bedLocation = player.getBedLocation();
+//            if (bedLocation == null || EntityPlayer.getBedSpawnLocation(world, bedLocation, false) == null)
+//                hasBed = false;
+//
+//            if (!hasBed)
+//            {
+//                BlockPos blockpos = world.provider.getRandomizedSpawnPoint();
+//                returnPos = world.getTopSolidOrLiquidBlock(blockpos);
+//            }
+//            else
+//            {
+//                returnPos = EntityPlayer.getBedSpawnLocation(world, bedLocation, false);
+//            }
+//        }
 
         entity.setLocationAndAngles(returnPos.getX(), returnPos.getY(), returnPos.getZ(), entity.rotationYaw, 0.0F);
         entity.motionX = 0.0D;

@@ -17,6 +17,7 @@ import party.lemons.arcaneworld.config.ArcaneWorldConfig;
 import party.lemons.arcaneworld.gen.dungeon.dimension.DungeonDimension;
 import party.lemons.arcaneworld.gen.dungeon.dimension.TeleporterDungeonReturn;
 import party.lemons.arcaneworld.util.ArcaneWorldUtil;
+import party.lemons.arcaneworld.util.capabilities.RitualCoordinateProvider;
 
 /**
  * Created by Sam on 12/09/2018.
@@ -55,10 +56,11 @@ public final class ArcaneWorldGeneralEventHandler {
 
                 if(!event.player.world.isRemote)
                 {
-                    event.player.changeDimension(0, new TeleporterDungeonReturn((WorldServer) event.player.world));
+                    int returnDim = event.player.getCapability(RitualCoordinateProvider.RITUAL_COORDINATE_CAPABILITY,null).getDim();
+                    event.player.changeDimension(returnDim, new TeleporterDungeonReturn((WorldServer) event.player.world));
                 }
             }
         }
-}
+    }
 
 }

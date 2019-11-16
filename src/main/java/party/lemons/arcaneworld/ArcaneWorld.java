@@ -52,5 +52,6 @@ public class ArcaneWorld
 	{
 		NetworkRegistry.INSTANCE.registerGuiHandler(INSTANCE, new ArcaneWorldGuiHandler());
 		proxy.registerSidedInit();
+        proxy.capabilityInit();
 	}
 }
