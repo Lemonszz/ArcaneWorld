@@ -42,6 +42,7 @@ public class ArcaneWorld
 		ArcaneWorldEntities.init();
         DungeonDimension.init();
 		proxy.registerSided();
+        proxy.capabilityInit();
 
         LootTableList.register(new ResourceLocation(MODID, "raid_1"));
         LootFunctionManager.registerFunction(new ItemPotionOrb.SetPotionLoot.Serializer());

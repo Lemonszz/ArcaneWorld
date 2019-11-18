@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import party.lemons.arcaneworld.config.ArcaneWorldConfig;
 import party.lemons.arcaneworld.gen.dungeon.dimension.TeleporterDungeonReturn;
+import party.lemons.arcaneworld.util.capabilities.RitualCoordinateProvider;
 import party.lemons.lemonlib.item.IItemModel;
 
 import java.util.Random;
@@ -55,7 +56,8 @@ public class BlockReturnPortal extends BlockPortal implements IItemModel
         if(!worldIn.isRemote && entity instanceof EntityPlayer)
         {
             entity.timeUntilPortal = entity.getPortalCooldown();
-            entity.changeDimension(0, new TeleporterDungeonReturn((WorldServer) worldIn));
+            int returnDim = entity.getCapability(RitualCoordinateProvider.RITUAL_COORDINATE_CAPABILITY,null).getDim();
+            entity.changeDimension(returnDim, new TeleporterDungeonReturn((WorldServer) worldIn));
             return;
         }
     }
