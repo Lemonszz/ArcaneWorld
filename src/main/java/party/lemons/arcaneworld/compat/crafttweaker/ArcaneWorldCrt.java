@@ -92,6 +92,12 @@ public class ArcaneWorldCrt
         createRitual(name, displayName, new RitualDungeon(getIngredients(inputs)));
     }
 
+    @ZenMethod
+    public static void createRitualCommand(String name, String displayName, String[] command, IIngredient... inputs)
+    {
+        createRitual(name, displayName, new RitualCommand(command, getIngredients(inputs)));
+    }
+
     public static Ingredient[] getIngredients(IIngredient... inputs)
     {
         Ingredient[] ingreds = new Ingredient[inputs.length];
