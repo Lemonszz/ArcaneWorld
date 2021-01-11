@@ -36,7 +36,7 @@ public final class ArcaneWorldGeneralEventHandler {
         if(event.getEntity() instanceof AbstractIllager)
         {
             Entity e = event.getEntity();
-            if(e.world.rand.nextInt(ArcaneWorldConfig.ENTITIES.SCROLL_CHANCE) == 0)
+            if(ArcaneWorldConfig.ENTITIES.SCROLL_CHANCE > 0 && e.world.rand.nextInt(ArcaneWorldConfig.ENTITIES.SCROLL_CHANCE) == 0)
             {
                 EntityItem item = new EntityItem(e.world, e.posX, e.posY, e.posZ, ArcaneWorldUtil.getRandomRitualScrollForDrop(e.world.rand));
                 event.getDrops().add(item);
